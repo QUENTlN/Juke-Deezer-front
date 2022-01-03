@@ -1,27 +1,28 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Album} from "./models/album.model";
-import {Observable, throwError} from "rxjs";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Album} from "../models/album.model";
+import {firstValueFrom, Observable, throwError} from "rxjs";
 import {catchError, retry} from 'rxjs/operators';
-import {Artist} from "./models/artist.model";
-import {Playlist} from "./models/playlist.model";
-import {Track} from "./models/track.model";
-import {User} from "./models/user.model";
-import {Chart} from "./models/chart.model";
-import {Podcast} from "./models/podcast.model";
-import {Editorial} from "./models/editorial.model";
-import {Episode} from "./models/episode.model";
-import {Genre} from "./models/genre.model";
-import {Radio} from "./models/radio.model";
-import {PodcastList} from "./models/podcast-list.model";
-import {TrackList} from "./models/track-list.model";
-import {EpisodeList} from "./models/episode-list.model";
-import {RadioByGenre} from "./models/radio-by-genre.model";
-import {RadioList} from "./models/radio-list.model";
-import {AlbumList} from "./models/album-list.model";
-import {UserList} from "./models/user-list.model";
-import {ArtistList} from "./models/artist-list.model";
-import {PlaylistList} from "./models/playlist-list.model";
+import {environment} from '../../environments/environment';
+import {Artist} from "../models/artist.model";
+import {Playlist} from "../models/playlist.model";
+import {Track} from "../models/track.model";
+import {User} from "../models/user.model";
+import {Chart} from "../models/chart.model";
+import {Podcast} from "../models/podcast.model";
+import {Editorial} from "../models/editorial.model";
+import {Episode} from "../models/episode.model";
+import {Genre} from "../models/genre.model";
+import {Radio} from "../models/radio.model";
+import {PodcastList} from "../models/podcast-list.model";
+import {TrackList} from "../models/track-list.model";
+import {EpisodeList} from "../models/episode-list.model";
+import {RadioByGenre} from "../models/radio-by-genre.model";
+import {RadioList} from "../models/radio-list.model";
+import {AlbumList} from "../models/album-list.model";
+import {UserList} from "../models/user-list.model";
+import {ArtistList} from "../models/artist-list.model";
+import {PlaylistList} from "../models/playlist-list.model";
 
 @Injectable({
     providedIn: 'root'
@@ -34,17 +35,52 @@ export class DeezerService {
 
     NB_RETRY: number = 1;
 
+    accessToken: string | undefined;
+
     constructor(private http: HttpClient) {
     }
 
-    httpOptions = {
-        headers: new HttpHeaders({
-            'Content-Type': 'application/json'
-        })
+    private httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
+    });
+
+    private httpOptions = {
+        headers: this.httpHeaders
+
     }
 
-    private getBaseUrl() {
+    private getBaseUrl(): string {
         return this.CORS_URL + this.API_URL;
+    }
+
+    login(): void {
+        window.location.href = 'https://connect.deezer.com/oauth/auth.php?app_id=' + environment.DEEZER_APP_ID + '&redirect_uri=' + environment.DEEZER_REDIRECT_URI + '&perms=' + environment.DEEZER_PERMISSIONS;
+    }
+
+    auth() {
+        this.accessToken = '1';
+    }
+
+    async getAccessToken(code: string | null) {
+        let params = new HttpParams();
+        params.set('app_id', environment.DEEZER_APP_ID);
+        params.set('secret', environment.DEEZER_APP_SECRET);
+        params.set('code', code ? code : '');
+        const localHttpOptions = {
+            headers: new HttpHeaders({
+                'Cors-Allow-Origin': '*',
+                'responseType': 'text'
+            }),
+        };
+        this.accessToken = await firstValueFrom(this.http.get<any>(this.CORS_URL + 'https://connect.deezer.com/oauth/access_token.php?app_id=' + environment.DEEZER_APP_ID + '&secret=' + environment.DEEZER_APP_SECRET + '&code=' + (code ? code : ''), localHttpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            ));
+        console.log(this.accessToken);
     }
 
     // Album endpoints
@@ -408,7 +444,7 @@ export class DeezerService {
 
     handleError(error: any) {
         let errorMessage = '';
-        if(error.error instanceof ErrorEvent) {
+        if (error.error instanceof ErrorEvent) {
             errorMessage = error.error.message;
         } else {
             errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;

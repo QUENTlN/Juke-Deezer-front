@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DeezerService} from "./deezer.service";
+import {DeezerService} from "./services/deezer.service";
 import {firstValueFrom} from "rxjs";
 import {AlbumList} from "./models/album-list.model";
 
@@ -18,7 +18,10 @@ export class AppComponent implements OnInit {
     }
 
     public async ngOnInit() {
-        this.album = await firstValueFrom(this.deezerService.searchAlbums('The Beatles'));
-        console.log(this.album);
+
+        // this.deezerService.login();
+        // this.album = await firstValueFrom(this.deezerService.searchAlbums('The Beatles'));
+        // console.log(this.album);
+        // console.log(this.deezerService.accessToken)
     }
 }

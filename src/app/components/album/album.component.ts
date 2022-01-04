@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DeezerService} from "../../services/deezer.service";
 
 @Component({
   selector: 'app-album',
@@ -8,10 +7,8 @@ import {DeezerService} from "../../services/deezer.service";
 })
 export class AlbumComponent implements OnInit {
 
-  constructor(private deezerService: DeezerService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-      this.deezerService.login();
-  }
+  ngOnInit(): void { }
 
 }

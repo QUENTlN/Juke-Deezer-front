@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { AlbumComponent } from './components/album/album.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    AlbumComponent
+    AlbumComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

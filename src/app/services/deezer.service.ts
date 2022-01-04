@@ -29,13 +29,13 @@ import {PlaylistList} from "../models/playlist-list.model";
 })
 export class DeezerService {
 
-    CORS_URL: string = 'https://cors-anywhere.herokuapp.com/';
+    private CORS_URL: string = 'https://cors-anywhere.herokuapp.com/';
 
-    API_URL: string = 'http://api.deezer.com/';
+    private API_URL: string = 'http://api.deezer.com/';
 
-    NB_RETRY: number = 1;
+    private NB_RETRY: number = 1;
 
-    accessToken: string | undefined;
+    private accessToken: string | undefined;
 
     constructor(private http: HttpClient) {
     }
@@ -49,7 +49,6 @@ export class DeezerService {
 
     private httpOptions = {
         headers: this.httpHeaders
-
     }
 
     private getBaseUrl(): string {
@@ -60,26 +59,23 @@ export class DeezerService {
         window.location.href = 'https://connect.deezer.com/oauth/auth.php?app_id=' + environment.DEEZER_APP_ID + '&redirect_uri=' + environment.DEEZER_REDIRECT_URI + '&perms=' + environment.DEEZER_PERMISSIONS;
     }
 
-    auth() {
-        this.accessToken = '1';
-    }
+    async auth(code: string | null) {
+        let params = new HttpParams()
+            .set('app_id', environment.DEEZER_APP_ID)
+            .set('secret', environment.DEEZER_APP_SECRET)
+            .set('code', code ? code : '')
+            .set('output', 'json');
 
-    async getAccessToken(code: string | null) {
-        let params = new HttpParams();
-        params.set('app_id', environment.DEEZER_APP_ID);
-        params.set('secret', environment.DEEZER_APP_SECRET);
-        params.set('code', code ? code : '');
-        const localHttpOptions = {
-            headers: new HttpHeaders({
-                'Cors-Allow-Origin': '*',
-                'responseType': 'text'
-            }),
+        const HttpOptions = {
+            headers: this.httpHeaders,
+            params,
         };
-        this.accessToken = await firstValueFrom(this.http.get<any>(this.CORS_URL + 'https://connect.deezer.com/oauth/access_token.php?app_id=' + environment.DEEZER_APP_ID + '&secret=' + environment.DEEZER_APP_SECRET + '&code=' + (code ? code : ''), localHttpOptions)
+
+        this.accessToken = (await firstValueFrom(this.http.get<any>(this.CORS_URL + 'https://connect.deezer.com/oauth/access_token.php', HttpOptions) // ?app_id=' + environment.DEEZER_APP_ID + '&secret=' + environment.DEEZER_APP_SECRET + '&code=' + (code ? code : '') + '&output=json'
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
-            ));
+            ))).access_token;
         console.log(this.accessToken);
     }
 
@@ -360,7 +356,7 @@ export class DeezerService {
             );
     }
 
-    // TODO: get personal radio list
+    // TODO: get personal radio list (error 500)
 
     // Search endpoints
 
@@ -420,7 +416,13 @@ export class DeezerService {
             );
     }
 
-    // TODO: search history
+    getHistory(): Observable<History> {
+        return this.http.get<History>(this.getBaseUrl() + 'history', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
 
     // Track endpoints
 
@@ -443,7 +445,7 @@ export class DeezerService {
     }
 
     handleError(error: any) {
-        let errorMessage = '';
+        let errorMessage;
         if (error.error instanceof ErrorEvent) {
             errorMessage = error.error.message;
         } else {

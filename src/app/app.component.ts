@@ -12,5 +12,6 @@ export class AppComponent implements OnInit {
     constructor() {
     }
 
-    public async ngOnInit() { }
+    public async ngOnInit() {
+    }
 }

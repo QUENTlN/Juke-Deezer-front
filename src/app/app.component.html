@@ -1,4 +1,111 @@
-<header></header>
-<router-outlet></router-outlet>
-<footer></footer>
+<div class="wrapper">
+    <nav id="sidebar" [className]="(this.show) ? 'active' : ''">
+        <div class="sidebar-header">
+            <img [src]="this.themeService.getSiteLogo()" class="img-fluid" alt="site logo">
+        </div>
 
+        <div class="form-group has-search sidebar-search">
+            <fa-icon [icon]="faSearch" class="form-control-feedback"></fa-icon>
+            <input type="text" class="form-control rounded-pill" placeholder="Chercher">
+        </div>
+
+        <ul class="list-unstyled components">
+            <li class="active">
+                <a href="#">
+                    <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
+                    Accueil</a>
+            </li>
+            <li>
+                <a href="#">
+                    <fa-icon [icon]="faMusic" [fixedWidth]="true"></fa-icon>
+                    Musiques</a>
+            </li>
+            <li>
+                <a href="#">
+                    <fa-icon [icon]="faMicrophone" [fixedWidth]="true"></fa-icon>
+                    Podcasts</a>
+            </li>
+            <li>
+                <a href="#">
+                    <fa-icon [icon]="faCompactDisc" [fixedWidth]="true"></fa-icon>
+                    Radio</a>
+            </li>
+            <li>
+                <a href="#">
+                    <fa-icon [icon]="faSearch" [fixedWidth]="true"></fa-icon>
+                    Découvrir</a>
+            </li>
+            <li>
+                <a href="#favSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+                   class="dropdown-toggle collapsed">
+                    <fa-icon [icon]="faStar" [fixedWidth]="true"></fa-icon>
+                    Favoris</a>
+                <ul class="collapse list-unstyled" id="favSubmenu">
+                    <li>
+                        <a href="#">Titres</a>
+                    </li>
+                    <li>
+                        <a href="#">Playlists</a>
+                    </li>
+                    <li>
+                        <a href="#">Albums</a>
+                    </li>
+                    <li>
+                        <a href="#">Artistes</a>
+                    </li>
+                    <li>
+                        <a href="#">Podcats</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+
+    <div id="content" [ngClass]="{'active' : this.show}" (scroll)="onContainerScroll($event)">
+
+        <nav class="navbar navbar-expand-lg navbar-light" [ngClass]="{'sticky':this.stickyNavbar}">
+            <div class="me-auto">
+                <div id="sidebarCollapse" class="btn rounded-circle" (click)="toggleMenu()">
+                    <fa-icon [ngClass]="{'menuClosed': this.show,'menuOpen': !this.show}" [icon]="faTimes"></fa-icon>
+                    <fa-icon [ngClass]="{'menuClosed': !this.show,'menuOpen': this.show}" [icon]="faBars"></fa-icon>
+                </div>
+
+                <div class="btn rounded-circle nav-button">
+                    <fa-icon [icon]="faChevronLeft"></fa-icon>
+                </div>
+
+                <div class="btn rounded-circle nav-button">
+                    <fa-icon [icon]="faChevronRight"></fa-icon>
+                </div>
+            </div>
+
+            <div class="form-group has-search navbar-search">
+                <fa-icon [icon]="faSearch" class="form-control-feedback"></fa-icon>
+                <input type="text" class="form-control rounded-pill" placeholder="Chercher">
+            </div>
+
+            <img
+                [src]="this.themeService.darkTheme ? './assets/img/default_user_dark.png' : '../assets/img/default_user_light.png'"
+                alt="user image" class="dropdown-toggle rounded-circle d-inline-block ms-auto"
+                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+            </ul>
+        </nav>
+
+        <router-outlet></router-outlet>
+
+        <footer class="text-center py-4">
+            ©2021-2022 powered by <!--TODO: add app name -->
+            <fa-icon [icon]="faDeezer"></fa-icon>
+            Deezer
+        </footer>
+
+    </div>
+</div>
+<div class="player"
+     [ngClass]="{'player-light': !this.themeService.darkTheme, 'player-dark': this.themeService.darkTheme}"></div>

@@ -3,6 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {HttpClientModule} from "@angular/common/http";
 import {AuthenticationComponent} from './components/authentication/authentication.component';
 import {AlbumComponent} from './components/album/album.component';
@@ -20,7 +21,8 @@ import {PlayerComponent} from './player/player.component';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        FontAwesomeModule
     ],
     providers: [],
     bootstrap: [AppComponent]

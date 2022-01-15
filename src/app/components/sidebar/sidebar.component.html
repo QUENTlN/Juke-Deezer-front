@@ -1,0 +1,59 @@
+<nav id="sidebar" [ngClass]="{'active' : this.show}">
+    <div class="sidebar-header">
+        <img [src]="this.themeService.getSiteLogo()" class="img-fluid" alt="site logo">
+    </div>
+
+    <app-search navbarLocation="sidebar"></app-search>
+
+    <ul class="list-unstyled components">
+        <li class="active">
+            <a href="#">
+                <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
+                Accueil</a>
+        </li>
+        <li>
+            <a href="#">
+                <fa-icon [icon]="faMusic" [fixedWidth]="true"></fa-icon>
+                Musiques</a>
+        </li>
+        <li>
+            <a href="#">
+                <fa-icon [icon]="faMicrophone" [fixedWidth]="true"></fa-icon>
+                Podcasts</a>
+        </li>
+        <li>
+            <a href="#">
+                <fa-icon [icon]="faCompactDisc" [fixedWidth]="true"></fa-icon>
+                Radio</a>
+        </li>
+        <li>
+            <a href="#">
+                <fa-icon [icon]="faSearch" [fixedWidth]="true"></fa-icon>
+                Découvrir</a>
+        </li>
+        <li>
+            <a href="#favSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+               class="dropdown-toggle collapsed">
+                <fa-icon [icon]="faStar" [fixedWidth]="true"></fa-icon>
+                Favoris</a>
+            <ul class="collapse list-unstyled" id="favSubmenu">
+                <li>
+                    <a href="#">Titres</a>
+                </li>
+                <li>
+                    <a href="#">Playlists</a>
+                </li>
+                <li>
+                    <a href="#">Albums</a>
+                </li>
+                <li>
+                    <a href="#">Artistes</a>
+                </li>
+                <li>
+                    <a href="#">Podcats</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</nav>

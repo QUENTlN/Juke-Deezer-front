@@ -1,0 +1,53 @@
+[33mcommit fd02eea10c74cf9053fe72c791f67c1d0ddbe037[m[33m ([m[1;36mHEAD -> [m[1;32mlayout[m[33m, [m[1;31morigin/layout[m[33m)[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Sat Jan 15 18:41:22 2022 +0100
+
+    add player.component.scss
+
+[33mcommit b7b61685abbf4f3ee2f6401fe69f46ebd4a5e424[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Sat Jan 15 18:26:10 2022 +0100
+
+    split layout in components
+
+[33mcommit e1e9a8a8a3dd37f15d772c5a657547c7f55d9ad1[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Tue Jan 11 21:33:14 2022 +0100
+
+    make layout
+
+[33mcommit 307b5e7bb3f2a7d54a9317a18c513ae9619dbba5[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Wed Jan 5 21:55:26 2022 +0100
+
+    indent all project
+
+[33mcommit ef23ad5fa5a78227d2f120905b1a83f31a416eb8[m[33m ([m[1;31morigin/auth[m[33m, [m[1;32mauth[m[33m)[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Wed Jan 5 00:15:39 2022 +0100
+
+    auth system
+
+[33mcommit 874cba2c69440838f13062b391bed05246238fc2[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Mon Jan 3 21:07:06 2022 +0100
+
+    auth test
+
+[33mcommit 9c31a691c1890c6076e888e33f2c2a26f74d37ff[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Sun Jan 2 22:04:53 2022 +0100
+
+    remove env file
+
+[33mcommit a6e6b538bbe8804ff2db15aef072f6a94c16b7b4[m
+Author: Quentin <quentin095.vaillant@gmail.com>
+Date:   Sun Jan 2 19:20:21 2022 +0100
+
+    add all api models
+
+[33mcommit 5030083b749c671f34ac83ea4a84a06dd616ed4a[m
+Author: Quentin Vaillant <quentin095.vaillant@gmail.com>
+Date:   Thu Dec 9 11:07:47 2021 +0100
+
+    initial commit

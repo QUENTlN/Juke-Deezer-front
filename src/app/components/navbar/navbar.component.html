@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light" [ngClass]="{'sticky':this.isStickyNavbar}">
+    <div class="me-auto">
+        <div id="sidebarCollapse" class="btn rounded-circle" (click)="toggleSidebar()">
+            <fa-icon id="croix" [ngClass]="{'menuClosed': this.isSidebarDisplay,'menuOpen': !this.isSidebarDisplay}"
+                     [icon]="faTimes"></fa-icon>
+            <fa-icon id="traits" [ngClass]="{'menuClosed': !this.isSidebarDisplay,'menuOpen': this.isSidebarDisplay}"
+                     [icon]="faBars"></fa-icon>
+        </div>
+
+        <div class="btn rounded-circle nav-button">
+            <fa-icon [icon]="faChevronLeft"></fa-icon>
+        </div>
+
+        <div class="btn rounded-circle nav-button">
+            <fa-icon [icon]="faChevronRight"></fa-icon>
+        </div>
+    </div>
+
+    <app-search navbarLocation="navbar"></app-search>
+
+    <div *ngIf="!isConnected()" class="btn rounded-pill nav-button ms-auto px-3"
+         [routerLink]="['/auth']" [routerLinkActive]="['active']" [ngClass]="{'active': isSidebarDisplay}">
+        SE CONNECTER
+    </div>
+
+    <img *ngIf="isConnected()" [ngClass]="{'active': isSidebarDisplay}"
+         [src]="this.getLoggedInUser()?.picture"
+         alt="user image" class="dropdown-toggle rounded-circle ms-auto"
+         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Profil</a></li>
+        <li><a class="dropdown-item" href="#">Paramètres</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/logout']" [routerLinkActive]="['active']" >Déconnexion</a></li>
+    </ul>
+</nav>

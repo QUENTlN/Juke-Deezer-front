@@ -35,8 +35,6 @@ export class DeezerService {
 
     private NB_RETRY: number = 1;
 
-    private accessToken: string | undefined;
-
     constructor(private http: HttpClient) {
     }
 
@@ -49,6 +47,37 @@ export class DeezerService {
 
     private httpOptions = {
         headers: this.httpHeaders
+    }
+
+    private static setAccessToken(accessToken: string) {
+        localStorage.setItem('accessToken', JSON.stringify(accessToken));
+    }
+
+    private static getAccessToken() {
+        let accessToken = localStorage.getItem('accessToken');
+        if (accessToken) {
+            return JSON.parse(accessToken);
+        } else {
+            return null;
+        }
+    }
+
+    private static setLoggedInUser(user: User) {
+        localStorage.setItem('loggedInUser', JSON.stringify(user));
+    }
+
+    public static getLoggedInUser() {
+        let user = localStorage.getItem('loggedInUser');
+        if (user) {
+            return JSON.parse(user);
+        } else {
+            return null;
+        }
+    }
+
+    logout() {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('loggedInUser');
     }
 
     private getBaseUrl(): string {
@@ -71,12 +100,13 @@ export class DeezerService {
             params,
         };
 
-        this.accessToken = (await firstValueFrom(this.http.get<any>(this.CORS_URL + 'https://connect.deezer.com/oauth/access_token.php', HttpOptions) // ?app_id=' + environment.DEEZER_APP_ID + '&secret=' + environment.DEEZER_APP_SECRET + '&code=' + (code ? code : '') + '&output=json'
+        DeezerService.setAccessToken((await firstValueFrom(this.http.get<any>(this.CORS_URL + 'https://connect.deezer.com/oauth/access_token.php', HttpOptions) // ?app_id=' + environment.DEEZER_APP_ID + '&secret=' + environment.DEEZER_APP_SECRET + '&code=' + (code ? code : '') + '&output=json'
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
-            ))).access_token;
-        console.log(this.accessToken);
+            ))).access_token);
+
+        DeezerService.setLoggedInUser(await firstValueFrom(this.getMe()));
     }
 
     // Album endpoints
@@ -435,6 +465,22 @@ export class DeezerService {
     }
 
     // User endpoints
+
+    getMe(): Observable<User> {
+        let params = new HttpParams()
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+
+        const httpOptions = {
+            headers: this.httpHeaders,
+            params,
+        };
+
+        return this.http.get<User>(this.getBaseUrl() + 'user/me', httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
 
     getUser(id: number): Observable<User> {
         return this.http.get<User>(this.getBaseUrl() + 'user/' + id, this.httpOptions)

@@ -1,0 +1,92 @@
+
+.sticky {
+    position: sticky;
+    top: 0;
+    padding-top: 10px!important;
+    transition: padding-top 0ms!important;
+    background: linear-gradient(0deg, rgba(34,193,195,0) 0%, var(--background-color) 100%);
+}
+
+.navbar {
+    //padding: 15px 10px;
+    transition: padding-top 400ms;
+    padding-top: 40px;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+}
+
+.navbar img, div.btn.rounded-circle {
+    height: 40px;
+    width: 40px;
+    margin-right: 1rem;
+}
+
+nav .btn {
+}
+
+div.btn  {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--font-color);
+}
+
+.dropdown-menu {
+    background-color: var(--primary-color);
+    color: var(--font-color);
+}
+
+.dropdown-menu a:focus {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+}
+
+.dropdown-item {
+    color: var(--font-color);
+}
+
+.dropdown-item:hover {
+    color: var(--font-color);
+}
+
+img {
+    cursor: pointer;
+}
+
+#sidebarCollapse .menuClosed {
+    display: none;
+}
+
+#sidebarCollapse .menuOpen {
+    display: block;
+}
+
+@media (max-width: 911px) {
+
+    #sidebarCollapse .menuOpen {
+        display: none;
+    }
+
+    #sidebarCollapse .menuClosed {
+        display: block;
+    }
+}
+
+@media (max-width: 656px) {
+
+    div.rounded-pill.active {
+        display: none;
+    }
+}
+
+@media (max-width: 566px) {
+    img.active {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    #sidebarCollapse  {
+        display: none;
+    }
+}

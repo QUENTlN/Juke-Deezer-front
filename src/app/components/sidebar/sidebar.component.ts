@@ -1,12 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {
-    faSearch,
+    faGripHorizontal,
     faHome,
-    faMusic,
     faMicrophone,
+    faMusic,
     faPodcast,
-    faStar,
-    faGripHorizontal
+    faSearch,
+    faStar
 } from '@fortawesome/free-solid-svg-icons';
 import {ThemeService} from "../../services/theme.service";
 import {DeezerService} from "../../services/deezer.service";

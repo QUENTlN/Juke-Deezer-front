@@ -11,9 +11,9 @@ import {HomeComponent} from './components/home/home.component';
 import {PlayerComponent} from './components/player/player.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
-import { SearchComponent } from './components/search/search.component';
-import { ContentComponent } from './components/content/content.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import {SearchComponent} from './components/search/search.component';
+import {ContentComponent} from './components/content/content.component';
+import {LogoutComponent} from './components/logout/logout.component';
 
 @NgModule({
     declarations: [

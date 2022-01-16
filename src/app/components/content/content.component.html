@@ -1,8 +1,9 @@
 <div id="content" [ngClass]="{'active' : this.isSidebarDisplay}" (scroll)="onContainerScroll($event)">
 
-    <app-navbar [isStickyNavbar]="isStickyNavbar" [isSidebarDisplay]="isSidebarDisplay" (showSidebar)="toggleSidebar()"></app-navbar>
+    <app-navbar [isStickyNavbar]="isStickyNavbar" [isSidebarDisplay]="isSidebarDisplay"
+                (showSidebar)="toggleSidebar()"></app-navbar>
 
-    <router-outlet ></router-outlet>
+    <router-outlet></router-outlet>
 
     <footer class="text-center py-4">
         ©2021-2022 powered by <!--TODO: add app name -->

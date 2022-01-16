@@ -1,5 +1,16 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {faChevronLeft, faChevronRight, faTimes, faBars, faSearch, faHome, faMusic, faMicrophone, faCompactDisc, faStar} from '@fortawesome/free-solid-svg-icons';
+import {
+    faBars,
+    faChevronLeft,
+    faChevronRight,
+    faCompactDisc,
+    faHome,
+    faMicrophone,
+    faMusic,
+    faSearch,
+    faStar,
+    faTimes
+} from '@fortawesome/free-solid-svg-icons';
 import {DeezerService} from "../../services/deezer.service";
 import {User} from "../../models/user.model";
 
@@ -41,7 +52,7 @@ export class NavbarComponent implements OnInit {
         return DeezerService.getLoggedInUser() != null;
     }
 
-    getLoggedInUser(): User|undefined {
+    getLoggedInUser(): User | undefined {
         return DeezerService.getLoggedInUser();
     }
 }

@@ -29,12 +29,13 @@
     display: block;
     border-radius: 10px;
     color: var(--secondary-color);
+
     &:hover {
         color: var(--font-color);
     }
 }
 
-#sidebar ul li.active>a {
+#sidebar ul li.active > a {
     color: var(--font-color);
     background: var(--primary-color);
 }

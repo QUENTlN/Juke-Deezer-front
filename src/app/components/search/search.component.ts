@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+    selector: 'app-search',
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
 
@@ -12,9 +12,10 @@ export class SearchComponent implements OnInit {
 
     @Input() navbarLocation: string = 'navbar'
 
-  constructor() { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }

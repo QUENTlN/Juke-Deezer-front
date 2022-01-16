@@ -25,7 +25,7 @@ export class ContentComponent implements OnInit {
     onContainerScroll($event: any) {
         if ($event.target.scrollTop > 30) {
             this.isStickyNavbar = true;
-        } else if ($event.target.scrollTop == 0)  {
+        } else if ($event.target.scrollTop == 0) {
             this.isStickyNavbar = false;
         } else if ($event.target.scrollTop == 1200) {
             this.isStickyNavbar = true;

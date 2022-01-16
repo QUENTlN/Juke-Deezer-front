@@ -1,6 +1,6 @@
 <nav id="sidebar" [ngClass]="{'active' : this.show}">
     <div class="sidebar-header">
-        <img [src]="this.themeService.getSiteLogo()" class="img-fluid" alt="site logo">
+        <img [src]="this.getSiteLogo()" class="img-fluid" alt="site logo">
     </div>
 
     <app-search navbarLocation="sidebar"></app-search>
@@ -23,15 +23,15 @@
         </li>
         <li>
             <a href="#">
-                <fa-icon [icon]="faCompactDisc" [fixedWidth]="true"></fa-icon>
+                <fa-icon [icon]="faPodcast" [fixedWidth]="true"></fa-icon>
                 Radio</a>
         </li>
         <li>
             <a href="#">
-                <fa-icon [icon]="faSearch" [fixedWidth]="true"></fa-icon>
+                <fa-icon [icon]="faGripHorizontal" [fixedWidth]="true"></fa-icon>
                 Découvrir</a>
         </li>
-        <li>
+        <li *ngIf="isConnected()">
             <a href="#favSubmenu" data-bs-toggle="collapse" aria-expanded="false"
                class="dropdown-toggle collapsed">
                 <fa-icon [icon]="faStar" [fixedWidth]="true"></fa-icon>

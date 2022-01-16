@@ -5,21 +5,28 @@ import {Injectable} from '@angular/core';
 })
 export class ThemeService {
 
-    darkTheme: boolean = true;
-
     constructor() {
     }
 
-    public toogleTheme() {
-        if (this.darkTheme) {
-            this.setDarkTheme();
+    public static getTheme(): string {
+        if (localStorage.getItem('theme') == null) {
+            ThemeService.setDarkTheme();
+            return 'dark';
+        }
+        // @ts-ignore
+        return localStorage.getItem('theme');
+    }
+
+    public static toggleTheme() {
+        if (ThemeService.getTheme() === 'light') {
+            ThemeService.setDarkTheme();
         } else {
-            this.setLightTheme();
+            ThemeService.setLightTheme();
         }
     }
 
-    public setDarkTheme() {
-        this.darkTheme = true;
+    public static setDarkTheme() {
+        localStorage.setItem('theme', 'dark');
         document.documentElement.style.setProperty('--main-color', '#000000');
         document.documentElement.style.setProperty('--background-color', '#0a0a0a');
         document.documentElement.style.setProperty('--primary-color', '#212529');
@@ -27,8 +34,8 @@ export class ThemeService {
         document.documentElement.style.setProperty('--font-color', '#fff');
     }
 
-    public setLightTheme() {
-        this.darkTheme = false;
+    public static setLightTheme() {
+        localStorage.setItem('theme', 'light');
         document.documentElement.style.setProperty('--main-color', '#ffffff');
         document.documentElement.style.setProperty('--background-color', '#fff');
         document.documentElement.style.setProperty('--primary-color', '#eaeaea');
@@ -37,7 +44,7 @@ export class ThemeService {
 
     }
 
-    getSiteLogo() {
-        return this.darkTheme ? '../assets/img/Deezer_Logo_RVB_White.svg' : '../assets/img/Deezer_Logo_RVB_Black.svg';
+    public static getSiteLogo() {
+        return ThemeService.getTheme() === 'dark' ? '../assets/img/Deezer_Logo_RVB_White.svg' : '../assets/img/Deezer_Logo_RVB_Black.svg';
     }
 }

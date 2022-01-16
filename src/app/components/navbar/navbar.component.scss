@@ -49,6 +49,10 @@ div.btn  {
     color: var(--font-color);
 }
 
+.dropdown-menu-dark .dropdown-item.active, .dropdown-menu-dark .dropdown-item:active {
+    background-color: var(--secondary-color);
+}
+
 img {
     cursor: pointer;
 }

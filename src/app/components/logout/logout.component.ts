@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import {Router} from "@angular/router";
 
@@ -14,7 +14,6 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
       this.deezerService.logout();
       this.router.navigate(['/']);
-
   }
 
 }

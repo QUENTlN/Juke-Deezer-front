@@ -12,22 +12,25 @@ export class AppComponent implements OnInit {
 
     isSidebarDisplayed: boolean = false;
 
-    constructor(public themeService: ThemeService) {
+    constructor() {
     }
 
     public async ngOnInit() {
-        this.themeService.setLightTheme();
+        ThemeService.setLightTheme();
     }
 
-    @HostListener('window:resize', ['$event'])
-    onResize(event: Event) {
+    @HostListener('window:resize')
+    onResize() {
         if (window.innerWidth < 1030) {
             this.isSidebarDisplayed = false;
         }
     }
 
+    public getTheme(): string {
+        return ThemeService.getTheme();
+    }
+
     toggleSidebar() {
         this.isSidebarDisplayed = !this.isSidebarDisplayed;
-        this.themeService.setDarkTheme();
     }
 }

@@ -26,11 +26,11 @@
     <img *ngIf="isConnected()" [ngClass]="{'active': isSidebarDisplay}"
          [src]="this.getLoggedInUser()?.picture"
          alt="user image" class="dropdown-toggle rounded-circle ms-auto"
-         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+         id="dropdownUserMenu" data-bs-toggle="dropdown" aria-expanded="false">
 
-    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+    <ul *ngIf="isConnected()" class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="dropdownUserMenu">
         <li><a class="dropdown-item" href="#">Profil</a></li>
-        <li><a class="dropdown-item" href="#">Paramètres</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/home']" [routerLinkActive]="['active']">Paramètres</a></li>
         <li><a class="dropdown-item" [routerLink]="['/logout']" [routerLinkActive]="['active']" >Déconnexion</a></li>
     </ul>
 </nav>

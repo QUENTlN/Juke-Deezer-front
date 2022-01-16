@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
 
     @Input() isStickyNavbar: boolean = false;
 
-    constructor(private deezerService: DeezerService) {
+    constructor() {
     }
 
     ngOnInit(): void {

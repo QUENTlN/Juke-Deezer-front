@@ -1,6 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {faChevronLeft, faChevronRight, faTimes, faBars, faSearch, faHome, faMusic, faMicrophone, faCompactDisc, faStar} from '@fortawesome/free-solid-svg-icons';
+import {
+    faSearch,
+    faHome,
+    faMusic,
+    faMicrophone,
+    faPodcast,
+    faStar,
+    faGripHorizontal
+} from '@fortawesome/free-solid-svg-icons';
 import {ThemeService} from "../../services/theme.service";
+import {DeezerService} from "../../services/deezer.service";
 
 @Component({
     selector: 'app-sidebar',
@@ -15,13 +24,21 @@ export class SidebarComponent implements OnInit {
     faHome = faHome;
     faMusic = faMusic;
     faMicrophone = faMicrophone;
-    faCompactDisc = faCompactDisc;
+    faPodcast = faPodcast;
     faStar = faStar;
+    faGripHorizontal = faGripHorizontal;
 
-    constructor(public themeService: ThemeService) {
+    constructor() {
     }
 
     ngOnInit(): void {
     }
 
+    public getSiteLogo(): string {
+        return ThemeService.getSiteLogo();
+    }
+
+    public isConnected(): boolean {
+        return DeezerService.getLoggedInUser() != null;
+    }
 }

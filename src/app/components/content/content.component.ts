@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {faChevronLeft, faChevronRight, faTimes, faBars} from "@fortawesome/free-solid-svg-icons";
 import {faDeezer} from "@fortawesome/free-brands-svg-icons";
 
 @Component({
@@ -23,20 +22,17 @@ export class ContentComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    // TODO: add @HostListener('scroll', ['$event']) when it have it own component
-    onContainerScroll(event: any) {
-        console.log(this.isSidebarDisplay);
-        if (event.target.scrollTop > 30) {
+    onContainerScroll($event: any) {
+        if ($event.target.scrollTop > 30) {
             this.isStickyNavbar = true;
-        } else if (event.target.scrollTop == 0)  {
+        } else if ($event.target.scrollTop == 0)  {
             this.isStickyNavbar = false;
-        } else if (event.target.scrollTop == 1200) {
+        } else if ($event.target.scrollTop == 1200) {
             this.isStickyNavbar = true;
         }
     }
 
     toggleSidebar() {
-        console.log('content');
         this.showSidebar.emit();
     }
 }

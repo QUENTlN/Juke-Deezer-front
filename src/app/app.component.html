@@ -4,4 +4,4 @@
     <app-content [isSidebarDisplay]="isSidebarDisplayed" (showSidebar)="toggleSidebar()"></app-content>
 </div>
 <div class="player"
-     [ngClass]="{'player-light': !this.themeService.darkTheme, 'player-dark': this.themeService.darkTheme}"></div>
+     [ngClass]="{'player-light': this.getTheme() == 'light', 'player-dark': this.getTheme() == 'dark'}"></div>

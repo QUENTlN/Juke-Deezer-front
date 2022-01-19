@@ -1,0 +1,21 @@
+<h2>Vous deveriez aimer</h2><hr/>
+<br><br>
+<div class="album-container">
+    <div *ngFor="let albumchart of artists let i=index">
+        <div *ngIf="i<10">
+        <mat-card class="album-card">
+            <div class="album-cover">
+                <div class="image">
+                    <img src="{{albumchart.picture_big}}">
+                </div>
+            </div>
+            <div>
+                <mat-card-title>
+                    <h2>{{albumchart.name}}</h2>
+                </mat-card-title>
+
+            </div>
+        </mat-card>
+    </div>
+    </div>
+</div>

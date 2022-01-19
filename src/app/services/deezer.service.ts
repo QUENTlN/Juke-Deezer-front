@@ -416,7 +416,7 @@ export class DeezerService {
             );
     }
 
-    searchArtists(query: string): Observable<ArtistList> {
+    searchArtists(query: string | undefined): Observable<ArtistList> {
         return this.http.get<ArtistList>(this.getBaseUrl() + 'search/artist?q=' + query, this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),

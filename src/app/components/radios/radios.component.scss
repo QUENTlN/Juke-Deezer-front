@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     position:relative;
+
     .album-card {
         width: 200px;
         height: 200px;
@@ -16,31 +17,19 @@
                 height: 170px;
                 margin-right: 1%;
                 margin-bottom: 10%;
-
-
             }
         }
-
-        h2, h3 {
+        h2 {
             margin: 0px;
             position:absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-
-        }
-
-        h2 {
             color: white;
             font-size: 1.8rem;
-            font-family : Roboto;
+            font-family: Roboto;
         }
 
-        h3 {
-            //color: darken( $font-color-sub, 40% );
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
     }
 }
 .form-control-feedback {

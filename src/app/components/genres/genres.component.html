@@ -1,22 +1,18 @@
-<h2>Users Details</h2><hr/>
-<br><br>
 
 <div class="album-container">
-    <div *ngIf="album">
+    <div *ngFor="let genre of genres?.data">
         <mat-card class="album-card">
             <div class="album-cover">
                 <div class="image">
-                    <img src="{{album.cover_big}}">
+                    <img src="{{genre.picture_big}}">
                 </div>
             </div>
             <div>
                 <mat-card-title>
-                    <h2>{{album.title}}</h2>
+                    <h2>{{genre.name}}</h2>
                 </mat-card-title>
 
-                <mat-card-subtitle>
-                    <h3>{{album.artist.name}}</h3>
-                </mat-card-subtitle>
+
             </div>
         </mat-card>
     </div>

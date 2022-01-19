@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from "../../models/chart.model";
 import {DeezerService} from "../../services/deezer.service";
-import {Genre} from "../../models/genre.model";
 import {GenreList} from "../../models/genre-list.model";
+import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-genres',
@@ -11,7 +10,7 @@ import {GenreList} from "../../models/genre-list.model";
 })
 export class GenresComponent implements OnInit {
 
-
+    faPlayCircle=faPlayCircle;
     genres: GenreList| undefined ;
 
     constructor(private deezerService: DeezerService) { }

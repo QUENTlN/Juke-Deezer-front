@@ -20,6 +20,7 @@ export interface Chart {
     podcasts: {
         data: Podcast[];
     },
-    data: Album[]
+    data:Album[];
+
 
 }

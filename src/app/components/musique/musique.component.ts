@@ -14,8 +14,6 @@ export class MusiqueComponent implements OnInit {
 
     albums: AlbumList | undefined;
     artists: ArtistList | undefined;
-    me: User | undefined;
-    id!: any ;
     chart: Chart | undefined;
 
     constructor(private deezerService: DeezerService) { }

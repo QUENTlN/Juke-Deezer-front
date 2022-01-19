@@ -1,27 +1,23 @@
-
-<div class="play"><i class="fa fa-play" aria-hidden="true"></i></div>
-<h2>Podcasts</h2><hr/>
+<h2>Podcasts les plus écoutés</h2><hr/>
 <br><br>
-{{podcastsChart()}}
+
 <div class="album-container">
-
-
-    <div *ngFor="let albumchart of podcastChart let i=index">
-        <div *ngIf="i<10">
+    <div *ngFor="let podcast of podcastChart let i=index">
+        <div *ngIf="i<5">
             <mat-card class="album-card">
                 <div class="album-cover">
                     <div class="image">
-                        <img src="{{albumchart.picture_big}}">
+                        <img src="{{podcast.picture_big}}">
                     </div>
                 </div>
                 <div>
                     <mat-card-title>
-                        <h2>{{albumchart.title}}</h2>
+                        <h2>{{podcast.title}}</h2>
                     </mat-card-title>
 
                 </div>
-
-
+                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback"></fa-icon>
             </mat-card>
         </div>
     </div>
+</div>

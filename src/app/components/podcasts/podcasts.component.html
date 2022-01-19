@@ -1,0 +1,40 @@
+<h2>Podcasts</h2><hr/>
+<br><br>
+{{podcastsChart()}}
+<div class="album-container">
+    <div *ngFor="let albumchart of podcastChart">
+        <mat-card class="album-card">
+            <div class="album-cover">
+                <div class="image">
+                    <img src="{{albumchart.picture_big}}">
+                </div>
+            </div>
+            <div>
+                <mat-card-title>
+                    <h2>{{albumchart.title}}</h2>
+                </mat-card-title>
+
+
+            </div>
+        </mat-card>
+    </div>
+</div>
+{{podcastsGenre()}}
+<div class="album-container">
+    <div *ngFor="let albumchart of podcastGenre?.data">
+        <mat-card class="album-card">
+            <div class="album-cover">
+                <div class="image">
+                    <img src="{{albumchart.picture_big}}">
+                </div>
+            </div>
+            <div>
+                <mat-card-title>
+                    <h2>{{albumchart.name}}</h2>
+                </mat-card-title>
+
+
+            </div>
+        </mat-card>
+    </div>
+</div>

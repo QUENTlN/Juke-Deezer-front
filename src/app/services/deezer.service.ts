@@ -120,6 +120,14 @@ export class DeezerService {
             );
     }
 
+    getTracksOfAlbum(id: number): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'album/' + id + '/tracks', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
 
     // Artist endpoints
 
@@ -466,8 +474,8 @@ export class DeezerService {
 
     // Track endpoints
 
-    getTrack(id: number): Observable<Track> {
-        return this.http.get<Track>(this.getBaseUrl() + 'track/' + id, this.httpOptions)
+    getTrack(id: number): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'track/' + id, this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

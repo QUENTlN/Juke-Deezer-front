@@ -4,7 +4,7 @@ import {DeezerService} from "../../services/deezer.service";
 import {firstValueFrom} from "rxjs";
 import {Album} from "../../models/album.model";
 import {RadioList} from "../../models/radio-list.model";
-
+import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,7 +13,7 @@ import {RadioList} from "../../models/radio-list.model";
   styleUrls: ['./radios.component.scss']
 })
 export class RadiosComponent implements OnInit {
-
+    faPlayCircle=faPlayCircle;
 
     radios: RadioList | undefined;
 

@@ -1,5 +1,7 @@
 <h2>Radios</h2><hr/>
 <br><br>
+
+
 <div class="album-container">
     <div  *ngFor="let radio of radios?.data " >
         <mat-card class="album-card">
@@ -14,6 +16,9 @@
                 </mat-card-title>
 
 
+            </div>
+            <div class="play">
+                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback"></fa-icon>
             </div>
         </mat-card>
     </div>

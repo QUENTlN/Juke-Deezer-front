@@ -1,7 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlbumChartComponent} from "../albumChart/albumChart.component";
-import {Album} from "../../models/album.model";
-import {Artist} from "../../models/artist.model";
+import {Component, OnInit} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import { User } from 'src/app/models/user.model';
 import {AlbumList} from "../../models/album-list.model";
@@ -46,7 +43,6 @@ export class MusiqueComponent implements OnInit {
                 }
 
             )}
-
 
     artistsByUser() {
         this.deezerService.getArtistByUser()

@@ -13,7 +13,6 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
 import { ContentComponent } from './components/content/content.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { AlbumChartComponent } from './components/albumChart/albumChart.component';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RadiosComponent } from './components/radios/radios.component';
@@ -21,6 +20,8 @@ import { GenresComponent } from './components/genres/genres.component';
 import {MusiqueComponent} from "./components/musique/musique.component";
 import { PodcastsComponent } from './components/podcasts/podcasts.component';
 import { TracksComponent } from './components/tracks/tracks.component';
+import { ArtistComponent } from './components/artist/artist.component';
+
 
 
 
@@ -36,12 +37,13 @@ import { TracksComponent } from './components/tracks/tracks.component';
         SearchComponent,
         ContentComponent,
         LogoutComponent,
-        AlbumChartComponent,
         RadiosComponent,
         GenresComponent,
         MusiqueComponent,
         PodcastsComponent,
         TracksComponent,
+        ArtistComponent,
+
 
 
     ],

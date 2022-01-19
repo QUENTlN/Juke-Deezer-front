@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
 import {DeezerService} from "../../services/deezer.service";
 import {Album} from "../../models/album.model";
-import {firstValueFrom} from "rxjs";
-
 
 
 @Component({
@@ -13,16 +10,33 @@ import {firstValueFrom} from "rxjs";
 })
 export class AlbumComponent implements OnInit{
 
-    id!: number;
-    album!: Album| undefined;
+    idArtist!: number;
+    album!: Album[] | undefined;
 
-    constructor(private deezerService: DeezerService, private route: ActivatedRoute, private router: Router,) { }
+    constructor(private deezerService: DeezerService) { }
 
-    async ngOnInit() {
+    ngOnInit() {
 
-        this.id = 302127///this.route.snapshot.params['id'];
-        this.album=await firstValueFrom(this.deezerService.getAlbum(this.id))
     }
 
+    // Chart of Albums
+    AlbumsChart() {
+        this.deezerService.getChart()
+            .subscribe((data) => {
+                    this.album = data?.albums?.data;
+                }
+            );
+
+    }
+
+    // Find all albums of the artist -> Search
+    AllAlbumsOfArtist() {
+        this.deezerService.getArtistAlbums(this.idArtist)
+            .subscribe((data) => {
+                    this.album = data;
+                }
+            );
+
+    }
 
 }

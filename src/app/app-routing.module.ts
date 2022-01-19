@@ -4,7 +4,6 @@ import {AuthenticationComponent} from "./components/authentication/authenticatio
 import {AlbumComponent} from "./components/album/album.component";
 import {HomeComponent} from "./components/home/home.component";
 import {LogoutComponent} from "./components/logout/logout.component";
-import {AlbumChartComponent} from "./components/albumChart/albumChart.component";
 import {RadiosComponent} from "./components/radios/radios.component";
 import {MusiqueComponent} from "./components/musique/musique.component";
 import {PodcastsComponent} from "./components/podcasts/podcasts.component";
@@ -13,7 +12,6 @@ const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'album', component: AlbumComponent},
-    {path: 'albumChart', component: AlbumChartComponent},
     {path: 'radios', component: RadiosComponent},
     {path: 'musique', component: MusiqueComponent},
     {path: 'podcasts', component: PodcastsComponent},

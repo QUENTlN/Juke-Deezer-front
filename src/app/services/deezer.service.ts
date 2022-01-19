@@ -24,6 +24,8 @@ import {UserList} from "../models/user-list.model";
 import {ArtistList} from "../models/artist-list.model";
 import {PlaylistList} from "../models/playlist-list.model";
 import {GenreList} from "../models/genre-list.model";
+import {AlbumUser} from "../models/album-user.model";
+import {AlbumUserList} from "../models/album-user-list.model";
 
 @Injectable({
     providedIn: 'root'
@@ -127,6 +129,7 @@ export class DeezerService {
                 catchError(this.handleError)
             );
     }
+
 
 
     // Artist endpoints
@@ -540,7 +543,7 @@ export class DeezerService {
             );
     }
 
-    getChartByUser(): Observable<Chart> {
+    getChartByUser(): Observable<AlbumUserList> {
 
         let params = new HttpParams()
             .set('access_token', DeezerService.getAccessToken() ?? '');
@@ -549,7 +552,7 @@ export class DeezerService {
             headers: this.httpHeaders,
             params,
         };
-        return this.http.get<Chart>(this.getBaseUrl() + 'user/me/charts', httpOptions)
+        return this.http.get<AlbumUserList>(this.getBaseUrl() + 'user/me/charts', httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

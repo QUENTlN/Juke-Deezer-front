@@ -1,54 +1,64 @@
+<div>
 <h2>Pour vous</h2><hr/>
 <br><br>
-<div class="album-container">
-    <div *ngFor="let albumchart of albums?.data">
-        <mat-card class="album-card">
-            <div class="album-cover">
-                <div class="image">
-                    <img src="{{albumchart.cover_big}}">
-                </div>
-            </div>
-            <div>
-                <mat-card-title>
-                    <h2>{{albumchart.title}}</h2>
-                </mat-card-title>
+    <div class="album-container">
+        <div *ngFor="let albumchart of albums?.data let i=index">
+            <div *ngIf="i<5">
+                <mat-card class="album-card">
+                    <div class="album-cover">
+                        <div class="image">
+                            <img src="{{albumchart.cover_big}}">
+                        </div>
+                    </div>
+                    <div>
+                    <mat-card-title>
+                        <h2>{{albumchart.title}}</h2>
+                    </mat-card-title>
 
-                <mat-card-subtitle>
-                    <h3>{{albumchart.artist.name}}</h3>
-                </mat-card-subtitle>
+                    <mat-card-subtitle>
+                        <h3>{{albumchart.artist.name}}</h3>
+                    </mat-card-subtitle>
+                    <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback"></fa-icon>
+                    </div>
+                </mat-card>
             </div>
-        </mat-card>
+        </div>
     </div>
 </div>
-
-<h2>Albums les plus écoutés</h2><hr/>
+<div>
+<h2>Votre Chart</h2><hr/>
 <br><br>
 <div class="album-container">
-
-    <div *ngFor="let albumchart of chart?.data">
-        <mat-card class="album-card">
-            <div class="album-cover">
-                <div class="image">
-                    <img src="{{albumchart.cover_small}}">
+    <div *ngFor="let albumchart of chart?.data let i=index">
+        <div *ngIf="i<5">
+            <mat-card class="album-card">
+                <div class="album-cover">
+                    <div class="image">
+                        <img src="{{albumchart.album.cover_small}}">
+                    </div>
                 </div>
-            </div>
-            <div>
-                <mat-card-title>
-                    <h2>{{albumchart.title}}</h2>
-                </mat-card-title>
+                <div>
+                    <mat-card-title>
+                        <h2>{{albumchart.title}}</h2>
+                    </mat-card-title>
 
-                <mat-card-subtitle>
-                    <h3>{{albumchart.artist.name}}</h3>
-                </mat-card-subtitle>
-            </div>
-        </mat-card>
+                    <mat-card-subtitle>
+                        <h3>{{albumchart.artist.name}}</h3>
+                    </mat-card-subtitle>
+                    <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback"></fa-icon>
+                </div>
+            </mat-card>
+        </div>
     </div>
 </div>
-
+</div>
+<div>
+<br><br><br><br><br><br><br>
 <h2>Vos artistes préférés</h2><hr/>
 <br><br>
 <div class="album-container">
-    <div *ngFor="let albumchart of artists?.data">
+    <div *ngFor="let albumchart of artists?.data let i=index">
+        <div *ngIf="i<5">
         <mat-card class="album-card">
             <div class="album-cover">
                 <div class="image">
@@ -59,13 +69,17 @@
                 <mat-card-title>
                     <h2>{{albumchart.name}}</h2>
                 </mat-card-title>
-
+                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback"></fa-icon>
 
             </div>
         </mat-card>
     </div>
 </div>
-
+</div>
+</div>
+<br><br><br><br><br><br>
+<div>
 <h2>Genres</h2><hr/>
 <br><br>
 <app-genres></app-genres>
+</div>

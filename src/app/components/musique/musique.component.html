@@ -59,20 +59,20 @@
 <div class="album-container">
     <div *ngFor="let albumchart of artists?.data let i=index">
         <div *ngIf="i<5">
-        <mat-card class="album-card">
-            <div class="album-cover">
-                <div class="image">
+
+            <div class="album-cover2">
+                <div class="image-circle">
                     <img src="{{albumchart.picture_big}}">
                 </div>
             </div>
             <div>
-                <mat-card-title>
+                <mat-card-title style="text-align:center">
                     <h2>{{albumchart.name}}</h2>
                 </mat-card-title>
-                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback"></fa-icon>
+
 
             </div>
-        </mat-card>
+
     </div>
 </div>
 </div>

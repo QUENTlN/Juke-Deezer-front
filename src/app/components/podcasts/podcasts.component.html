@@ -1,9 +1,9 @@
-<h2>Podcasts les plus écoutés</h2>
+<h1 style="font-family: 'Bahnschrift SemiBold'">Podcasts les plus écoutés</h1>
 <br><br>
 
 <div class="album-container">
     <div *ngFor="let podcast of podcastChart let i=index">
-        <div *ngIf="i<5">
+        <div *ngIf="i<10">
             <mat-card class="album-card">
                 <div class="album-cover">
                     <div class="image">
@@ -21,3 +21,4 @@
         </div>
     </div>
 </div>
+

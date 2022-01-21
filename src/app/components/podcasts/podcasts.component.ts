@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import {GenreList} from "../../models/genre-list.model";
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import {PodcastList} from "../../models/podcast-list.model";
+import {Podcast} from "../../models/podcast.model";
 @Component({
   selector: 'app-podcasts',
   templateUrl: './podcasts.component.html',
@@ -11,14 +13,14 @@ export class PodcastsComponent implements OnInit {
 
     faPlayCircle=faPlayCircle;
     podcastChart: any[] | undefined;
-    podcastGenre: GenreList | undefined;
+    podcasts: PodcastList | undefined;
 
     constructor(private deezerService: DeezerService) {
     }
 
     ngOnInit(): void {
         this.podcastsChart()
-
+        this.getPodcasts()
 
     }
 
@@ -26,21 +28,20 @@ export class PodcastsComponent implements OnInit {
         this.deezerService.getChart()
         .subscribe((data) => {
         this.podcastChart = data?.podcasts?.data;
-        console.log()
+
 
         }
     )}
+    getPodcasts() {
+        this.deezerService.getPodcasts()
+            .subscribe((data) => {
+                    this.podcasts = data;
+                    console.log(this.podcasts)
+
+                }
+            )}
 
 
 
-    podcastsGenre() {
-
-        this.deezerService.getGenres()
-        .subscribe((data) => {
-                this.podcastGenre = data;
-                console.log(data)
-
-            }
-        )}
 
 }

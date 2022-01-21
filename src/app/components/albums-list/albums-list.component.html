@@ -1,0 +1,28 @@
+<div>
+    <br><br>
+    <h1 style="font-family: 'Bahnschrift SemiBold'">Classement Albums</h1>
+    <br><br>
+    <div class="album-container">
+        <div *ngFor="let album of albumsChart let i=index">
+            <div *ngIf="i<5">
+
+                <mat-card class="album-card">
+                    <div class="album-cover">
+                        <a [routerLink]="['/album-details', album.id]" [state]=album>
+                            <img src="{{album.cover_big}}" class="image" (click)="click(album)" >
+                        </a>></div>
+                    <div>
+                        <mat-card-title>
+                            <h2>{{album.title}}</h2>
+                        </mat-card-title>
+
+                        <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
+                    </div>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br>
+

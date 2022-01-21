@@ -12,11 +12,15 @@ export class GenresComponent implements OnInit {
 
     faPlayCircle=faPlayCircle;
     genres: GenreList| undefined ;
+    podcastGenre:GenreList|undefined;
 
     constructor(private deezerService: DeezerService) { }
 
     ngOnInit(): void {
+        this.allGenre()
+    }
 
+    allGenre() {
         this.deezerService.getGenres()
             .subscribe((data) => {
                     this.genres = data;
@@ -24,6 +28,17 @@ export class GenresComponent implements OnInit {
 
                 }
             );
+
     }
+    podcastsGenre() {
+
+        this.deezerService.getGenres()
+            .subscribe((data) => {
+                    this.podcastGenre = data;
+                    console.log(data)
+
+                }
+            )}
+
 
 }

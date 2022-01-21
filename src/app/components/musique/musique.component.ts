@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import {AlbumList} from "../../models/album-list.model";
 import {ArtistList} from "../../models/artist-list.model";
@@ -6,6 +6,8 @@ import {Chart} from "../../models/chart.model";
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {AlbumUser} from "../../models/album-user.model";
 import {AlbumUserList} from "../../models/album-user-list.model";
+import {Album} from "../../models/album.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
     selector: 'app-musique',
@@ -18,14 +20,18 @@ export class MusiqueComponent implements OnInit {
     albums: AlbumList | undefined;
     artists: ArtistList | undefined;
     chart: AlbumUserList | undefined;
+    data:any|undefined;
 
-    constructor(private deezerService: DeezerService) { }
+
+    constructor(private activatedRoute: ActivatedRoute, private router: Router,private deezerService: DeezerService) { }
 
     ngOnInit(): void {
 
         this.albumsByUser()
         this.artistsByUser()
         this.chartsByUser()
+
+
     }
 
     albumsByUser() {
@@ -54,4 +60,9 @@ export class MusiqueComponent implements OnInit {
 
             )}
 
+    click(data: any | undefined) {
+        console.log(this.data)
+        this.data = data
+
+    }
 }

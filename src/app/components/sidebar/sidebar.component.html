@@ -1,6 +1,6 @@
 <nav id="sidebar" [ngClass]="{'active' : this.show}">
     <div class="sidebar-header">
-        <img [src]="this.themeService.getSiteLogo()" class="img-fluid" alt="site logo">
+        <img [src]="this.themeService.getSiteLogo()" style="cursor: pointer" (click)="backtoHome()" class="img-fluid" alt="site logo">
     </div>
 
     <app-search navbarLocation="sidebar"></app-search>

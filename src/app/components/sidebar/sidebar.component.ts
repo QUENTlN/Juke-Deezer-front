@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faChevronLeft, faChevronRight, faTimes, faBars, faSearch, faHome, faMusic, faMicrophone, faCompactDisc, faStar} from '@fortawesome/free-solid-svg-icons';
 import {ThemeService} from "../../services/theme.service";
+import {Router, Routes} from "@angular/router";
 
 @Component({
     selector: 'app-sidebar',
@@ -18,10 +19,13 @@ export class SidebarComponent implements OnInit {
     faCompactDisc = faCompactDisc;
     faStar = faStar;
 
-    constructor(public themeService: ThemeService) {
+    constructor(public route: Router, public themeService: ThemeService) {
     }
 
     ngOnInit(): void {
     }
 
+    backtoHome() {
+        this.route.navigate(['/home']);
+    }
 }

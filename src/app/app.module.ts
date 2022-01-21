@@ -4,8 +4,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {HttpClientModule} from "@angular/common/http";
-import {AuthenticationComponent} from './components/authentication/authentication.component';
-import {AlbumComponent} from './components/album/album.component';
+import {AuthenticationComponent} from './components/authentication/authentication.component'
 import {HomeComponent} from './components/home/home.component';
 import {PlayerComponent} from './components/player/player.component';
 import {SidebarComponent} from './components/sidebar/sidebar.component';
@@ -19,8 +18,12 @@ import { RadiosComponent } from './components/radios/radios.component';
 import { GenresComponent } from './components/genres/genres.component';
 import {MusiqueComponent} from "./components/musique/musique.component";
 import { PodcastsComponent } from './components/podcasts/podcasts.component';
-import { TracksComponent } from './components/tracks/tracks.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { AlbumDetailsComponent } from './components/album-details/album-details.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { ArtistDetailsComponent } from './components/artist-details/artist-details.component';
+import { AlbumsListComponent } from './components/albums-list/albums-list.component';
+import { ArtistAlbumsComponent } from './components/artist-albums/artist-albums.component';
 
 
 
@@ -29,7 +32,6 @@ import { ArtistComponent } from './components/artist/artist.component';
     declarations: [
         AppComponent,
         AuthenticationComponent,
-        AlbumComponent,
         HomeComponent,
         PlayerComponent,
         SidebarComponent,
@@ -41,8 +43,12 @@ import { ArtistComponent } from './components/artist/artist.component';
         GenresComponent,
         MusiqueComponent,
         PodcastsComponent,
-        TracksComponent,
         ArtistComponent,
+        AlbumDetailsComponent,
+        ArtistDetailsComponent,
+        AlbumsListComponent,
+        ArtistAlbumsComponent,
+
 
 
 
@@ -53,7 +59,8 @@ import { ArtistComponent } from './components/artist/artist.component';
         HttpClientModule,
         FontAwesomeModule,
         MatCardModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatButtonToggleModule
     ],
     providers: [],
     bootstrap: [AppComponent],

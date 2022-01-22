@@ -169,16 +169,16 @@ export class DeezerService {
             );
     }
 
-    getArtistAlbums(id: number): Observable<Album[]> {
-        return this.http.get<Album[]>(this.getBaseUrl() + 'artist/' + id + '/albums', this.httpOptions)
+    getArtistAlbums(id: number): Observable<AlbumList> {
+        return this.http.get<AlbumList>(this.getBaseUrl() + 'artist/' + id + '/albums', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
             );
     }
 
-    getRelatedArtists(id: number): Observable<Artist[]> {
-        return this.http.get<Artist[]>(this.getBaseUrl() + 'artist/' + id + '/related', this.httpOptions)
+    getRelatedArtists(id: number): Observable<ArtistList> {
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'artist/' + id + '/related', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -193,8 +193,8 @@ export class DeezerService {
             );
     }
 
-    getArtistPlaylists(id: number): Observable<Playlist[]> {
-        return this.http.get<Playlist[]>(this.getBaseUrl() + 'artist/' + id + '/playlists', this.httpOptions)
+    getArtistPlaylists(id: number): Observable<PlaylistList> {
+        return this.http.get<PlaylistList>(this.getBaseUrl() + 'artist/' + id + '/playlists', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -324,8 +324,8 @@ export class DeezerService {
             );
     }
 
-    getArtistsByGenre(id: number): Observable<Artist[]> {
-        return this.http.get<Artist[]>(this.getBaseUrl() + 'genre/' + id + '/artists', this.httpOptions)
+    getArtistsByGenre(id: number): Observable<ArtistList> {
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'genre/' + id + '/artists', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

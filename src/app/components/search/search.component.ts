@@ -24,12 +24,14 @@ export class SearchComponent implements OnInit {
     }
 
     findAlbumsBySearch() {
-        this.deezerService.searchAlbums(this.value)
-            .subscribe((data) => {
-                    this.albumBySearch = data;
-                    console.log(data)
-                }
-            );
+        if (this.value) {
+            this.deezerService.searchAlbums(this.value)
+                .subscribe((data) => {
+                        this.albumBySearch = data;
+                        console.log(data)
+                    }
+                );
+        }
     }
 
 

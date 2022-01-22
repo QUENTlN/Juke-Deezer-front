@@ -4,12 +4,13 @@ import {AuthenticationComponent} from "./components/authentication/authenticatio
 import {AlbumComponent} from "./components/album/album.component";
 import {HomeComponent} from "./components/home/home.component";
 import {LogoutComponent} from "./components/logout/logout.component";
+import {TrackListComponent} from "./components/track-list/track-list.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'album', component: AlbumComponent},
-    {path: '', component: HomeComponent},
+    {path: 'track-list', component: TrackListComponent},
     {path: '**', component: HomeComponent},
 ];
 

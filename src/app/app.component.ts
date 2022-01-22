@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     }
 
     public async ngOnInit() {
-        ThemeService.setLightTheme();
+        ThemeService.setDefaultTheme();
     }
 
     @HostListener('window:resize')
@@ -24,10 +24,6 @@ export class AppComponent implements OnInit {
         if (window.innerWidth < 1030) {
             this.isSidebarDisplayed = false;
         }
-    }
-
-    public getTheme(): string {
-        return ThemeService.getTheme();
     }
 
     toggleSidebar() {

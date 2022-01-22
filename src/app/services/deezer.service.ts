@@ -49,6 +49,29 @@ export class DeezerService {
         headers: this.httpHeaders
     }
 
+    private getHttpOptions() {
+        let params = new HttpParams()
+            .set('limit', 20000)
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+
+        return {
+            headers: this.httpHeaders,
+            params: params
+        }
+    }
+
+    private customHttpOptions(addParams: {name: string, value: any}[]) {
+        let params = new HttpParams()
+            .set('limit', 20000)
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+        addParams.forEach(param => params = params.set(param.name, param.value));
+
+        return {
+            headers: this.httpHeaders,
+            params: params
+        }
+    }
+
     private static setAccessToken(accessToken: string) {
         localStorage.setItem('accessToken', JSON.stringify(accessToken));
     }
@@ -60,6 +83,10 @@ export class DeezerService {
         } else {
             return null;
         }
+    }
+
+    public static isLoggedIn() {
+        return localStorage.getItem('loggedInUser') !== null;
     }
 
     private static setLoggedInUser(user: User) {
@@ -464,18 +491,38 @@ export class DeezerService {
             );
     }
 
+    addToFavorite(id: number): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'track_id',
+                value: id
+            }
+        ]);
+        return this.http.post<any>(this.getBaseUrl() + 'user/me/tracks', null, httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    removeFromFavorite(id: number): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'track_id',
+                value: id
+            }
+        ]);
+        return this.http.delete<any>(this.getBaseUrl() + 'user/me/tracks', httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
     // User endpoints
 
     getMe(): Observable<User> {
-        let params = new HttpParams()
-            .set('access_token', DeezerService.getAccessToken() ?? '');
-
-        const httpOptions = {
-            headers: this.httpHeaders,
-            params,
-        };
-
-        return this.http.get<User>(this.getBaseUrl() + 'user/me', httpOptions)
+        return this.http.get<User>(this.getBaseUrl() + 'user/me', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -484,6 +531,14 @@ export class DeezerService {
 
     getUser(id: number): Observable<User> {
         return this.http.get<User>(this.getBaseUrl() + 'user/' + id, this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getFavoriteTracks() {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'user/me/tracks', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

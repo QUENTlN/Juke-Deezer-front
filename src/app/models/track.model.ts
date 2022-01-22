@@ -18,4 +18,5 @@ export interface Track {
     artist: Artist;
     type: string;
     Album: Album;
+
 }

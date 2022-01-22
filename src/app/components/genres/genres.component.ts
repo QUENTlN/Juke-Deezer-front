@@ -13,6 +13,7 @@ export class GenresComponent implements OnInit {
     faPlayCircle=faPlayCircle;
     genres: GenreList| undefined ;
     podcastGenre:GenreList|undefined;
+    data:any|undefined;
 
     constructor(private deezerService: DeezerService) { }
 
@@ -40,5 +41,9 @@ export class GenresComponent implements OnInit {
                 }
             )}
 
+    click(data: any | undefined) {
+        console.log(this.data)
+        this.data = data
 
+    }
 }

@@ -24,6 +24,9 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { ArtistDetailsComponent } from './components/artist-details/artist-details.component';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
 import { ArtistAlbumsComponent } from './components/artist-albums/artist-albums.component';
+import { DecouvrirComponent } from './components/decouvrir/decouvrir.component';
+import { GenreDetailsComponent } from './components/genre-details/genre-details.component';
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -48,6 +51,8 @@ import { ArtistAlbumsComponent } from './components/artist-albums/artist-albums.
         ArtistDetailsComponent,
         AlbumsListComponent,
         ArtistAlbumsComponent,
+        DecouvrirComponent,
+        GenreDetailsComponent,
 
 
 
@@ -60,7 +65,8 @@ import { ArtistAlbumsComponent } from './components/artist-albums/artist-albums.
         FontAwesomeModule,
         MatCardModule,
         BrowserAnimationsModule,
-        MatButtonToggleModule
+        MatButtonToggleModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent],

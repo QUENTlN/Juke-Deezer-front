@@ -1,0 +1,26 @@
+<div class= "list-user-artist">
+    <h1 style="font-family: 'Bahnschrift SemiBold'">Artists {{this.genreTitle}} </h1>
+
+    <br><br>
+    <div class="album-container">
+        <div *ngFor="let artistchart of artists?.data let i=index">
+            <div *ngIf="i<10">
+                <div class="album-cover2">
+                    <a [routerLink]="['/artist-details', artistchart?.id]" [state]=artistchart>
+                        <div class="image-circle">
+                            <img src="{{artistchart.picture_big}}" (click)="click(artistchart)" >
+                        </div>
+                    </a>
+                </div>
+                <br>
+                <div class="info-artist">
+                    <mat-card-title style="text-align:center">
+                        <h2 style="font-family: 'Bahnschrift SemiBold'">{{artistchart.name}}</h2>
+                    </mat-card-title>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

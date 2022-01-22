@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Location} from "@angular/common";
 import {DeezerService} from "../../services/deezer.service";
 import {Album} from "../../models/album.model";
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
@@ -26,10 +25,19 @@ export class ArtistAlbumsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (history.state?.artist?.id != null)
-            this.idArtist=history.state?.artist?.id;
-        else
-            this.idArtist=history.state?.id;
+        if (this.idArtist == undefined)
+            if (history.state?.artist?.id != null) {
+                this.idArtist = history.state?.artist?.id;
+                console.log('1')
+            }
+            else {
+                this.idArtist = history.state?.id;
+                console.log('2')
+            }
+        else {
+         this.idArtist=this.idArtist;
+         console.log('3')
+        }
 
         this.deezerService.getArtistAlbums(this.idArtist)
             .subscribe((data) => {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DeezerService} from "../../services/deezer.service";
 import {Artist} from "../../models/artist.model";
@@ -6,7 +6,6 @@ import {TrackList} from "../../models/track-list.model";
 import {PlaylistList} from "../../models/playlist-list.model";
 import {ArtistList} from "../../models/artist-list.model";
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
-import {Album} from "../../models/album.model";
 
 @Component({
   selector: 'app-artist-details',
@@ -49,28 +48,34 @@ export class ArtistDetailsComponent implements OnInit {
         this.getRelatedArtistsList()
     }
     getTitres(){
-        this.deezerService.getTopTrackArtist(this.idArtist)
-            .subscribe((data) => {
-                    this.titres = data;
-                    console.log(this.titres)
-                }
-            )
+        if (this.idArtist != null) {
+            this.deezerService.getTopTrackArtist(this.idArtist)
+                .subscribe((data) => {
+                        this.titres = data;
+                        console.log(this.titres)
+                    }
+                );
+        }
     }
     getPlaylist(){
-        this.deezerService.getArtistPlaylists(this.idArtist)
-            .subscribe((data) => {
-                    this.playlists = data;
-                    console.log(this.playlists)
-                }
-            )
+        if (this.idArtist != null) {
+            this.deezerService.getArtistPlaylists(this.idArtist)
+                .subscribe((data) => {
+                        this.playlists = data;
+                        console.log(this.playlists)
+                    }
+                );
+        }
     }
     getRelatedArtistsList(){
-        this.deezerService.getRelatedArtists(this.idArtist)
-            .subscribe((data) => {
-                    this.relatedArtists = data;
-                    console.log(this.playlists)
-                }
-            )
+        if (this.idArtist != null) {
+            this.deezerService.getRelatedArtists(this.idArtist)
+                .subscribe((data) => {
+                        this.relatedArtists = data;
+                        console.log(this.playlists)
+                    }
+                );
+        }
     }
     click(artist: Artist | undefined) {
         this.artist = artist

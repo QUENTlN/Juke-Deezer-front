@@ -25,7 +25,7 @@ export class ArtistAlbumsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        if (this.idArtist == undefined)
+        if (this.idArtist == undefined) {
             if (history.state?.artist?.id != null) {
                 this.idArtist = history.state?.artist?.id;
                 console.log('1')
@@ -34,17 +34,15 @@ export class ArtistAlbumsComponent implements OnInit {
                 this.idArtist = history.state?.id;
                 console.log('2')
             }
-        else {
-         this.idArtist=this.idArtist;
-         console.log('3')
+        } else {
+            this.deezerService.getArtistAlbums(this.idArtist)
+                .subscribe((data) => {
+                        this.albumsOfArtist = data.data;
+
+                    }
+                );
         }
 
-        this.deezerService.getArtistAlbums(this.idArtist)
-            .subscribe((data) => {
-                    this.albumsOfArtist = data.data;
-
-                }
-            )
 
     }
     click(album: Album | undefined) {

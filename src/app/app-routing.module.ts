@@ -1,10 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationComponent} from "./components/authentication/authentication.component";
-import {AlbumComponent} from "./components/album/album.component";
 import {HomeComponent} from "./components/home/home.component";
 import {LogoutComponent} from "./components/logout/logout.component";
-import {TrackListComponent} from "./components/track-list/track-list.component";
 import {RadiosComponent} from "./components/radios/radios.component";
 import {MusiqueComponent} from "./components/musique/musique.component";
 import {PodcastsComponent} from "./components/podcasts/podcasts.component";
@@ -12,11 +10,11 @@ import {AlbumDetailsComponent} from "./components/album-details/album-details.co
 import {ArtistDetailsComponent} from "./components/artist-details/artist-details.component";
 import {DecouvrirComponent} from "./components/decouvrir/decouvrir.component";
 import {GenreDetailsComponent} from "./components/genre-details/genre-details.component";
+import {TrackListComponent} from "./components/track-list/track-list.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
     {path: 'logout', component: LogoutComponent},
-    {path: 'album', component: AlbumComponent},
     {path: 'track-list', component: TrackListComponent},
     {path: 'radios', component: RadiosComponent},
     {path: 'musique', component: MusiqueComponent},

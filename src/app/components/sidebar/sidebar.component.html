@@ -1,18 +1,18 @@
 <nav id="sidebar" [ngClass]="{'active' : this.show}">
     <div class="sidebar-header">
-        <img [src]="this.themeService.getSiteLogo()" style="cursor: pointer" (click)="backtoHome()" class="img-fluid" alt="site logo">
+        <img [src]="getSiteLogo()" style="cursor: pointer" (click)="backtoHome()" class="img-fluid" alt="site logo">
     </div>
 
     <app-search navbarLocation="sidebar"></app-search>
 
     <ul class="list-unstyled components">
-        <li class="active">
+        <li [routerLink]="['']" [routerLinkActive]="['active']">
             <a href="#">
                 <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
                 Accueil</a>
         </li>
         <li>
-            <a href='./musique'>
+            <a [routerLink]="['/musique']" [routerLinkActive]="['active']">
                 <fa-icon [icon]="faMusic" [fixedWidth]="true"></fa-icon>
                 Musiques</a>
         </li>

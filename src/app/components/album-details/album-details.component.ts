@@ -35,18 +35,31 @@ export class AlbumDetailsComponent implements OnInit {
 
         if (history.state?.artist?.id != null){
             this.idArtist=history.state?.artist?.id;
-            this.idAlbum=history.state?.id;}
-        else{
-            this.idArtist=history.state?.id;
+            this.idAlbum=history.state?.id;
+            this.deezerService.getAlbum(this.idAlbum)
+                .subscribe((data) => {
+                        this.albumDetails = data
+                        console.log(this.idArtist);
+
+                    }
+                )
+            }
+
+        else {
+
+            this.idAlbum=history.state?.id;
+            console.log(this.idAlbum)
+            this.deezerService.getAlbum(this.idAlbum)
+                .subscribe((data) => {
+                        this.albumDetails = data
+                        this.idArtist=data?.artist?.id
+
+                        console.log(this.idArtist);
+
+                    }
+                )
         }
 
-        this.deezerService.getAlbum(this.idAlbum)
-            .subscribe((data) => {
-                    this.albumDetails = data
-                    console.log(this.albumDetails);
-
-                }
-            )
 
     }
 

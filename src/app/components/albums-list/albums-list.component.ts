@@ -2,6 +2,11 @@ import { Component, OnInit} from '@angular/core';
 import {Album} from "../../models/album.model";
 import {DeezerService} from "../../services/deezer.service";
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import {AlbumList} from "../../models/album-list.model";
+import {ArtistList} from "../../models/artist-list.model";
+import {TrackList} from "../../models/track-list.model";
+import {Artist} from "../../models/artist.model";
+import {Track} from "../../models/track.model";
 
 @Component({
   selector: 'app-albums-list',
@@ -13,22 +18,50 @@ export class AlbumsListComponent implements OnInit {
     faPlayCircle=faPlayCircle;
     idArtist:number|undefined;
     albumsChart : Album[] | undefined;
-    album:Album|undefined;
+    artistChart : Artist[] | undefined;
+    trackChart : Track[] | undefined;
+    data:any|undefined;
 
     constructor(private deezerService: DeezerService) {
 
     }
 
+    ngOnInit(): void {
+        this.getAlbumChart()
+        this.getArtistChart()
+        this.getTrackChart()
 
-    ngOnInit(): void {this.deezerService.getChart()
-        .subscribe((data) => {
-                this.albumsChart = data?.albums?.data;
-            }
-        );}
+        }
 
-    click(album: Album | undefined) {
-        this.album = album
-        console.log(this.album)
+    getAlbumChart(){
+        this.deezerService.getChart()
+            .subscribe((data) => {
+                    this.albumsChart = data?.albums?.data;
+                }
+            );
+
+    }
+
+    getArtistChart(){
+        this.deezerService.getChart()
+            .subscribe((data) => {
+                    this.artistChart = data?.artists?.data;
+                }
+            );
+
+    }
+    getTrackChart(){
+        this.deezerService.getChart()
+            .subscribe((data) => {
+                    this.trackChart = data?.tracks?.data;
+                }
+            );
+
+    }
+
+    click(data: any | undefined) {
+        this.data = data
+        console.log(this.data)
 
     }
 

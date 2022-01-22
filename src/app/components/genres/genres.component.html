@@ -1,10 +1,12 @@
 <div class="album-container">
     <div *ngFor="let genre of genres?.data let i=index">
-        <div *ngIf="i<7">
+
             <mat-card class="album-card">
                 <div class="album-cover">
                     <div class="image">
-                        <img src="{{genre.picture_big}}">
+                        <a [routerLink]="['/genre-details', genre.id]" [state]=genre>
+                        <img src="{{genre.picture_big}}"  (click)="click(genre)">
+                        </a>
                     </div>
                 </div>
                 <mat-card-title>
@@ -15,4 +17,4 @@
 
          </div>
     </div>
-</div>
+

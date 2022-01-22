@@ -33,8 +33,16 @@ export class ArtistDetailsComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.idArtist=history.state?.id;
-        this.artist=history.state;
+        if (history.state?.artist?.id != null) {
+            this.idArtist = history.state?.artist?.id;
+            this.artist=history.state?.artist;
+        }
+        else{
+            this.idArtist=history.state?.id;
+            this.artist=history.state;
+        }
+
+
 
         this.getTitres()
         this.getPlaylist()

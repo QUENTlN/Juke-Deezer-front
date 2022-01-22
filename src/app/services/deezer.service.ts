@@ -297,15 +297,15 @@ export class DeezerService {
             );
     }
 
-    getArtistsByGenre(id: number): Observable<Artist[]> {
-        return this.http.get<Artist[]>(this.getBaseUrl() + 'genre/' + id + '/artists', this.httpOptions)
+    getArtistsByGenre(id: number | undefined): Observable<ArtistList> {
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'genre/' + id + '/artists', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
             );
     }
 
-    getPodcastsByGenre(id: number): Observable<PodcastList> {
+    getPodcastsByGenre(id: number | undefined): Observable<PodcastList> {
         return this.http.get<PodcastList>(this.getBaseUrl() + 'genre/' + id + '/podcasts', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
@@ -313,8 +313,8 @@ export class DeezerService {
             );
     }
 
-    getRadiosByGenre(id: number): Observable<Radio[]> {
-        return this.http.get<Radio[]>(this.getBaseUrl() + 'genre/' + id + '/radios', this.httpOptions)
+    getRadiosByGenre(id: number | undefined): Observable<RadioList> {
+        return this.http.get<RadioList>(this.getBaseUrl() + 'genre/' + id + '/radios', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -434,7 +434,7 @@ export class DeezerService {
             );
     }
 
-    searchAlbums(query: string): Observable<AlbumList> {
+    searchAlbums(query: string | undefined): Observable<AlbumList> {
         return this.http.get<AlbumList>(this.getBaseUrl() + 'search/album?q=' + query, this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),

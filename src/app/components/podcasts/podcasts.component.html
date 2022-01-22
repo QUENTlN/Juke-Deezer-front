@@ -1,0 +1,24 @@
+<h1 style="font-family: 'Bahnschrift SemiBold'">Podcasts les plus écoutés</h1>
+<br><br>
+
+<div class="album-container">
+    <div *ngFor="let podcast of podcastChart let i=index">
+        <div *ngIf="i<10">
+            <mat-card class="album-card">
+                <div class="album-cover">
+                    <div class="image">
+                        <img src="{{podcast.picture_big}}">
+                    </div>
+                </div>
+                <div>
+                    <mat-card-title>
+                        <h2>{{podcast.title}}</h2>
+                    </mat-card-title>
+
+                </div>
+                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
+            </mat-card>
+        </div>
+    </div>
+</div>
+

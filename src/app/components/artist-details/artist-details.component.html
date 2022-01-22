@@ -1,0 +1,96 @@
+<div class="header">
+    <div class="img">
+        <img src= "{{artist?.picture_big}}" class="big_image">
+    </div>
+    <br><br>
+    <div class="text">
+        <br><br>
+        <h1 class="titre">{{artist?.name}}</h1>
+
+
+        <div class="details">
+            {{artist?.nb_album}} albums
+        </div>
+    </div>
+    <br>
+    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >
+        <fa-icon [icon]="faPlayCircle"  class="form-control-feedback" style="color:white"></fa-icon>
+        MIX
+    </a>
+</div>
+<br><br><br>
+<div class="body">
+    <div class= "tracks">
+        <h2>Top titres</h2>
+        <table class="table titres">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">Title</th>
+                <th scope="col">D.</th>
+                <th scope="col"><input type="checkbox" id="all"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let track of titres?.data; index as i">
+
+                <th scope="row">{{ i + 1 }}</th>
+
+                <td><i class='far fa-heart'></i></td>
+                <td> <fa-icon [icon]="faPlayCircle"  class="form-control-feedback" > </fa-icon></td>
+                <td>{{ track.title }}</td>
+                <td>{{ track.duration }}</td>
+                <td><input type="checkbox" id="individual"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<div class="playright">
+    <h2>PlayLists</h2>
+    <div class="playlist">
+
+        <div *ngFor="let playlist of playlists?.data let i=index" class="element" >
+
+            <div *ngIf="i<3" >
+                <img src="{{playlist?.picture}}" class="small_image" >
+                <br>
+                <p style="font-family: 'Bahnschrift SemiBold'">{{playlist?.title}}</p>
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+<div>
+
+
+<br><br>
+    <div *ngIf="relatedArtists?.data != null"><h2>Artistes similaires</h2>
+<div class="album-container">
+    <div *ngFor="let relatedArtist of relatedArtists?.data let i=index">
+        <div *ngIf="i<5">
+
+            <div class="album-cover2">
+                <a [routerLink]="['/artist-details', relatedArtist?.id]" [state]=relatedArtist>
+                <div class="image-circle">
+                    <img src="{{relatedArtist.picture_big}}" class="relatedA" (click)="click(relatedArtist)">
+                </div>
+                </a>
+            </div>
+            <div>
+                <mat-card-title style="text-align:center">
+                    <h3>{{relatedArtist.name}}</h3>
+                </mat-card-title>
+
+
+            </div>
+
+        </div>
+    </div>
+</div></div></div>
+
+<app-artist-albums [idArtist]="idArtist"></app-artist-albums>

@@ -17,5 +17,5 @@ export interface Track {
     time_add: number;
     artist: Artist;
     type: string;
-    Album: Album;
+    album: Album;
 }

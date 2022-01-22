@@ -14,6 +14,8 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {SearchComponent} from './components/search/search.component';
 import {ContentComponent} from './components/content/content.component';
 import {LogoutComponent} from './components/logout/logout.component';
+import { ChronoPipe } from './pipes/chrono.pipe';
+import { TrackListComponent } from './components/track-list/track-list.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +28,9 @@ import {LogoutComponent} from './components/logout/logout.component';
         NavbarComponent,
         SearchComponent,
         ContentComponent,
-        LogoutComponent
+        LogoutComponent,
+        ChronoPipe,
+        TrackListComponent
     ],
     imports: [
         BrowserModule,

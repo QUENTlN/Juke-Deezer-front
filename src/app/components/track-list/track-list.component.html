@@ -1,0 +1,19 @@
+<table class="table">
+    <tbody>
+    <tr *ngFor="let track of this.getNextTracks(); let index = index; let isFirst = first" [ngClass]="{'active': isFirst}">
+        <th scope="row">
+            {{ isFirst ? '-' : index }}
+            <div class="play-wrapper d-flex">
+                <button class="btn rounded-circle" (click)="jumpTo(index)"><fa-icon [icon]="faPlay"></fa-icon></button>
+                <img [src]="track.album.cover" alt="track cover">
+            </div>
+            <div class="track-info d-flex flex-column">
+                <span class="track-name">{{ track.title }}</span>
+                <span class="track-artist">{{ track.artist.name }}</span>
+            </div>
+        </th>
+        <td><div>{{ track.album.title }}</div></td>
+        <td><div class="time">{{ track.duration | chrono }}</div></td>
+    </tr>
+    </tbody>
+</table>

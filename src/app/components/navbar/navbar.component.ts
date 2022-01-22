@@ -13,6 +13,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {DeezerService} from "../../services/deezer.service";
 import {User} from "../../models/user.model";
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-navbar',
@@ -38,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
     @Input() isStickyNavbar: boolean = false;
 
-    constructor() {
+    constructor(private location: Location) {
     }
 
     ngOnInit(): void {
@@ -54,5 +55,13 @@ export class NavbarComponent implements OnInit {
 
     getLoggedInUser(): User | undefined {
         return DeezerService.getLoggedInUser();
+    }
+
+    back() {
+        this.location.back();
+    }
+
+    forward() {
+        this.location.forward();
     }
 }

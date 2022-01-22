@@ -1,0 +1,39 @@
+.album-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    position:relative;
+
+    .album-card {
+        width: 200px;
+        height: 200px;
+        margin-right: 1%;
+        margin-bottom: 10%;
+        position:relative;
+
+        .album-cover {
+            img {
+                width: 170px;
+                height: 170px;
+                margin-right: 1%;
+                margin-bottom: 10%;
+            }
+        }
+        h2 {
+            margin: 0px;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.8rem;
+            font-family: Roboto;
+        }
+
+    }
+}
+.form-control-feedback {
+    top: 70%;
+    left: 10%;
+    position:absolute;
+}

@@ -8,4 +8,5 @@ export interface Radio {
     picture_big: string;
     picture_xl: string;
     tracklist: string;
+
 }

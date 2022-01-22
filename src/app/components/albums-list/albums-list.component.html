@@ -1,0 +1,54 @@
+<div>
+    <br><br>
+    <h1 style="font-family: 'Bahnschrift SemiBold'">Albums les plus écoutés</h1>
+    <br><br>
+    <div class="album-container">
+        <div *ngFor="let album of albumsChart let i=index">
+            <div *ngIf="i<5">
+
+                <mat-card class="album-card">
+                    <div class="album-cover">
+                        <a [routerLink]="['/album-details', album.id]" [state]=album>
+                            <img src="{{album.cover_big}}" class="image" (click)="click(album)">
+                        </a></div>
+                    <div>
+                        <mat-card-title>
+                            <h2>{{album.title}}</h2>
+                        </mat-card-title>
+
+                        <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
+                    </div>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br>
+
+<div class= "list-user-artist">
+    <h1 style="font-family: 'Bahnschrift SemiBold'">Top Artistes</h1>
+
+    <br><br>
+    <div class="album-container">
+        <div *ngFor="let artist of artistChart let i=index">
+            <div *ngIf="i<5">
+                <div class="album-cover2">
+                    <a [routerLink]="['/artist-details', artist?.id]" [state]=artist>
+                        <div class="image-circle">
+                            <img src="{{artist.picture_big}}" (click)="click(artist)" >
+                        </div>
+                    </a>
+                </div>
+                <br>
+                <div class="info-artist">
+                    <mat-card-title style="text-align:center">
+                        <h2 style="font-family: 'Bahnschrift SemiBold'">{{artist.name}}</h2>
+                    </mat-card-title>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-podcasts></app-podcasts>

@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {ThemeService} from "../../services/theme.service";
 import {DeezerService} from "../../services/deezer.service";
+import {Router, Routes} from "@angular/router";
 
 @Component({
     selector: 'app-sidebar',
@@ -28,7 +29,7 @@ export class SidebarComponent implements OnInit {
     faStar = faStar;
     faGripHorizontal = faGripHorizontal;
 
-    constructor() {
+    constructor(public route: Router, public themeService: ThemeService) {
     }
 
     ngOnInit(): void {
@@ -40,5 +41,8 @@ export class SidebarComponent implements OnInit {
 
     public isConnected(): boolean {
         return DeezerService.getLoggedInUser() != null;
+    }
+    backtoHome() {
+        this.route.navigate(['/home']);
     }
 }

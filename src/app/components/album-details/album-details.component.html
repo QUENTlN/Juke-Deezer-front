@@ -1,0 +1,61 @@
+<div class="header">
+    <div class="img">
+        <img src= "{{albumDetails?.cover_big}}">
+    </div>
+
+    <br><br>
+
+    <h1 class="titre">{{albumDetails?.title}}</h1>
+    <div class="_2kEwD ellipsis">
+        <h2 class="artist">
+            <a [routerLink]="['/artist-details', albumDetails?.artist?.id]" [state]=albumDetails?.artist>
+            {{albumDetails?.artist?.name}}
+            </a>
+        </h2>
+    </div>
+    <br>
+    <div class="details">
+       <h3>{{albumDetails?.nb_tracks}} titres - {{albumDetails?.duration}} seconds - {{albumDetails?.release_date}} - {{albumDetails?.fans}} fans</h3>
+    </div>
+</div>
+
+<div class="body">
+
+    <br><br><br><br><br><br><br>
+
+    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >
+        <fa-icon [icon]="faPlayCircle"  size="1x" class="form-control-feedback" style="color:white"></fa-icon>
+        Écouter
+    </a>
+
+    <br><br><br>
+
+    <div class= "tracks">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Title</th>
+                    <th scope="col">D.</th>
+                    <th scope="col"><input type="checkbox" id="all"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let track of albumDetails?.tracks?.data; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td><i class='far fa-heart'></i></td>
+                    <td><fa-icon [icon]="faPlayCircle"class="form-control-feedback"></fa-icon></td>
+                    <td>{{ track.title }}</td>
+                    <td>{{ track.duration }}</td>
+                    <td><input type="checkbox" id="individual"></td>
+
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<app-artist-albums [idArtist]="idArtist"></app-artist-albums>

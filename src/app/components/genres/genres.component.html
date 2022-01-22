@@ -1,0 +1,20 @@
+<div class="album-container">
+    <div *ngFor="let genre of genres?.data let i=index">
+
+            <mat-card class="album-card">
+                <div class="album-cover">
+                    <div class="image">
+                        <a [routerLink]="['/genre-details', genre.id]" [state]=genre>
+                        <img src="{{genre.picture_big}}"  (click)="click(genre)">
+                        </a>
+                    </div>
+                </div>
+                <mat-card-title>
+                    <h2 style="font-family: 'Bahnschrift SemiBold'">{{genre.name}}</h2>
+                </mat-card-title>
+                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
+            </mat-card>
+
+         </div>
+    </div>
+

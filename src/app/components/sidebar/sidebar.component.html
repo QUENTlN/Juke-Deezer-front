@@ -1,6 +1,6 @@
 <nav id="sidebar" [ngClass]="{'active' : this.show}">
     <div class="sidebar-header">
-        <img [src]="this.getSiteLogo()" class="img-fluid" alt="site logo">
+        <img [src]="this.themeService.getSiteLogo()" style="cursor: pointer" (click)="backtoHome()" class="img-fluid" alt="site logo">
     </div>
 
     <app-search navbarLocation="sidebar"></app-search>
@@ -12,22 +12,22 @@
                 Accueil</a>
         </li>
         <li>
-            <a href="#">
+            <a href='./musique'>
                 <fa-icon [icon]="faMusic" [fixedWidth]="true"></fa-icon>
                 Musiques</a>
         </li>
         <li>
-            <a href="#">
+            <a href="./podcasts">
                 <fa-icon [icon]="faMicrophone" [fixedWidth]="true"></fa-icon>
                 Podcasts</a>
         </li>
         <li>
-            <a href="#">
+            <a href="./radios">
                 <fa-icon [icon]="faPodcast" [fixedWidth]="true"></fa-icon>
-                Radio</a>
+                Radios</a>
         </li>
         <li>
-            <a href="#">
+            <a href="./decouvrir">
                 <fa-icon [icon]="faGripHorizontal" [fixedWidth]="true"></fa-icon>
                 Découvrir</a>
         </li>

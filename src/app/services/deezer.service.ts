@@ -23,6 +23,9 @@ import {AlbumList} from "../models/album-list.model";
 import {UserList} from "../models/user-list.model";
 import {ArtistList} from "../models/artist-list.model";
 import {PlaylistList} from "../models/playlist-list.model";
+import {GenreList} from "../models/genre-list.model";
+import {AlbumUser} from "../models/album-user.model";
+import {AlbumUserList} from "../models/album-user-list.model";
 
 @Injectable({
     providedIn: 'root'
@@ -146,6 +149,16 @@ export class DeezerService {
             );
     }
 
+    getTracksOfAlbum(id: number): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'album/' + id + '/tracks', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+
+
     // Artist endpoints
 
     getArtist(id: number): Observable<Artist> {
@@ -198,8 +211,8 @@ export class DeezerService {
             );
     }
 
-    getTracksChart(): Observable<Track[]> {
-        return this.http.get<Track[]>(this.getBaseUrl() + 'chart/tracks', this.httpOptions)
+    getTracksChart(): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'chart/tracks', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -214,8 +227,8 @@ export class DeezerService {
             );
     }
 
-    getArtistsChart(): Observable<Artist[]> {
-        return this.http.get<Artist[]>(this.getBaseUrl() + 'chart/artists', this.httpOptions)
+    getArtistsChart(): Observable<ArtistList> {
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'chart/artists', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -303,6 +316,14 @@ export class DeezerService {
             );
     }
 
+    getGenres(): Observable<GenreList> {
+        return this.http.get<GenreList>(this.getBaseUrl() + 'genre', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
     getArtistsByGenre(id: number): Observable<Artist[]> {
         return this.http.get<Artist[]>(this.getBaseUrl() + 'genre/' + id + '/artists', this.httpOptions)
             .pipe(
@@ -362,6 +383,13 @@ export class DeezerService {
                 catchError(this.handleError)
             );
     }
+    getPodcasts(): Observable<PodcastList> {
+        return this.http.get<PodcastList>(this.getBaseUrl() + 'podcast/', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
 
     getPodcastEpisodes(id: number): Observable<EpisodeList> {
         return this.http.get<EpisodeList>(this.getBaseUrl() + 'podcast/' + id + '/episodes', this.httpOptions)
@@ -373,8 +401,8 @@ export class DeezerService {
 
     // Radio endpoints
 
-    getRadios(): Observable<Radio[]> {
-        return this.http.get<Radio[]>(this.getBaseUrl() + 'radios', this.httpOptions)
+    getRadios(): Observable<RadioList> {
+        return this.http.get<RadioList>(this.getBaseUrl() + 'radio/', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -399,6 +427,14 @@ export class DeezerService {
 
     getTopRadio(): Observable<RadioList> {
         return this.http.get<RadioList>(this.getBaseUrl() + 'radio/top', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getTopTrackArtist(id: number): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'artist/' + id + '/top', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -483,8 +519,8 @@ export class DeezerService {
 
     // Track endpoints
 
-    getTrack(id: number): Observable<Track> {
-        return this.http.get<Track>(this.getBaseUrl() + 'track/' + id, this.httpOptions)
+    getTrack(id: number): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'track/' + id, this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -522,7 +558,15 @@ export class DeezerService {
     // User endpoints
 
     getMe(): Observable<User> {
-        return this.http.get<User>(this.getBaseUrl() + 'user/me', this.getHttpOptions())
+        let params = new HttpParams()
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+
+        const httpOptions = {
+            headers: this.httpHeaders,
+            params,
+        };
+
+        return this.http.get<User>(this.getBaseUrl() + 'user/me', httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -531,6 +575,54 @@ export class DeezerService {
 
     getUser(id: number): Observable<User> {
         return this.http.get<User>(this.getBaseUrl() + 'user/' + id, this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getArtistByUser(): Observable<ArtistList> {
+
+        let params = new HttpParams()
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+
+        const httpOptions = {
+            headers: this.httpHeaders,
+            params,
+        };
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'user/me/artists', httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getAlbumByUser(): Observable<AlbumList> {
+
+        let params = new HttpParams()
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+
+        const httpOptions = {
+            headers: this.httpHeaders,
+            params,
+        };
+        return this.http.get<AlbumList>(this.getBaseUrl() + 'user/me/albums', httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getChartByUser(): Observable<AlbumUserList> {
+
+        let params = new HttpParams()
+            .set('access_token', DeezerService.getAccessToken() ?? '');
+
+        const httpOptions = {
+            headers: this.httpHeaders,
+            params,
+        };
+        return this.http.get<AlbumUserList>(this.getBaseUrl() + 'user/me/charts', httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

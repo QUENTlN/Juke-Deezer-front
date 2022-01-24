@@ -11,6 +11,7 @@ import {ArtistDetailsComponent} from "./components/artist-details/artist-details
 import {DecouvrirComponent} from "./components/decouvrir/decouvrir.component";
 import {GenreDetailsComponent} from "./components/genre-details/genre-details.component";
 import {TrackListComponent} from "./components/track-list/track-list.component";
+import {SearchResultsComponent} from "./components/search-results/search-results.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'album-details/:id', component: AlbumDetailsComponent},
     {path: 'artist-details/:id', component: ArtistDetailsComponent},
     {path: 'genre-details/:id', component: GenreDetailsComponent},
+    {path: 'search/:name', component: SearchResultsComponent},
     {path: 'decouvrir', component: DecouvrirComponent},
     {path: '', component: HomeComponent},
     {path: '**', component: HomeComponent},

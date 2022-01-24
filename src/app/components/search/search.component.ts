@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {DeezerService} from "../../services/deezer.service";
-import {AlbumList} from "../../models/album-list.model";
+import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
+
+
 
 @Component({
   selector: 'app-search',
@@ -13,26 +14,26 @@ export class SearchComponent implements OnInit {
     faSearch = faSearch;
 
     @Input() navbarLocation: string = 'navbar'
-    value: string | undefined;
-    onEnter(value: string) { this.value = value; }
-    albumBySearch:AlbumList|undefined;
+    value: string|undefined;
+    private searchTerms = new Subject<string>();
 
-    constructor(private deezerService: DeezerService) { }
-
-    ngOnInit(): void {
-        this.findAlbumsBySearch()
+    constructor() {
     }
 
-    findAlbumsBySearch() {
-        if (this.value) {
-            this.deezerService.searchAlbums(this.value)
-                .subscribe((data) => {
-                        this.albumBySearch = data;
-                        console.log(data)
-                    }
-                );
-        }
+    search(term: string): void {
+        this.searchTerms.next(term);
     }
+
+    async ngOnInit(): Promise<void> {
+        this.searchTerms.pipe(
+            debounceTime(100),
+            distinctUntilChanged()
+        );
+    }
+
+
+
+
 
 
 }

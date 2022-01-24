@@ -15,6 +15,7 @@ export interface Track {
     explicit_content_cover: number;
     preview: string;
     time_add: number;
+    contributors: Artist[];
     artist: Artist;
     type: string;
     album: Album;

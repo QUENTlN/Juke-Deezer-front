@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="addToPlaylistModal" tabindex="-1" aria-labelledby="addToPlaylistModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter a : </h5>
+                    <button type="button" class="btn-close" [ngClass]="{'btn-close-white': isDarkTheme()}" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span *ngIf="getPlaylistLenght() == 0">Aucune Playlist</span>
+                    <div *ngFor="let field of playlists?.data" class="playlist">
+                        <label class="switch">
+                            <input type="checkbox" class="form-check-input" [formControlName]="field.id.toString()">
+                            <span class="slider round"></span>
+                        </label>
+                        <span>{{field.title}}</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="px-3 btn btn-secondary rounded-pill" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="px-3 btn btn-primary rounded-pill" data-bs-dismiss="modal">Ajouter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

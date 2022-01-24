@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Track} from "../models/track.model";
 import {Album} from "../models/album.model";
 import {Subject} from "rxjs";
+import {Artist} from "../models/artist.model";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +14,10 @@ export class PlayerService {
     public originalQueue: Track[] = [];
 
     public favoriteTracks: Track[] = [];
+
+    public favoriteAlbums: Album[] = [];
+
+    public favoriteArtists: Artist[] = [];
 
     public currentIndex: number = 0;
 
@@ -59,6 +64,11 @@ export class PlayerService {
             track.album = album;
         });
         this.queue = album.tracks.data;
+        this.currentIndex = 0;
+    }
+
+    public setTrackList(tracks: Track[]) {
+        this.queue = tracks;
         this.currentIndex = 0;
     }
 

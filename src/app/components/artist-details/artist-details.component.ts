@@ -5,24 +5,35 @@ import {Artist} from "../../models/artist.model";
 import {TrackList} from "../../models/track-list.model";
 import {PlaylistList} from "../../models/playlist-list.model";
 import {ArtistList} from "../../models/artist-list.model";
-import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faPlayCircle, faHeart as fasHeart} from '@fortawesome/free-solid-svg-icons';
+import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
+import {Track} from "../../models/track.model";
+import {firstValueFrom} from "rxjs";
+import {PlayerService} from "../../services/player.service";
 
 @Component({
-  selector: 'app-artist-details',
-  templateUrl: './artist-details.component.html',
-  styleUrls: ['./artist-details.component.scss']
+    selector: 'app-artist-details',
+    templateUrl: './artist-details.component.html',
+    styleUrls: ['./artist-details.component.scss']
 })
 export class ArtistDetailsComponent implements OnInit {
 
-    faPlayCircle=faPlayCircle;
+    faEllipsisH = faEllipsisH;
+    faPlayCircle = faPlayCircle;
+    fasHeart = fasHeart;
+    farHeart = farHeart;
     idArtist: number | undefined;
-    artist:Artist|undefined;
-    titres:TrackList|undefined;
+    artist: Artist | undefined;
+    titres: TrackList | undefined;
     playlists: PlaylistList | undefined;
-    relatedArtists:ArtistList|undefined;
+    relatedArtists: ArtistList | undefined;
+
+    trackToAdd: Track[] = [];
+    listCheck: { id: number, checked: boolean }[] = [];
 
     constructor(
-        private deezerService:DeezerService,
+        private deezerService: DeezerService,
+        private playerService: PlayerService,
         private _activatedRoute: ActivatedRoute
     ) {
         this._activatedRoute.paramMap.subscribe(params => {
@@ -30,34 +41,40 @@ export class ArtistDetailsComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
 
         if (history.state?.artist?.id != null) {
             this.idArtist = history.state?.artist?.id;
-            this.artist=history.state?.artist;
+            this.artist = history.state?.artist;
+        } else {
+            this.idArtist = history.state?.id;
+            this.artist = history.state;
         }
-        else{
-            this.idArtist=history.state?.id;
-            this.artist=history.state;
+
+        this.getTitres();
+        this.getPlaylist();
+        this.getRelatedArtistsList();
+
+        if (this.playerService.favoriteArtists == []) {
+            this.playerService.favoriteArtists = (await firstValueFrom(this.deezerService.getFavoriteArtists())).data;
         }
-
-
-
-        this.getTitres()
-        this.getPlaylist()
-        this.getRelatedArtistsList()
     }
-    getTitres(){
+
+    getTitres() {
         if (this.idArtist != null) {
             this.deezerService.getTopTrackArtist(this.idArtist)
                 .subscribe((data) => {
                         this.titres = data;
-                        console.log(this.titres)
+                        this.listCheck = [];
+                        this.titres?.data.forEach(track => {
+                            this.listCheck.push({'id': track.id, 'checked': false})
+                        });
                     }
                 );
         }
     }
-    getPlaylist(){
+
+    getPlaylist() {
         if (this.idArtist != null) {
             this.deezerService.getArtistPlaylists(this.idArtist)
                 .subscribe((data) => {
@@ -67,7 +84,8 @@ export class ArtistDetailsComponent implements OnInit {
                 );
         }
     }
-    getRelatedArtistsList(){
+
+    getRelatedArtistsList() {
         if (this.idArtist != null) {
             this.deezerService.getRelatedArtists(this.idArtist)
                 .subscribe((data) => {
@@ -77,9 +95,108 @@ export class ArtistDetailsComponent implements OnInit {
                 );
         }
     }
+
     click(artist: Artist | undefined) {
         this.artist = artist
         console.log(this.artist)
 
+    }
+
+
+    async favorite(track: Track) {
+        this.playerService.favoriteTracks.push(track);
+        await firstValueFrom(this.deezerService.addToFavorite(track.id));
+    }
+
+    async unfavorite(track: Track) {
+        this.playerService.favoriteTracks = this.playerService.favoriteTracks.filter(track1 => track1.id != track.id);
+        await firstValueFrom(this.deezerService.removeFromFavorite(track.id));
+    }
+
+    checkAll() {
+        console.log('checkAll');
+        if (this.listCheck.every(check => !check.checked)) {
+            this.listCheck.forEach(check => check.checked = true)
+            if (this.titres?.data) {
+                this.trackToAdd = [...this.titres?.data];
+            }
+        } else {
+            this.listCheck.forEach(check => check.checked = false)
+            this.trackToAdd = [];
+        }
+        console.log(this.trackToAdd);
+        console.log(this.listCheck);
+    }
+
+    check(track: Track) {
+        console.log('check');
+        this.listCheck.forEach(track1 => {
+            if (track1.id == track.id) {
+                track1.checked = !track1.checked;
+                if (track1.checked) {
+                    this.trackToAdd.push(track);
+                } else {
+                    this.trackToAdd = this.trackToAdd.filter(track1 => track1.id != track.id);
+                }
+            }
+        });
+    }
+
+    isChecked(track: Track) {
+        return this.listCheck.find(track1 => track1.id == track.id)?.checked;
+    }
+
+    isOneChecked() {
+        return this.listCheck.some(check => check.checked);
+    }
+
+    isTrackFavorite(track: Track) {
+        return this.playerService.favoriteTracks.find(track1 => track1.id == track.id) != null;
+    }
+
+    play(i: number) {
+        if (this.titres != undefined) {
+            this.playerService.setTrackList(this.titres?.data);
+            this.playerService.jumpTo(i);
+        }
+    }
+
+    getCurrentTrackId() {
+        return this.playerService.getCurrentTrack()?.id;
+    }
+
+    setTrack(track: Track) {
+        this.trackToAdd = [];
+        this.trackToAdd.push(track);
+    }
+
+    addTrack(track: Track) {
+        this.trackToAdd.push(track);
+    }
+
+    addToFavorites() {
+        this.trackToAdd.forEach(track => {
+            this.favorite(track).then(data => {
+                this.trackToAdd = this.trackToAdd.filter(track1 => track1.id != track.id);
+            });
+        });
+    }
+
+    isArtistFavorite() {
+        return this.playerService.favoriteArtists.find(artist => artist.id == this.artist?.id) != null;
+    }
+
+    async favoriteArtist() {
+        if (this.artist) {
+            this.playerService.favoriteArtists.push(this.artist);
+            await firstValueFrom(this.deezerService.addArtistToFavorite(this.artist.id));
+        }
+    }
+
+    async unfavoriteArtist() {
+        if (this.artist) {
+            this.playerService.favoriteArtists = this.playerService.favoriteArtists.filter(artist => artist.id != this.artist?.id);
+            await firstValueFrom(this.deezerService.removeArtistFromFavorite(this.artist.id));
+        }
     }
 }

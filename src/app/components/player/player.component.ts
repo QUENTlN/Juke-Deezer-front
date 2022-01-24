@@ -30,7 +30,7 @@ export class PlayerComponent implements OnInit {
 
     selectedAudio: any;
     repeatActive: boolean = false;
-    isError: boolean = false;
+    isError: boolean = true;
     isShuffle: boolean = false;
     volumeBeforeMute: number = 0.5;
     isTrackListOpen: boolean = false;
@@ -43,14 +43,15 @@ export class PlayerComponent implements OnInit {
 
         this.playerService.favoriteTracks = (await firstValueFrom(this.deezerService.getFavoriteTracks())).data;
 
-        let album = await firstValueFrom(this.deezerService.getAlbum(69352202))
-        console.log(album);
-        this.playerService.setAlbum(album);
+        // let album = await firstValueFrom(this.deezerService.getAlbum(69352202))
+        // console.log(album);
+        // this.playerService.setAlbum(album);
 
         this.playerService.getPlayerUpdate().subscribe(async (data) => {
             this.selectedAudio = this.playerService.getCurrentTrack();
             this.audioPlayer.nativeElement.currentTime = 0;
             this.play();
+            this.isError = false;
         });
 
         this.audioPlayer.nativeElement.addEventListener('playing', () => {

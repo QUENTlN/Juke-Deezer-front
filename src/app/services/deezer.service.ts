@@ -157,7 +157,33 @@ export class DeezerService {
             );
     }
 
+    addAlbumToFavorite(id: number): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'album_id',
+                value: id
+            }
+        ]);
+        return this.http.post<boolean>(this.getBaseUrl() + 'user/me/album', null, httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
 
+    removeAlbumFromFavorite(id: number): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'album_id',
+                value: id
+            }
+        ]);
+        return this.http.delete<boolean>(this.getBaseUrl() + 'user/me/album', httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
 
     // Artist endpoints
 
@@ -195,6 +221,34 @@ export class DeezerService {
 
     getArtistPlaylists(id: number): Observable<PlaylistList> {
         return this.http.get<PlaylistList>(this.getBaseUrl() + 'artist/' + id + '/playlists', this.httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    addArtistToFavorite(id: number): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'artist_id',
+                value: id
+            }
+        ]);
+        return this.http.post<boolean>(this.getBaseUrl() + 'user/me/artist', null, httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    removeArtistFromFavorite(id: number): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'artist_id',
+                value: id
+            }
+        ]);
+        return this.http.delete<boolean>(this.getBaseUrl() + 'user/me/artist', httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -519,8 +573,8 @@ export class DeezerService {
 
     // Track endpoints
 
-    getTrack(id: number): Observable<TrackList> {
-        return this.http.get<TrackList>(this.getBaseUrl() + 'track/' + id, this.httpOptions)
+    getTrack(id: number): Observable<Track> {
+        return this.http.get<Track>(this.getBaseUrl() + 'track/' + id, this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -597,16 +651,16 @@ export class DeezerService {
             );
     }
 
+    getPlaylistsByUser(): Observable<PlaylistList> {
+        return this.http.get<PlaylistList>(this.getBaseUrl() + 'user/me/playlists', this.getHttpOptions())
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
     getAlbumByUser(): Observable<AlbumList> {
-
-        let params = new HttpParams()
-            .set('access_token', DeezerService.getAccessToken() ?? '');
-
-        const httpOptions = {
-            headers: this.httpHeaders,
-            params,
-        };
-        return this.http.get<AlbumList>(this.getBaseUrl() + 'user/me/albums', httpOptions)
+        return this.http.get<AlbumList>(this.getBaseUrl() + 'user/me/albums', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -629,8 +683,38 @@ export class DeezerService {
             );
     }
 
-    getFavoriteTracks() {
+    getFavoriteTracks(): Observable<TrackList> {
         return this.http.get<TrackList>(this.getBaseUrl() + 'user/me/tracks', this.getHttpOptions())
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getFavoriteAlbums(): Observable<AlbumList> {
+        return this.http.get<AlbumList>(this.getBaseUrl() + 'user/me/albums', this.getHttpOptions())
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getFavoriteArtists(): Observable<ArtistList> {
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'user/me/artist', this.getHttpOptions())
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    addTracksToPlaylist(id: number, tracksToAdd: number[]): Observable<boolean> {
+        const httpOptions = this.customHttpOptions([
+            {
+                name: 'songs',
+                value: tracksToAdd.join(',')
+            }
+        ]);
+        return this.http.post<boolean>(this.getBaseUrl() + 'playlist/' + id + '/tracks', null, httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

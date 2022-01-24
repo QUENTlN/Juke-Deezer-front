@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     }
 
     public async ngOnInit() {
-        ThemeService.setDefaultTheme();
+        ThemeService.setLightTheme();
     }
 
     @HostListener('window:resize')

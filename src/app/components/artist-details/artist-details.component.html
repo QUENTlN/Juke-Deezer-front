@@ -1,26 +1,113 @@
-<div class="header">
+<div class="d-flex flex-column align-items-center flex-md-row align-items-md-start header">
     <div class="img">
-        <img src= "{{artist?.picture_big}}" class="big_image">
+        <img [src]="artist?.picture_big" alt="album cover">
     </div>
-    <br><br>
-    <div class="text">
-        <br><br>
-        <h1 class="titre">{{artist?.name}}</h1>
+
+    <div class="d-flex flex-column align-items-center align-items-md-start">
+        <span class="titre">{{ artist?.name }}</span>
 
 
-        <div class="details">
-            {{artist?.nb_album}} albums
+        <div class="d-flex mt-4">
+            <button (click)="play(0)" class="btn btn-primary btn-play btn-lg active" role="button" aria-pressed="true">
+                <fa-icon [icon]="faPlayCircle" size="1x"></fa-icon>
+                MIX
+            </button>
+            <div class="album-fav">
+                <button *ngIf="!isArtistFavorite()" (click)="favoriteArtist()">
+                    <fa-icon [icon]="farHeart"></fa-icon>
+                </button>
+                <button *ngIf="isArtistFavorite()" (click)="unfavoriteArtist()">
+                    <fa-icon [icon]="fasHeart" class="favorite"></fa-icon>
+                </button>
+            </div>
         </div>
     </div>
-    <br>
-    <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >
-        <fa-icon [icon]="faPlayCircle"  class="form-control-feedback" style="color:white"></fa-icon>
-        MIX
-    </a>
 </div>
-<br><br><br>
 <div class="body">
-    <div class= "tracks">
+    <div class="tracks">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="min-width">#</th>
+                <th class="min-width"></th>
+                <th>Title</th>
+                <th class="fixed-width">D.</th>
+                <th class="end">
+                    <div class="d-flex justify-content-end">
+                        <div *ngIf="isOneChecked()" class="dropdown w-1rem">
+                            <button
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <fa-icon [icon]="faEllipsisH"></fa-icon>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li class="dropdown-item">
+                                    <a data-bs-toggle="modal" data-bs-target="#addToPlaylistModal">Ajouter à une
+                                        playlist</a>
+                                </li>
+                                <li><a class="dropdown-item" (click)="addToFavorites()">Ajouter aux favoris</a></li>
+                            </ul>
+                        </div>
+                        <div class="d-flex align-items-center w-1rem">
+                            <input type="checkbox" id="all" (click)="checkAll()"
+                                   [checked]="isOneChecked()" class="form-check-input">
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let track of titres?.data; index as i" (click)="play(i)"
+                [ngClass]="{'active': track.id == getCurrentTrackId()}">
+                <th scope="row">
+                    <div class="nb-track">{{ i + 1 }} </div>
+                    <fa-icon [icon]="faPlayCircle" class="play"></fa-icon>
+                </th>
+                <td class="td-fav">
+                    <button *ngIf="!isTrackFavorite(track)" (click)="favorite(track); $event.stopPropagation();">
+                        <fa-icon [icon]="farHeart"></fa-icon>
+                    </button>
+                    <button *ngIf="isTrackFavorite(track)" (click)="unfavorite(track); $event.stopPropagation();">
+                        <fa-icon [icon]="fasHeart" class="favorite"></fa-icon>
+                    </button>
+                </td>
+                <td>
+                    <div class="title-container">
+                        <div class="title">{{ track.title }}</div>
+                        <div class="feat-container" (click)="$event.stopPropagation()">
+                            <span *ngFor="let contributor of track.contributors; let isLast=last; let isFirst=first">
+                                <a *ngIf="!isFirst" [routerLink]="['/artist-details', contributor.id]"
+                                   [state]=contributor>
+                                    {{contributor.name}}
+                                </a>{{isLast || isFirst ? '' : ', '}}
+                            </span>
+                        </div>
+                        <div class="track-menu-container dropdown" (click)="$event.stopPropagation();">
+                            <button
+                                id="dropdownTrackMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <fa-icon [icon]="faEllipsisH" class="play"></fa-icon>
+                            </button>
+
+                            <ul class="dropdown-menu dropdown-menu-dark"
+                                aria-labelledby="dropdownTrackMenu">
+                                <li class="dropdown-item btn-group dropend">
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addToPlaylistModal"
+                                       (click)="setTrack(track)">Ajouter à une playlist</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+                <td>{{ track.duration | chrono }}</td>
+                <td class="end">
+                    <input type="checkbox" class="form-check-input" id="individual" [checked]="isChecked(track)"
+                           (click)="check(track); $event.stopPropagation();">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<div class="tracks">
         <h2>Top titres</h2>
         <table class="table titres">
             <thead>
@@ -39,7 +126,9 @@
                 <th scope="row">{{ i + 1 }}</th>
 
                 <td><i class='far fa-heart'></i></td>
-                <td> <fa-icon [icon]="faPlayCircle"  class="form-control-feedback" > </fa-icon></td>
+                <td>
+                    <fa-icon [icon]="faPlayCircle" class="form-control-feedback"></fa-icon>
+                </td>
                 <td>{{ track.title }}</td>
                 <td>{{ track.duration | chrono }}</td>
                 <td><input type="checkbox" id="individual"></td>
@@ -47,50 +136,56 @@
             </tr>
             </tbody>
         </table>
-    </div>
-<div class="playright">
-    <h2>PlayLists</h2>
-    <div class="playlist">
+    </div>-->
+    <div class="playright">
+        <h2>PlayLists</h2>
+        <div class="playlist">
 
-        <div *ngFor="let playlist of playlists?.data let i=index" class="element" >
+            <div *ngFor="let playlist of playlists?.data let i=index" class="element">
 
-            <div *ngIf="i<3" >
-                <img src="{{playlist?.picture}}" class="small_image" >
-                <br>
-                <p style="font-family: 'Bahnschrift SemiBold'">{{playlist?.title}}</p>
+                <div *ngIf="i<3">
+                    <img src="{{playlist?.picture}}" class="small_image">
+                    <br>
+                    <p style="font-family: 'Bahnschrift SemiBold'">{{playlist?.title}}</p>
 
-            </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<app-add-to-playlist-form [tracksToAdd]="trackToAdd"></app-add-to-playlist-form>
+
 <br><br><br><br><br><br><br><br>
 <div>
 
 
-<br><br>
+    <br><br>
     <div *ngIf="relatedArtists?.data != null"><h2>Artistes similaires</h2>
-<div class="album-container">
-    <div *ngFor="let relatedArtist of relatedArtists?.data let i=index">
-        <div *ngIf="i<5">
+        <div class="album-container">
+            <div *ngFor="let relatedArtist of relatedArtists?.data let i=index">
+                <div *ngIf="i<5">
 
-            <div class="album-cover2">
-                <a [routerLink]="['/artist-details', relatedArtist?.id]" [state]=relatedArtist>
-                <div class="image-circle">
-                    <img src="{{relatedArtist.picture_big}}" class="relatedA" (click)="click(relatedArtist)">
+                    <div class="album-cover2">
+                        <a [routerLink]="['/artist-details', relatedArtist?.id]" [state]=relatedArtist>
+                            <div class="image-circle">
+                                <img src="{{relatedArtist.picture_big}}" class="relatedA"
+                                     (click)="click(relatedArtist)">
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <mat-card-title style="text-align:center">
+                            <h3>{{relatedArtist.name}}</h3>
+                        </mat-card-title>
+
+
+                    </div>
+
                 </div>
-                </a>
             </div>
-            <div>
-                <mat-card-title style="text-align:center">
-                    <h3>{{relatedArtist.name}}</h3>
-                </mat-card-title>
-
-
-            </div>
-
         </div>
     </div>
-</div></div></div>
+</div>
 
 <app-artist-albums [idArtist]="idArtist"></app-artist-albums>

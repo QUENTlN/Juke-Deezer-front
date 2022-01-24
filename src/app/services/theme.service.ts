@@ -58,6 +58,6 @@ export class ThemeService {
     }
 
     public static getSiteLogo() {
-        return ThemeService.getTheme() === 'dark' ? '../assets/img/Deezer_Logo_RVB_White.svg' : '../assets/img/Deezer_Logo_RVB_Black.svg';
+        return ThemeService.getTheme() === 'dark' ? '../assets/img/logo_dark.png' : '../assets/img/logo_light.png';
     }
 }

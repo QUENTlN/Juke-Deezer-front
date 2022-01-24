@@ -1,10 +1,5 @@
 <div class="form-group has-search"
      [ngClass]="{'sidebar-search': this.navbarLocation == 'sidebar', 'navbar-search' : this.navbarLocation == 'navbar'}">
     <fa-icon [icon]="faSearch" class="form-control-feedback"></fa-icon>
-    <input #search type="text" class="form-control rounded-pill" placeholder="Chercher" (keyup.enter)="onEnter(search.value)">
-    <p>{{value}}</p>
-    <div *ngIf="value==undefined">
-        No input
-    </div>
-
+    <input #searchBox [routerLink]="['/search', value]" (input)="search(searchBox.value)" [(ngModel)]= "value" type="text" class="form-control rounded-pill" placeholder="Chercher" >
 </div>

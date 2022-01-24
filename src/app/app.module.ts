@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -29,6 +28,7 @@ import { GenreDetailsComponent } from './components/genre-details/genre-details.
 import {FormsModule} from "@angular/forms";
 import { ChronoPipe } from './pipes/chrono.pipe';
 import { TrackListComponent } from './components/track-list/track-list.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
 
 @NgModule({
     declarations: [
@@ -55,6 +55,7 @@ import { TrackListComponent } from './components/track-list/track-list.component
         ArtistAlbumsComponent,
         DecouvrirComponent,
         GenreDetailsComponent,
+        SearchResultsComponent,
 
 
 
@@ -66,7 +67,8 @@ import { TrackListComponent } from './components/track-list/track-list.component
         HttpClientModule,
         FontAwesomeModule,
         MatCardModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

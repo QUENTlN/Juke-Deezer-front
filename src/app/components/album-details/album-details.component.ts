@@ -9,6 +9,7 @@ import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 import {firstValueFrom} from "rxjs";
 import {PlayerService} from "../../services/player.service";
 import {Track} from "../../models/track.model";
+import {faCircle} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -18,7 +19,7 @@ import {Track} from "../../models/track.model";
 })
 
 export class AlbumDetailsComponent implements OnInit {
-
+    faCircle=faCircle;
     faPlayCircle=faPlayCircle;
     fasHeart=fasHeart;
     farHeart=farHeart;

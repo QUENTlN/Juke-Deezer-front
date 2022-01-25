@@ -26,6 +26,7 @@ import {PlaylistList} from "../models/playlist-list.model";
 import {GenreList} from "../models/genre-list.model";
 import {AlbumUser} from "../models/album-user.model";
 import {AlbumUserList} from "../models/album-user-list.model";
+import {Options} from "../models/options.model";
 
 @Injectable({
     providedIn: 'root'
@@ -631,6 +632,14 @@ export class DeezerService {
 
     getFavoriteTracks() {
         return this.http.get<TrackList>(this.getBaseUrl() + 'user/me/tracks', this.getHttpOptions())
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getOptions() :Observable<Options>{
+        return this.http.get<Options>(this.getBaseUrl() + 'options', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

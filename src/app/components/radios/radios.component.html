@@ -3,10 +3,10 @@
 
 <div class="album-container">
     <div  *ngFor="let radio of radios?.data " >
-        <mat-card class="album-card">
+        <mat-card class="album-card" [routerLink]="['/radio-details', radio.id]" [state]=radio (click)="click(radio)">
             <div class="album-cover">
                 <div class="image">
-                    <a [routerLink]="['/radio-details', radio.id]" [state]=radio (click)="click(radio)">
+                    <a>
                         <img src="{{radio.picture}}"></a>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                     <h2 style="font-family: 'Bahnschrift SemiBold'">{{radio.title}}</h2>
                 </mat-card-title>
             </div>
-            <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
+            <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white" (click)="playRadio(radio); $event.stopPropagation()"></fa-icon>
         </mat-card>
     </div>
 </div>

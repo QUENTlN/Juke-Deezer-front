@@ -1,62 +1,53 @@
 <h1 style="font-family: 'Bahnschrift SemiBold'">Pour vous</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let albumchart of albums?.data let i=index">
-        <div *ngIf="i<8">
-            <div class="album-cover">
-                <a [routerLink]="['/album-details', albumchart.id]" [state]=albumchart>
-                    <img src="{{albumchart.cover_big}}" class="w-100 image" (click)="click(albumchart)">
-                </a>
-                <div class="d-flex w-100 justify-content-between">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let albumchart of albums?.data | slice:0:8; let i=index">
+        <div class="album-cover">
+            <a [routerLink]="['/album-details', albumchart.id]" [state]=albumchart>
+                <img src="{{albumchart.cover_big}}" class="w-100 image rounded" (click)="click(albumchart)">
+            </a>
+            <div class="d-flex w-100 justify-content-between album-footer">
+                <div>
                     <h2>{{albumchart.title}}</h2>
-
-                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
-
+                    <h3>{{albumchart.artist.name}}</h3>
                 </div>
+                <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle" [mask]="faSquareFull"></fa-icon>
             </div>
         </div>
     </div>
 </div>
 
-<br><br><br><br><br><br><br><br>
 
 <h1 style="font-family: 'Bahnschrift SemiBold'">Votre Chart</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let trackchart of chart?.data let i=index">
-        <div *ngIf="i<8">
-            <div class="album-cover">
-                <a [routerLink]="['/album-details', trackchart.id]" [state]=trackchart>
-                    <img src="{{trackchart.album.cover_big}}" class="w-100 image" (click)="click(trackchart)">
-                </a>
-                <div class="d-flex w-100 justify-content-between">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let trackchart of chart?.data | slice:0:8; let i=index">
+        <div class="album-cover">
+            <a>
+                <img src="{{trackchart.album.cover_big}}" class="w-100 image rounded" (click)="click(trackchart)">
+            </a>
+            <div class="d-flex w-100 justify-content-between album-footer">
+                <div>
                     <h2>{{trackchart.title}}</h2>
-                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
+                    <h3>{{trackchart.artist.name}}</h3>
                 </div>
-                <h3>{{trackchart.artist.name}}</h3>
-
+                <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle" [mask]="faSquareFull"
+                         (click)="playTrack(trackchart)"></fa-icon>
             </div>
         </div>
     </div>
 </div>
-
-<br><br><br><br><br><br><br>
 
 <h1 style="font-family: 'Bahnschrift SemiBold'">Vos artistes préférés</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artistchart of artists?.data let i=index">
-        <div *ngIf="i<8">
-            <div class="album-cover2">
-                <a [routerLink]="['/album-details', artistchart.id]" [state]=artistchart>
-                    <img src="{{artistchart.picture_big}}" style="border-radius: 50%" class="w-100 image" (click)="click(artistchart)">
-                </a>
-                <h2>{{artistchart.name}}</h2>
-            </div>
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artistchart of artists?.data | slice:0:8; let i=index">
+        <div class="artist-cover">
+            <a [routerLink]="['/artist-details', artistchart.id]" [state]=artistchart>
+                <img src="{{artistchart.picture_big}}" style="border-radius: 50%" class="w-100 image"
+                     (click)="click(artistchart)">
+            </a>
+            <h2 class="artist-name">{{artistchart.name}}</h2>
         </div>
     </div>
 </div>
 
-<br><br><br><br><br><br>
 
 

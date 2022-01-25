@@ -1,18 +1,45 @@
 h2 {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
     font-family: "Bahnschrift SemiBold";
     font-size: 1.5rem;
+    margin-right: 5px;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    word-break: break-all;
+    overflow: hidden;
+
+    &.artist-name {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
 }
 
-div.btn {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: var(--font-color);
-    width: 100px;
-    height: auto
+h1 {
+    margin-top: 4rem;
+    margin-bottom: 2rem;
 }
+
+h3 {
+    font-size: 0.8rem;
+    margin-bottom: 30px;
+}
+
 .background-circle{
-    color:var(--secondary-color);
-    margin-top:25px;
+    cursor: pointer;
+    margin-top:15px;
+    margin-bottom: auto;
+    background: rgb(226,56,56);
+    background: var(--accent-gradient);
+    color: var(--background-color);
+    border: 4px solid var(--background-color);
+    display: none;
+}
+
+.album-footer {
+    min-height: 7rem;
+}
+
+.album-cover:hover .background-circle{
+    display: block;
 }

@@ -29,6 +29,8 @@ import {FormsModule} from "@angular/forms";
 import { ChronoPipe } from './pipes/chrono.pipe';
 import { TrackListComponent } from './components/track-list/track-list.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { OptionComponent } from './components/option/option.component';
+import { PodcastDetailsComponent } from './components/podcast-details/podcast-details.component';
 
 @NgModule({
     declarations: [
@@ -56,10 +58,8 @@ import { SearchResultsComponent } from './components/search-results/search-resul
         DecouvrirComponent,
         GenreDetailsComponent,
         SearchResultsComponent,
-
-
-
-
+        OptionComponent,
+        PodcastDetailsComponent,
     ],
     imports: [
         BrowserModule,

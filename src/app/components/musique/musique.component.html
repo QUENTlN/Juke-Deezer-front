@@ -1,30 +1,18 @@
-<div class="list-user-album">
-    <h1 style="font-family: 'Bahnschrift SemiBold'">Pour vous</h1>
-    <br><br>
-    <div class="album-container">
-        <div *ngFor="let albumchart of albums?.data let i=index">
-            <div *ngIf="i<5">
+<h1 style="font-family: 'Bahnschrift SemiBold'">Pour vous</h1>
+<br><br><br>
+<div class="row">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let albumchart of albums?.data let i=index">
+        <div *ngIf="i<8">
+            <div class="album-cover">
+                <a [routerLink]="['/album-details', albumchart.id]" [state]=albumchart>
+                    <img src="{{albumchart.cover_big}}" class="w-100 image" (click)="click(albumchart)">
+                </a>
+                <div class="d-flex w-100 justify-content-between">
+                    <h2>{{albumchart.title}}</h2>
 
-                <mat-card class="album-card">
-                    <div class="album-cover">
-                    <a [routerLink]="['/album-details', albumchart.id]" [state]=albumchart>
-                        <div class="image">
-                            <img src="{{albumchart.cover_big}}" (click)="click(albumchart)">
-                        </div>
-                    </a>
-                    </div>
-                    <div class="info-album">
-                        <mat-card-title>
-                            <h2>{{albumchart.title}}</h2>
-                        </mat-card-title>
+                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
 
-                        <mat-card-subtitle>
-                            <h3>{{albumchart.artist.name}}</h3>
-                        </mat-card-subtitle>
-
-                        <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
-                    </div>
-                </mat-card>
+                </div>
             </div>
         </div>
     </div>
@@ -32,33 +20,21 @@
 
 <br><br><br><br><br><br><br><br>
 
+<h1 style="font-family: 'Bahnschrift SemiBold'">Votre Chart</h1>
+<br><br><br>
+<div class="row">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let trackchart of chart?.data let i=index">
+        <div *ngIf="i<8">
+            <div class="album-cover">
+                <a [routerLink]="['/album-details', trackchart.id]" [state]=trackchart>
+                    <img src="{{trackchart.album.cover_big}}" class="w-100 image" (click)="click(trackchart)">
+                </a>
+                <div class="d-flex w-100 justify-content-between">
+                    <h2>{{trackchart.title}}</h2>
+                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
+                </div>
+                <h3>{{trackchart.artist.name}}</h3>
 
-<div class="list-user-track">
-    <h1 style="font-family: 'Bahnschrift SemiBold'">Votre Chart</h1>
-
-    <br><br>
-
-    <div class="album-container">
-        <div *ngFor="let trackchart of chart?.data let i=index">
-            <div *ngIf="i<5">
-                <mat-card class="album-card">
-                    <div class="album-cover">
-                    <div class="image">
-                        <img src="{{trackchart.album.cover_big}}">
-                    </div>
-                    </div>
-                    <div class= "info-track">
-                        <mat-card-title>
-                            <h2>{{trackchart.title}}</h2>
-                        </mat-card-title>
-
-                        <mat-card-subtitle>
-                            <h3>{{trackchart.artist.name}}</h3>
-                        </mat-card-subtitle>
-
-                        <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white"></fa-icon>
-                    </div>
-                </mat-card>
             </div>
         </div>
     </div>
@@ -66,26 +42,16 @@
 
 <br><br><br><br><br><br><br>
 
-<div class= "list-user-artist">
-    <h1 style="font-family: 'Bahnschrift SemiBold'">Vos artistes préférés</h1>
-
-    <br><br>
-    <div class="album-container">
-        <div *ngFor="let artistchart of artists?.data let i=index">
-            <div *ngIf="i<5">
-                <div class="album-cover2">
-                     <a [routerLink]="['/artist-details', artistchart?.id]" [state]=artistchart>
-                         <div class="image-circle">
-                             <img src="{{artistchart.picture_big}}" (click)="click(artistchart)" >
-                         </div>
-                     </a>
-                </div>
-                <br>
-                <div class="info-artist">
-                    <mat-card-title style="text-align:center">
-                        <h2 style="font-family: 'Bahnschrift SemiBold'">{{artistchart.name}}</h2>
-                    </mat-card-title>
-                </div>
+<h1 style="font-family: 'Bahnschrift SemiBold'">Vos artistes préférés</h1>
+<br><br><br>
+<div class="row">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artistchart of artists?.data let i=index">
+        <div *ngIf="i<8">
+            <div class="album-cover2">
+                <a [routerLink]="['/album-details', artistchart.id]" [state]=artistchart>
+                    <img src="{{artistchart.picture_big}}" style="border-radius: 50%" class="w-100 image" (click)="click(artistchart)">
+                </a>
+                <h2>{{artistchart.name}}</h2>
             </div>
         </div>
     </div>

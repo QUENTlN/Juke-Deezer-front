@@ -12,6 +12,7 @@ import {DecouvrirComponent} from "./components/decouvrir/decouvrir.component";
 import {GenreDetailsComponent} from "./components/genre-details/genre-details.component";
 import {TrackListComponent} from "./components/track-list/track-list.component";
 import {SearchResultsComponent} from "./components/search-results/search-results.component";
+import {OptionComponent} from "./components/option/option.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
     {path: 'genre-details/:id', component: GenreDetailsComponent},
     {path: 'search/:name', component: SearchResultsComponent},
     {path: 'decouvrir', component: DecouvrirComponent},
+    {path: 'option', component: OptionComponent},
     {path: '', component: HomeComponent},
     {path: '**', component: HomeComponent},
 ];

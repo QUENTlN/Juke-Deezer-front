@@ -29,7 +29,7 @@ export class AlbumDetailsComponent implements OnInit {
     artist: Artist | undefined;
 
     trackToAdd: Track[] = [];
-    listCheck: {id: number, checked: boolean }[] = [];
+    listCheck: { id: number, checked: boolean }[] = [];
 
     constructor(
         private deezerService: DeezerService,
@@ -42,7 +42,6 @@ export class AlbumDetailsComponent implements OnInit {
     }
 
     async ngOnInit() {
-        console.log(history.state)
 
         if (history.state?.artist?.id != null) {
             this.idArtist = history.state?.artist?.id;
@@ -53,26 +52,24 @@ export class AlbumDetailsComponent implements OnInit {
                 //     track.contributors = (await firstValueFrom(this.deezerService.getTrack(track.id))).contributors
                 // }); TODO: readd it
             }
-
         } else {
-
-            this.idAlbum = history.state?.id;
-            console.log(this.idAlbum);
-            if (this.idAlbum != null) {
-                this.deezerService.getAlbum(this.idAlbum)
+            this._activatedRoute.params.subscribe(params => {
+                this.deezerService.getAlbum(params['id'])
                     .subscribe((data) => {
-                            this.albumDetails = data
-                            this.idArtist = data?.artist?.id
+                            this.albumDetails = data;
+                            this.albumDetails.tracks.data.forEach(track => {
+                                this.listCheck.push({id: track.id, checked: false});
+                            })
                         }
                     );
-            }
+            });
         }
 
-        if (this.playerService.favoriteAlbums == []) {
+        if (this.playerService.favoriteAlbums.length == 0) {
             this.playerService.favoriteAlbums = (await firstValueFrom(this.deezerService.getFavoriteAlbums())).data;
         }
         this.albumDetails?.tracks.data.forEach(track => {
-            this.listCheck.push({'id':track.id, 'checked':false})
+            this.listCheck.push({'id': track.id, 'checked': false})
         });
     }
 
@@ -164,10 +161,10 @@ export class AlbumDetailsComponent implements OnInit {
 
     addToFavorites() {
         this.trackToAdd.forEach(track => {
-            this.favorite(track).then(data => {
-                this.trackToAdd = this.trackToAdd.filter(track1 => track1.id != track.id);
-            });
+            this.favorite(track);
         });
+        this.trackToAdd = [];
+        this.listCheck.forEach(check => check.checked = false);
     }
 }
 

@@ -23,6 +23,10 @@
     border-bottom: 1px solid var(--primary-color);
 }
 
+#sidebar ul li {
+    cursor: pointer;
+}
+
 #sidebar ul li a {
     padding: 10px;
     font-size: 1.1em;

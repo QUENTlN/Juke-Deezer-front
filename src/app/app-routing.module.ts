@@ -12,6 +12,11 @@ import {DecouvrirComponent} from "./components/decouvrir/decouvrir.component";
 import {GenreDetailsComponent} from "./components/genre-details/genre-details.component";
 import {TrackListComponent} from "./components/track-list/track-list.component";
 import {SearchResultsComponent} from "./components/search-results/search-results.component";
+import {FavoriteTracksComponent} from "./components/favorite-tracks/favorite-tracks.component";
+import {PlaylistsComponent} from "./components/playlists/playlists.component";
+import {PlaylistComponent} from "./components/playlist/playlist.component";
+import {FavoriteAlbumsComponent} from "./components/favorite-albums/favorite-albums.component";
+import {FavoriteArtistComponent} from "./components/favorite-artist/favorite-artist.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
@@ -25,8 +30,13 @@ const routes: Routes = [
     {path: 'genre-details/:id', component: GenreDetailsComponent},
     {path: 'search/:name', component: SearchResultsComponent},
     {path: 'decouvrir', component: DecouvrirComponent},
-    {path: '', component: HomeComponent},
-    {path: '**', component: HomeComponent},
+    {path: 'favorite-tracks', component: FavoriteTracksComponent},
+    {path: 'favorite-albums', component: FavoriteAlbumsComponent},
+    {path: 'favorite-artists', component: FavoriteArtistComponent},
+    {path: 'playlists', component: PlaylistsComponent},
+    {path: 'playlist/:id', component: PlaylistComponent},
+    {path: 'home', component: HomeComponent},
+    {path: '**', redirectTo: 'home'}
 ];
 
 @NgModule({

@@ -6,28 +6,28 @@
     <app-search navbarLocation="sidebar"></app-search>
 
     <ul class="list-unstyled components">
-        <li [routerLink]="['']" [routerLinkActive]="['active']">
-            <a href="#">
+        <li [routerLink]="['/home']" [routerLinkActive]="['active']">
+            <a>
                 <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
                 Accueil</a>
         </li>
-        <li>
-            <a [routerLink]="['/musique']" [routerLinkActive]="['active']">
+        <li [routerLink]="['/musique']" [routerLinkActive]="['active']">
+            <a>
                 <fa-icon [icon]="faMusic" [fixedWidth]="true"></fa-icon>
                 Musiques</a>
         </li>
-        <li>
-            <a href="./podcasts">
-                <fa-icon [icon]="faMicrophone" [fixedWidth]="true"></fa-icon>
-                Podcasts</a>
-        </li>
-        <li>
-            <a href="./radios">
+<!--        <li [routerLink]="['/podcasts']" [routerLinkActive]="['active']">-->
+<!--            <a>-->
+<!--                <fa-icon [icon]="faMicrophone" [fixedWidth]="true"></fa-icon>-->
+<!--                Podcasts</a>-->
+<!--        </li>-->
+        <li [routerLink]="['/radios']" [routerLinkActive]="['active']">
+            <a>
                 <fa-icon [icon]="faPodcast" [fixedWidth]="true"></fa-icon>
                 Radios</a>
         </li>
-        <li>
-            <a href="./decouvrir">
+        <li [routerLink]="['/decouvrir']" [routerLinkActive]="['active']">
+            <a>
                 <fa-icon [icon]="faGripHorizontal" [fixedWidth]="true"></fa-icon>
                 Découvrir</a>
         </li>
@@ -37,21 +37,21 @@
                 <fa-icon [icon]="faStar" [fixedWidth]="true"></fa-icon>
                 Favoris</a>
             <ul class="collapse list-unstyled" id="favSubmenu">
-                <li>
-                    <a href="#">Titres</a>
+                <li [routerLink]="['/favorite-tracks']" [routerLinkActive]="['active']">
+                    <a>Titres</a>
                 </li>
-                <li>
-                    <a href="#">Playlists</a>
+                <li [routerLink]="['/playlists']" [routerLinkActive]="['active']">
+                    <a>Playlists</a>
                 </li>
-                <li>
-                    <a href="#">Albums</a>
+                <li [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']">
+                    <a>Albums</a>
                 </li>
-                <li>
-                    <a href="#">Artistes</a>
+                <li [routerLink]="['/favorite-artists']" [routerLinkActive]="['active']">
+                    <a>Artistes</a>
                 </li>
-                <li>
-                    <a href="#">Podcats</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="#">Podcats</a>-->
+<!--                </li>-->
             </ul>
         </li>
     </ul>

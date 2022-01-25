@@ -46,16 +46,21 @@ export class ArtistDetailsComponent implements OnInit {
         if (history.state?.artist?.id != null) {
             this.idArtist = history.state?.artist?.id;
             this.artist = history.state?.artist;
+
+            this.getTitres();
+            this.getPlaylist();
+            this.getRelatedArtistsList();
         } else {
-            this.idArtist = history.state?.id;
-            this.artist = history.state;
+            this._activatedRoute.params.subscribe(async (params) => {
+                this.artist = await firstValueFrom(this.deezerService.getArtist(params['id']));
+                this.idArtist = this.artist?.id;
+                this.getTitres();
+                this.getPlaylist();
+                this.getRelatedArtistsList();
+            });
         }
 
-        this.getTitres();
-        this.getPlaylist();
-        this.getRelatedArtistsList();
-
-        if (this.playerService.favoriteArtists == []) {
+        if (this.playerService.favoriteArtists.length == 0) {
             this.playerService.favoriteArtists = (await firstValueFrom(this.deezerService.getFavoriteArtists())).data;
         }
     }
@@ -114,7 +119,6 @@ export class ArtistDetailsComponent implements OnInit {
     }
 
     checkAll() {
-        console.log('checkAll');
         if (this.listCheck.every(check => !check.checked)) {
             this.listCheck.forEach(check => check.checked = true)
             if (this.titres?.data) {
@@ -124,12 +128,9 @@ export class ArtistDetailsComponent implements OnInit {
             this.listCheck.forEach(check => check.checked = false)
             this.trackToAdd = [];
         }
-        console.log(this.trackToAdd);
-        console.log(this.listCheck);
     }
 
     check(track: Track) {
-        console.log('check');
         this.listCheck.forEach(track1 => {
             if (track1.id == track.id) {
                 track1.checked = !track1.checked;
@@ -176,10 +177,10 @@ export class ArtistDetailsComponent implements OnInit {
 
     addToFavorites() {
         this.trackToAdd.forEach(track => {
-            this.favorite(track).then(data => {
-                this.trackToAdd = this.trackToAdd.filter(track1 => track1.id != track.id);
-            });
+            this.favorite(track);
         });
+        this.trackToAdd = [];
+        this.listCheck.forEach(check => check.checked = false);
     }
 
     isArtistFavorite() {

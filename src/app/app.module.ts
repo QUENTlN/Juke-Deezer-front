@@ -31,9 +31,13 @@ import { ChronoPipe } from './pipes/chrono.pipe';
 import { TrackListComponent } from './components/track-list/track-list.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {FeaturingPipe} from './featuring.pipe';
 import {AddToPlaylistFormComponent} from './components/add-to-playlist-form/add-to-playlist-form.component';
 import {HourMinSecPipe} from './pipes/hour-min-sec.pipe';
+import { FavoriteTracksComponent } from './components/favorite-tracks/favorite-tracks.component';
+import { PlaylistsComponent } from './components/playlists/playlists.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
+import { FavoriteAlbumsComponent } from './components/favorite-albums/favorite-albums.component';
+import { FavoriteArtistComponent } from './components/favorite-artist/favorite-artist.component';
 
 @NgModule({
     declarations: [
@@ -61,9 +65,13 @@ import {HourMinSecPipe} from './pipes/hour-min-sec.pipe';
         DecouvrirComponent,
         GenreDetailsComponent,
         SearchResultsComponent,
-        FeaturingPipe,
         AddToPlaylistFormComponent,
         HourMinSecPipe,
+        FavoriteTracksComponent,
+        PlaylistsComponent,
+        PlaylistComponent,
+        FavoriteAlbumsComponent,
+        FavoriteArtistComponent,
 
 
     ],

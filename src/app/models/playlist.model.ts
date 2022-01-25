@@ -1,4 +1,5 @@
 import {User} from "./user.model";
+import {Track} from "./track.model";
 
 export interface Playlist {
     id: number;
@@ -18,5 +19,7 @@ export interface Playlist {
     picture_xl: string;
     checksum: string;
     creator: User;
-    tracks: string;
+    tracks: {
+        data: Track[];
+    };
 }

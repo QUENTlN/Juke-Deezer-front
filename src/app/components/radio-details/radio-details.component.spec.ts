@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PodcastDetailsComponent } from './podcast-details.component';
+import { RadioDetailsComponent } from './radio-details.component';
 
-describe('PodcastDetailsComponent', () => {
-  let component: PodcastDetailsComponent;
-  let fixture: ComponentFixture<PodcastDetailsComponent>;
+describe('RadioDetailsComponent', () => {
+  let component: RadioDetailsComponent;
+  let fixture: ComponentFixture<RadioDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PodcastDetailsComponent ]
+      declarations: [ RadioDetailsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PodcastDetailsComponent);
+    fixture = TestBed.createComponent(RadioDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

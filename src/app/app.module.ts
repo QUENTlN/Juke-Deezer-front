@@ -13,7 +13,7 @@ import { SearchComponent } from './components/search/search.component';
 import { ContentComponent } from './components/content/content.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {MatCardModule} from '@angular/material/card';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RadiosComponent } from './components/radios/radios.component';
 import { GenresComponent } from './components/genres/genres.component';
 import {MusiqueComponent} from "./components/musique/musique.component";
@@ -29,7 +29,7 @@ import { ChronoPipe } from './pipes/chrono.pipe';
 import { TrackListComponent } from './components/track-list/track-list.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { OptionComponent } from './components/option/option.component';
-import { PodcastDetailsComponent } from './components/podcast-details/podcast-details.component';
+import { RadioDetailsComponent } from './components/radio-details/radio-details.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +57,7 @@ import { PodcastDetailsComponent } from './components/podcast-details/podcast-de
         GenreDetailsComponent,
         SearchResultsComponent,
         OptionComponent,
-        PodcastDetailsComponent,
+        RadioDetailsComponent,
     ],
     imports: [
         BrowserModule,

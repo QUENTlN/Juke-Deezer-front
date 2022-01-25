@@ -1,4 +1,4 @@
-<h1 style="font-family: 'Bahnschrift SemiBold'">Radios</h1>
+<h1>Radios</h1>
 <br><br>
 
 <div class="album-container">
@@ -6,7 +6,8 @@
         <mat-card class="album-card">
             <div class="album-cover">
                 <div class="image">
-                    <img src="{{radio.picture}}">
+                    <a [routerLink]="['/radio-details', radio.id]" [state]=radio (click)="click(radio)">
+                        <img src="{{radio.picture}}"></a>
                 </div>
             </div>
             <div>

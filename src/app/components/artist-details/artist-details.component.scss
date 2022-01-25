@@ -13,11 +13,7 @@
     border-radius: 12px;
 
 }
-.small_image {
-    height: 80px;
-    width:80px;
-    border-radius: 8px;
-}
+
 .playlist{
     display: flex;
     flex-wrap: wrap;
@@ -28,8 +24,7 @@
 }
 
 .tracks{
-    width: 70%;
-    float:left;
+
     margin-right: 30px;
 
 }
@@ -52,9 +47,8 @@ tr{
     line-height: 30px;
 }
 h3{
-    font-size: 0.8em;
+    font-size: 1.5em;
     margin-top: 20px;
-    font-family: "Bahnschrift SemiBold";
 }
 .album-cover2{
     margin-right: 30px;
@@ -269,4 +263,18 @@ input[type='checkbox'] {
     &:active {
         background-color: var(--accent-color);
     }
+}
+.small_image{
+    height: 50%;
+    width: 50%;
+    align-items: center;
+    margin: 10px 10px 10px 10px;
+
+
+
+}
+.playlisttext{
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }

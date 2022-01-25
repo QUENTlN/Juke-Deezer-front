@@ -13,6 +13,7 @@ import {GenreDetailsComponent} from "./components/genre-details/genre-details.co
 import {TrackListComponent} from "./components/track-list/track-list.component";
 import {SearchResultsComponent} from "./components/search-results/search-results.component";
 import {OptionComponent} from "./components/option/option.component";
+import {RadioDetailsComponent} from "./components/radio-details/radio-details.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
@@ -24,7 +25,7 @@ const routes: Routes = [
     {path: 'album-details/:id', component: AlbumDetailsComponent},
     {path: 'artist-details/:id', component: ArtistDetailsComponent},
     {path: 'genre-details/:id', component: GenreDetailsComponent},
-    {path: 'podcast-details/:id', component: PodcastsComponent},
+    {path: 'radio-details/:id', component: RadioDetailsComponent},
     {path: 'search/:name', component: SearchResultsComponent},
     {path: 'decouvrir', component: DecouvrirComponent},
     {path: 'option', component: OptionComponent},

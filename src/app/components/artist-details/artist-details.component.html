@@ -24,6 +24,8 @@
     </div>
 </div>
 <div class="body">
+    <div class="row row-cols-2">
+        <div class="col-7">
     <div class="tracks">
         <table class="table">
             <thead>
@@ -107,6 +109,8 @@
             </tbody>
         </table>
     </div>
+        </div>
+
     <!--<div class="tracks">
         <h2>Top titres</h2>
         <table class="table titres">
@@ -135,31 +139,31 @@
             </tbody>
         </table>
     </div>-->
-    <div class="playright">
-        <h2>PlayLists</h2>
-        <div class="playlist">
-
-            <div *ngFor="let playlist of playlists?.data let i=index" class="element">
-
-                <div *ngIf="i<3">
-                    <img src="{{playlist?.picture}}" class="small_image">
-                    <br>
-                    <p style="font-family: 'Bahnschrift SemiBold'">{{playlist?.title}}</p>
-
+        <div class="col-3">
+            <div class="playright">
+                <h2>PlayLists</h2>
+                <div class="playlist">
+                    <div *ngFor="let playlist of playlists?.data let i=index" class="element">
+                        <div style="display: flex" *ngIf="i<3">
+                            <img src="{{playlist?.picture_medium}}" class="small_image">
+                            <div class="playlisttext">
+                                <p style="text-align: center">{{playlist?.title}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 <app-add-to-playlist-form [tracksToAdd]="trackToAdd"></app-add-to-playlist-form>
-
+    </div></div>
 <br><br><br><br><br><br><br><br>
 <div>
 
 
     <br><br>
-    <div *ngIf="relatedArtists?.data != null"><h2>Artistes similaires</h2>
+    <div *ngIf="relatedArtists?.data != null"><h1>Artistes similaires</h1>
+        <br><br>
         <div class="album-container">
             <div *ngFor="let relatedArtist of relatedArtists?.data let i=index">
                 <div *ngIf="i<5">
@@ -182,5 +186,5 @@
         </div>
     </div>
 </div>
-
+<br><br>
 <app-artist-albums [idArtist]="idArtist"></app-artist-albums>

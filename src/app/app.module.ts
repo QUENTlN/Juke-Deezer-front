@@ -17,7 +17,6 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RadiosComponent } from './components/radios/radios.component';
 import { GenresComponent } from './components/genres/genres.component';
 import {MusiqueComponent} from "./components/musique/musique.component";
-import { PodcastsComponent } from './components/podcasts/podcasts.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 import { ArtistDetailsComponent } from './components/artist-details/artist-details.component';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
@@ -38,6 +37,7 @@ import { FavoriteAlbumsComponent } from './components/favorite-albums/favorite-a
 import { FavoriteArtistComponent } from './components/favorite-artist/favorite-artist.component';
 import { OptionComponent } from './components/option/option.component';
 import { RadioDetailsComponent } from './components/radio-details/radio-details.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
     declarations: [
@@ -56,7 +56,6 @@ import { RadioDetailsComponent } from './components/radio-details/radio-details.
         RadiosComponent,
         GenresComponent,
         MusiqueComponent,
-        PodcastsComponent,
         AlbumDetailsComponent,
         ArtistDetailsComponent,
         AlbumsListComponent,
@@ -73,6 +72,7 @@ import { RadioDetailsComponent } from './components/radio-details/radio-details.
         PlaylistComponent,
         FavoriteAlbumsComponent,
         FavoriteArtistComponent,
+        ProfilComponent,
 
 
     ],

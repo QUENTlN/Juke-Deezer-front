@@ -5,7 +5,6 @@ import {HomeComponent} from "./components/home/home.component";
 import {LogoutComponent} from "./components/logout/logout.component";
 import {RadiosComponent} from "./components/radios/radios.component";
 import {MusiqueComponent} from "./components/musique/musique.component";
-import {PodcastsComponent} from "./components/podcasts/podcasts.component";
 import {AlbumDetailsComponent} from "./components/album-details/album-details.component";
 import {ArtistDetailsComponent} from "./components/artist-details/artist-details.component";
 import {DecouvrirComponent} from "./components/decouvrir/decouvrir.component";
@@ -19,6 +18,7 @@ import {FavoriteAlbumsComponent} from "./components/favorite-albums/favorite-alb
 import {FavoriteArtistComponent} from "./components/favorite-artist/favorite-artist.component";
 import {OptionComponent} from "./components/option/option.component";
 import {RadioDetailsComponent} from "./components/radio-details/radio-details.component";
+import {ProfilComponent} from "./components/profil/profil.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
@@ -26,7 +26,6 @@ const routes: Routes = [
     {path: 'track-list', component: TrackListComponent},
     {path: 'radios', component: RadiosComponent},
     {path: 'musique', component: MusiqueComponent},
-    {path: 'podcasts', component: PodcastsComponent},
     {path: 'album-details/:id', component: AlbumDetailsComponent},
     {path: 'artist-details/:id', component: ArtistDetailsComponent},
     {path: 'genre-details/:id', component: GenreDetailsComponent},
@@ -39,6 +38,7 @@ const routes: Routes = [
     {path: 'favorite-artists', component: FavoriteArtistComponent},
     {path: 'playlists', component: PlaylistsComponent},
     {path: 'playlist/:id', component: PlaylistComponent},
+    {path: 'profil', component:ProfilComponent},
     {path: 'home', component: HomeComponent},
     {path: '**', redirectTo: 'home'}
 ];

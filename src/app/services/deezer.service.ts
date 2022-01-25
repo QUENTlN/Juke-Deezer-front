@@ -26,6 +26,7 @@ import {PlaylistList} from "../models/playlist-list.model";
 import {GenreList} from "../models/genre-list.model";
 import {AlbumUser} from "../models/album-user.model";
 import {AlbumUserList} from "../models/album-user-list.model";
+import {Options} from "../models/options.model";
 
 @Injectable({
     providedIn: 'root'
@@ -164,7 +165,7 @@ export class DeezerService {
                 value: id
             }
         ]);
-        return this.http.post<boolean>(this.getBaseUrl() + 'user/me/album', null, httpOptions)
+        return this.http.post<boolean>(this.getBaseUrl() + 'user/me/albums', null, httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -178,7 +179,7 @@ export class DeezerService {
                 value: id
             }
         ]);
-        return this.http.delete<boolean>(this.getBaseUrl() + 'user/me/album', httpOptions)
+        return this.http.delete<boolean>(this.getBaseUrl() + 'user/me/albums', httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -234,7 +235,7 @@ export class DeezerService {
                 value: id
             }
         ]);
-        return this.http.post<boolean>(this.getBaseUrl() + 'user/me/artist', null, httpOptions)
+        return this.http.post<boolean>(this.getBaseUrl() + 'user/me/artists', null, httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -248,7 +249,7 @@ export class DeezerService {
                 value: id
             }
         ]);
-        return this.http.delete<boolean>(this.getBaseUrl() + 'user/me/artist', httpOptions)
+        return this.http.delete<boolean>(this.getBaseUrl() + 'user/me/artists', httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -715,6 +716,14 @@ export class DeezerService {
             }
         ]);
         return this.http.post<boolean>(this.getBaseUrl() + 'playlist/' + id + '/tracks', null, httpOptions)
+            .pipe(
+                retry(this.NB_RETRY),
+                catchError(this.handleError)
+            );
+    }
+
+    getOptions() :Observable<Options>{
+        return this.http.get<Options>(this.getBaseUrl() + 'options', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

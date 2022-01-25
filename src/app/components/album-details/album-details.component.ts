@@ -52,6 +52,7 @@ export class AlbumDetailsComponent implements OnInit {
                 //     track.contributors = (await firstValueFrom(this.deezerService.getTrack(track.id))).contributors
                 // }); TODO: readd it
             }
+
         } else {
             this._activatedRoute.params.subscribe(params => {
                 this.deezerService.getAlbum(params['id'])

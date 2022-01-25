@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -14,12 +13,11 @@ import { SearchComponent } from './components/search/search.component';
 import { ContentComponent } from './components/content/content.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {MatCardModule} from '@angular/material/card';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RadiosComponent } from './components/radios/radios.component';
 import { GenresComponent } from './components/genres/genres.component';
 import {MusiqueComponent} from "./components/musique/musique.component";
 import { PodcastsComponent } from './components/podcasts/podcasts.component';
-import { ArtistComponent } from './components/artist/artist.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 import { ArtistDetailsComponent } from './components/artist-details/artist-details.component';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
@@ -38,6 +36,8 @@ import { PlaylistsComponent } from './components/playlists/playlists.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { FavoriteAlbumsComponent } from './components/favorite-albums/favorite-albums.component';
 import { FavoriteArtistComponent } from './components/favorite-artist/favorite-artist.component';
+import { OptionComponent } from './components/option/option.component';
+import { RadioDetailsComponent } from './components/radio-details/radio-details.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +57,6 @@ import { FavoriteArtistComponent } from './components/favorite-artist/favorite-a
         GenresComponent,
         MusiqueComponent,
         PodcastsComponent,
-        ArtistComponent,
         AlbumDetailsComponent,
         ArtistDetailsComponent,
         AlbumsListComponent,
@@ -65,6 +64,8 @@ import { FavoriteArtistComponent } from './components/favorite-artist/favorite-a
         DecouvrirComponent,
         GenreDetailsComponent,
         SearchResultsComponent,
+        OptionComponent,
+        RadioDetailsComponent,
         AddToPlaylistFormComponent,
         HourMinSecPipe,
         FavoriteTracksComponent,

@@ -18,7 +18,6 @@ import { RadiosComponent } from './components/radios/radios.component';
 import { GenresComponent } from './components/genres/genres.component';
 import {MusiqueComponent} from "./components/musique/musique.component";
 import { PodcastsComponent } from './components/podcasts/podcasts.component';
-import { ArtistComponent } from './components/artist/artist.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 import { ArtistDetailsComponent } from './components/artist-details/artist-details.component';
 import { AlbumsListComponent } from './components/albums-list/albums-list.component';
@@ -50,7 +49,6 @@ import { PodcastDetailsComponent } from './components/podcast-details/podcast-de
         GenresComponent,
         MusiqueComponent,
         PodcastsComponent,
-        ArtistComponent,
         AlbumDetailsComponent,
         ArtistDetailsComponent,
         AlbumsListComponent,

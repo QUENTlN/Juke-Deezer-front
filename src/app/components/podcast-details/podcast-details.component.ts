@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DeezerService} from "../../services/deezer.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-podcast-details',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PodcastDetailsComponent implements OnInit {
 
-  constructor() { }
-
+    constructor(
+        private deezerService:DeezerService,
+        private _activatedRoute: ActivatedRoute
+    ) {
+        this._activatedRoute.paramMap.subscribe(params => {
+            this.ngOnInit();
+        });
+    }
   ngOnInit(): void {
+      console.log(history.state)
   }
 
 }

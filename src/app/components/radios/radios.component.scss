@@ -10,6 +10,7 @@
         margin-right: 1%;
         margin-bottom: 10%;
         position:relative;
+        cursor: pointer;
 
         .album-cover {
             img {
@@ -32,7 +33,7 @@
     }
 }
 .form-control-feedback {
-    top: 70%;
+    top: 67%;
     left: 10%;
     position:absolute;
 }

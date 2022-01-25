@@ -1,9 +1,11 @@
 import { Component, OnInit} from '@angular/core';
 import {Album} from "../../models/album.model";
 import {DeezerService} from "../../services/deezer.service";
-import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import {faPlayCircle, faSquareFull} from '@fortawesome/free-solid-svg-icons';
 import {Artist} from "../../models/artist.model";
 import {Track} from "../../models/track.model";
+import {PlayerService} from "../../services/player.service";
+import {firstValueFrom} from "rxjs";
 
 
 @Component({
@@ -19,9 +21,9 @@ export class AlbumsListComponent implements OnInit {
     artistChart : Artist[] | undefined;
     trackChart : Track[] | undefined;
     data:any|undefined;
+    faSquareFull = faSquareFull;
 
-    constructor(private deezerService: DeezerService) {
-
+    constructor(private deezerService: DeezerService, private playerService: PlayerService) {
     }
 
     ngOnInit(): void {
@@ -63,5 +65,9 @@ export class AlbumsListComponent implements OnInit {
 
     }
 
+    async play(album: Album) {
+        this.playerService.setAlbum(await firstValueFrom(this.deezerService.getAlbum(album.id)));
+        this.playerService.jumpTo(0);
+    }
 }
 

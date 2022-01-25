@@ -496,8 +496,8 @@ export class DeezerService {
             );
     }
 
-    getRadioTracks(id: number): Observable<Track[]> {
-        return this.http.get<Track[]>(this.getBaseUrl() + 'radio/' + id + '/tracks', this.httpOptions)
+    getRadioTracks(id: number): Observable<TrackList> {
+        return this.http.get<TrackList>(this.getBaseUrl() + 'radio/' + id + '/tracks', this.httpOptions)
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

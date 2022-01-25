@@ -63,6 +63,10 @@ export class ArtistDetailsComponent implements OnInit {
         if (this.playerService.favoriteArtists.length == 0) {
             this.playerService.favoriteArtists = (await firstValueFrom(this.deezerService.getFavoriteArtists())).data;
         }
+
+        if (this.playerService.favoriteTracks.length == 0) {
+            this.playerService.favoriteTracks = (await firstValueFrom(this.deezerService.getFavoriteTracks())).data;
+        }
     }
 
     getTitres() {

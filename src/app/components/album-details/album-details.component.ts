@@ -58,6 +58,8 @@ export class AlbumDetailsComponent implements OnInit {
                 this.deezerService.getAlbum(params['id'])
                     .subscribe((data) => {
                             this.albumDetails = data;
+                            this.idArtist = data.artist.id;
+                            this.idAlbum = data.id;
                             this.albumDetails.tracks.data.forEach(track => {
                                 this.listCheck.push({id: track.id, checked: false});
                             })
@@ -68,6 +70,9 @@ export class AlbumDetailsComponent implements OnInit {
 
         if (this.playerService.favoriteAlbums.length == 0) {
             this.playerService.favoriteAlbums = (await firstValueFrom(this.deezerService.getFavoriteAlbums())).data;
+        }
+        if (this.playerService.favoriteTracks.length == 0) {
+            this.playerService.favoriteTracks = (await firstValueFrom(this.deezerService.getFavoriteTracks())).data;
         }
         this.albumDetails?.tracks.data.forEach(track => {
             this.listCheck.push({'id': track.id, 'checked': false})

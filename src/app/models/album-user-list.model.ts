@@ -1,5 +1,5 @@
-import {AlbumUser} from "./album-user.model";
+import {Track} from "./track.model";
 
 export interface AlbumUserList {
-    data: AlbumUser[];
+    data: Track[];
 }

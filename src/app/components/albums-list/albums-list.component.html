@@ -1,39 +1,29 @@
 <h1 style="font-family: 'Bahnschrift SemiBold'">Albums les plus écoutés</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let album of albumsChart let i=index">
-        <div *ngIf="i<8">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let album of albumsChart | slice:0:8; let i=index">
             <div class="album-cover">
                 <a [routerLink]="['/album-details', album.id]" [state]=album>
-                    <img src="{{album.cover_big}}" class="w-100 image" (click)="click(album)">
+                    <img src="{{album.cover_big}}" class="w-100 image rounded" (click)="click(album)">
                 </a>
-                <div class="d-flex w-100 justify-content-between">
-                    <h2>{{album.title}}</h2>
-
-                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
-
+                <div class="d-flex w-100 justify-content-between album-footer">
+                    <div>
+                        <h2>{{album.title}}</h2>
+                        <h3>{{album.artist.name}}</h3>
+                    </div>
+                    <fa-icon [icon]="faPlayCircle" size="3x" (click)="play(album)" [mask]="faSquareFull" class="background-circle"></fa-icon>
                 </div>
-            </div>
         </div>
     </div>
 </div>
 
-<br><br><br><br><br><br>
-
 <h1 style="font-family: 'Bahnschrift SemiBold'">Top Artistes</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artist of artistChart let i=index">
-        <div *ngIf="i<8">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artist of artistChart | slice:0:8; let i=index">
             <div class="album-cover2">
                 <a [routerLink]="['/album-details', artist.id]" [state]=artist>
                     <img src="{{artist.picture_big}}" style="border-radius: 50%" class="w-100 image" (click)="click(artist)">
                 </a>
-                    <h2>{{artist.name}}</h2>
+                    <h2 class="artist-name">{{artist.name}}</h2>
             </div>
-        </div>
     </div>
 </div>
-
-<br><br><br><br><br><br>
-<app-podcasts></app-podcasts>

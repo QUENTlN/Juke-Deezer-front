@@ -10,6 +10,8 @@
 </div>
 <br><br>
 <div class="wrapper">
+    <div class="listapp"><app-playlists></app-playlists></div>
+    <div class="listapptext"><a [routerLink]="['/playlists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
     <div class="listapp"><app-favorite-albums></app-favorite-albums></div>
     <div class="listapptext"><a [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
     <div class="listapp"><app-favorite-tracks></app-favorite-tracks></div>

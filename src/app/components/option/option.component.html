@@ -1,0 +1,85 @@
+<h1>Paramètres</h1>
+<br><br>
+
+<div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">Thème</h5>
+    <div class="form-check form-switch">
+        <input class="form-check-input" data-onstyle="secondary" type="checkbox" (input)="toggleTheme()" role="switch" id="flexSwitchCheckChecked" checked />
+    </div>
+</div>
+<p class="mb-1">Clair / Sombre</p><br><br><hr><br><br>
+
+<div *ngIf="this.options!=undefined" class="list-group">
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Streaming</h5>
+            <small>{{boolToString(this.options.streaming)}}</small>
+    </div>
+    <p class="mb-1">If the user can stream on the platform</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Durée de streaming</h5>
+        <small>{{this.options.streaming_duration}}</small>
+    </div>
+    <p class="mb-1">the streaming duration of the user</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Offline</h5>
+        <small>{{boolToString(this.options.offline)}}</small>
+    </div>
+    <p class="mb-1">The user can listen to the music in offline mode</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">HQ</h5>
+        <small>{{boolToString(this.options.hq)}}</small>
+    </div>
+    <p class="mb-1">The HQ can be activated</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Displays ads</h5>
+        <small>{{boolToString(this.options.ads_display)}}</small>
+    </div>
+    <p class="mb-1">Displays ads</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Audio ads</h5>
+        <small>{{boolToString(this.options.ads_audio)}}</small>
+    </div>
+    <p class="mb-1">Activates audio ads</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Devices</h5>
+        <small>{{boolToString(this.options.too_many_devices)}}</small>
+    </div>
+    <p class="mb-1">If the user reached the limit of linked devices</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Souscription</h5>
+        <small>{{boolToString(this.options.can_subscribe)}}</small>
+    </div>
+    <p class="mb-1">If the user can subscribe to the service</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Skips Radio</h5>
+        <small>{{this.options.radio_skips}}</small>
+    </div>
+    <p class="mb-1">The limit of radio skips. 0 = no limit</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Lossless</h5>
+        <small>{{boolToString(this.options.lossless)}}</small>
+    </div>
+    <p class="mb-1">Lossless is available</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Preview</h5>
+        <small>{{boolToString(this.options.preview)}}</small>
+    </div>
+    <p class="mb-1">Allows to display the preview of the tracks</p><br><br><hr><br><br>
+
+    <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Radio</h5>
+        <small>{{boolToString(this.options.lossless)}}</small>
+    </div>
+    <p class="mb-1">Allows to stream the radio</p><br><br><hr><br><br>
+
+</div>

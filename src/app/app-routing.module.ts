@@ -17,6 +17,8 @@ import {PlaylistsComponent} from "./components/playlists/playlists.component";
 import {PlaylistComponent} from "./components/playlist/playlist.component";
 import {FavoriteAlbumsComponent} from "./components/favorite-albums/favorite-albums.component";
 import {FavoriteArtistComponent} from "./components/favorite-artist/favorite-artist.component";
+import {OptionComponent} from "./components/option/option.component";
+import {RadioDetailsComponent} from "./components/radio-details/radio-details.component";
 
 const routes: Routes = [
     {path: 'auth', component: AuthenticationComponent},
@@ -28,8 +30,10 @@ const routes: Routes = [
     {path: 'album-details/:id', component: AlbumDetailsComponent},
     {path: 'artist-details/:id', component: ArtistDetailsComponent},
     {path: 'genre-details/:id', component: GenreDetailsComponent},
+    {path: 'radio-details/:id', component: RadioDetailsComponent},
     {path: 'search/:name', component: SearchResultsComponent},
     {path: 'decouvrir', component: DecouvrirComponent},
+    {path: 'option', component: OptionComponent},
     {path: 'favorite-tracks', component: FavoriteTracksComponent},
     {path: 'favorite-albums', component: FavoriteAlbumsComponent},
     {path: 'favorite-artists', component: FavoriteArtistComponent},

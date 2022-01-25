@@ -13,6 +13,7 @@ export class RadiosComponent implements OnInit {
     faPlayCircle=faPlayCircle;
 
     radios: RadioList | undefined;
+    data:any|undefined;
 
 
     constructor(private deezerService: DeezerService) { }
@@ -25,5 +26,11 @@ export class RadiosComponent implements OnInit {
                 console.log(data)
     }
   );
+    }
+
+    click(data: any | undefined) {
+        console.log(this.data)
+        this.data = data
+
     }
 }

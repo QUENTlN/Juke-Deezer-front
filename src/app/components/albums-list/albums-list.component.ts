@@ -2,11 +2,9 @@ import { Component, OnInit} from '@angular/core';
 import {Album} from "../../models/album.model";
 import {DeezerService} from "../../services/deezer.service";
 import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
-import {AlbumList} from "../../models/album-list.model";
-import {ArtistList} from "../../models/artist-list.model";
-import {TrackList} from "../../models/track-list.model";
 import {Artist} from "../../models/artist.model";
 import {Track} from "../../models/track.model";
+
 
 @Component({
   selector: 'app-albums-list',

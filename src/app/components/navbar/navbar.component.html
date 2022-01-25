@@ -30,7 +30,7 @@
 
     <ul *ngIf="isConnected()" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
         aria-labelledby="dropdownUserMenu">
-        <li><a class="dropdown-item" href="#">Profil</a></li>
+        <li><a class="dropdown-item"[routerLink]="['/profil']" [routerLinkActive]="['active']">Profil</a></li>
         <li><a class="dropdown-item" [routerLink]="['/option']" [routerLinkActive]="['active']">Paramètres</a></li>
         <li><a class="dropdown-item" [routerLink]="['/logout']" [routerLinkActive]="['active']">Déconnexion</a></li>
     </ul>

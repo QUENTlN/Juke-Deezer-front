@@ -37,6 +37,7 @@ import { FavoriteAlbumsComponent } from './components/favorite-albums/favorite-a
 import { FavoriteArtistComponent } from './components/favorite-artist/favorite-artist.component';
 import { OptionComponent } from './components/option/option.component';
 import { RadioDetailsComponent } from './components/radio-details/radio-details.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
     declarations: [
@@ -71,6 +72,7 @@ import { RadioDetailsComponent } from './components/radio-details/radio-details.
         PlaylistComponent,
         FavoriteAlbumsComponent,
         FavoriteArtistComponent,
+        ProfilComponent,
 
 
     ],

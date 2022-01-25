@@ -1,0 +1,19 @@
+<div class="d-flex flex-column align-items-center flex-md-row align-items-md-start header">
+    <div class="img rounded-circle">
+        <img [src]="me?.picture_big" class="rounded-circle" alt="album cover">
+    </div>
+
+    <div class="d-flex flex-column align-items-center align-items-md-start">
+        <span class="titre">{{ me?.name }}</span>
+
+    </div>
+</div>
+<br><br>
+<div class="wrapper">
+    <div class="listapp"><app-favorite-albums></app-favorite-albums></div>
+    <div class="listapptext"><a [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+    <div class="listapp"><app-favorite-tracks></app-favorite-tracks></div>
+    <div class="listapptext"><a [routerLink]="['/favorite-tracks']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+    <div class="listapp"><app-favorite-artist></app-favorite-artist></div>
+    <div class="listapptext"><a [routerLink]="['/favorite-artists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+</div>

@@ -1,0 +1,38 @@
+.header {
+    img {
+        height: 300px;
+        width: 300px;
+        margin: 0 30px;
+        border-radius: 5px;
+        box-shadow: 0 10px 30px 0 rgba(0, 0, 0, .3), 0 1px 2px 0 rgba(0, 0, 0, .2);
+    }
+
+    span.titre {
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    span.artist {
+        font-size: 1.5rem;
+        color: var(--font-color);
+        text-decoration: underline var(--font-color);
+    }
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr ;
+
+}
+.listapp{
+    height:25em;
+    overflow: hidden;
+    margin: 20px 20px 20px 20px
+}
+.listapptext {
+    margin-top:30px;
+    font-size: 1em;
+
+}
+.listapptext.a {
+    color: grey;
+}

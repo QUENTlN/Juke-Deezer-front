@@ -1,5 +1,5 @@
 <div class="form-group has-search"
      [ngClass]="{'sidebar-search': this.navbarLocation == 'sidebar', 'navbar-search' : this.navbarLocation == 'navbar'}">
     <fa-icon [icon]="faSearch" class="form-control-feedback"></fa-icon>
-    <input #searchBox [routerLink]="['/search', value]" (input)="search(searchBox.value)" [(ngModel)]= "value" type="text" class="form-control rounded-pill" placeholder="Chercher" >
+    <input #searchBox (input)="search(searchBox.value)" type="text" class="form-control rounded-pill" placeholder="Chercher" >
 </div>

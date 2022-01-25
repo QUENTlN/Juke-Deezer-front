@@ -24,7 +24,6 @@ export class AddToPlaylistFormComponent implements OnInit {
     async ngOnInit() {
         this.deezerService.getPlaylistsByUser().subscribe(playlists => {
             this.playlists = playlists;
-            console.log(playlists);
             playlists.data.forEach(playlist => {
                 this.form.addControl(playlist.id.toString(),new FormControl(false))
             });

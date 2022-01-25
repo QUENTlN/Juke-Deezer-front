@@ -290,7 +290,7 @@ export class DeezerService {
     }
 
     getPlaylistsChart(): Observable<Playlist[]> {
-        return this.http.get<Playlist[]>(this.getBaseUrl() + 'chart/playlists', this.httpOptions)
+        return this.http.get<Playlist[]>(this.getBaseUrl() + 'chart/playlists', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -409,7 +409,7 @@ export class DeezerService {
     // Playlist endpoints
 
     getPlaylist(id: number): Observable<Playlist> {
-        return this.http.get<Playlist>(this.getBaseUrl() + 'playlist/' + id, this.httpOptions)
+        return this.http.get<Playlist>(this.getBaseUrl() + 'playlist/' + id, this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)
@@ -700,7 +700,7 @@ export class DeezerService {
     }
 
     getFavoriteArtists(): Observable<ArtistList> {
-        return this.http.get<ArtistList>(this.getBaseUrl() + 'user/me/artist', this.getHttpOptions())
+        return this.http.get<ArtistList>(this.getBaseUrl() + 'user/me/artists', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

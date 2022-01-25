@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
+import {Router} from "@angular/router";
 
 
 
@@ -14,21 +15,15 @@ export class SearchComponent implements OnInit {
     faSearch = faSearch;
 
     @Input() navbarLocation: string = 'navbar'
-    value: string|undefined;
-    private searchTerms = new Subject<string>();
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     search(term: string): void {
-        this.searchTerms.next(term);
+        this.router.navigate(['/search', term]);
     }
 
-    async ngOnInit(): Promise<void> {
-        this.searchTerms.pipe(
-            debounceTime(100),
-            distinctUntilChanged()
-        );
+    ngOnInit(): void {
     }
 
 

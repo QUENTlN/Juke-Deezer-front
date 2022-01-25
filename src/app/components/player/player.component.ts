@@ -197,11 +197,14 @@ export class PlayerComponent implements OnInit {
      }
 
     @HostListener('document:keydown.space', ['$event']) onKeydownHandler(event: KeyboardEvent) {
-        event.preventDefault()
-        if (this.isAudioPlaying) {
-            this.pause();
-        } else {
-            this.play();
+        const el = event.target as HTMLInputElement
+        if (el.tagName != 'INPUT') {
+            event.preventDefault()
+            if (this.isAudioPlaying) {
+                this.pause();
+            } else {
+                this.play();
+            }
         }
     }
 }

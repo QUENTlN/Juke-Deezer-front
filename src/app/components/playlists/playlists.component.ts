@@ -11,7 +11,7 @@ import {Playlist} from "../../models/playlist.model";
 })
 export class PlaylistsComponent implements OnInit {
 
-    playlists: Playlist[] = [];
+    public playlists: Playlist[] = [];
 
     constructor(private deezerService: DeezerService) {
     }

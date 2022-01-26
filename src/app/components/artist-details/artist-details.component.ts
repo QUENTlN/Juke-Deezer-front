@@ -18,18 +18,18 @@ import {PlayerService} from "../../services/player.service";
 })
 export class ArtistDetailsComponent implements OnInit {
 
-    faEllipsisH = faEllipsisH;
-    faPlayCircle = faPlayCircle;
-    fasHeart = fasHeart;
-    farHeart = farHeart;
-    idArtist: number | undefined;
-    artist: Artist | undefined;
-    titres: TrackList | undefined;
-    playlists: PlaylistList | undefined;
-    relatedArtists: ArtistList | undefined;
+    public faEllipsisH = faEllipsisH;
+    public faPlayCircle = faPlayCircle;
+    public fasHeart = fasHeart;
+    public farHeart = farHeart;
+    public idArtist: number | undefined;
+    public artist: Artist | undefined;
+    public titres: TrackList | undefined;
+    public playlists: PlaylistList | undefined;
+    public relatedArtists: ArtistList | undefined;
 
-    trackToAdd: Track[] = [];
-    listCheck: { id: number, checked: boolean }[] = [];
+    public trackToAdd: Track[] = [];
+    public listCheck: { id: number, checked: boolean }[] = [];
 
     constructor(
         private deezerService: DeezerService,

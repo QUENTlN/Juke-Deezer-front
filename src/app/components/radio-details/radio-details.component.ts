@@ -15,17 +15,17 @@ import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 })
 export class RadioDetailsComponent implements OnInit {
 
-    faEllipsisH = faEllipsisH
-    faPlayCircle = faPlayCircle;
-    fasHeart = fasHeart;
-    farHeart = farHeart;
+    public faEllipsisH = faEllipsisH
+    public faPlayCircle = faPlayCircle;
+    public fasHeart = fasHeart;
+    public farHeart = farHeart;
 
-    idRadio: number | undefined;
-    radio: Radio | undefined;
-    tracks: Track[] | undefined;
+    public idRadio: number | undefined;
+    public radio: Radio | undefined;
+    public tracks: Track[] | undefined;
 
-    trackToAdd: Track[] = [];
-    listCheck: { id: number, checked: boolean }[] = [];
+    public trackToAdd: Track[] = [];
+    public listCheck: { id: number, checked: boolean }[] = [];
 
     constructor(
         private deezerService: DeezerService,

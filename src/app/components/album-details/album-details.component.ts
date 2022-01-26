@@ -18,18 +18,18 @@ import {Track} from "../../models/track.model";
 
 export class AlbumDetailsComponent implements OnInit {
 
-    faEllipsisH = faEllipsisH
-    faPlay = faPlay;
-    faPlayCircle = faPlayCircle;
-    fasHeart = fasHeart;
-    farHeart = farHeart;
-    albumDetails: Album | undefined;
-    idArtist: number | undefined;
-    idAlbum: number | undefined;
-    artist: Artist | undefined;
+    public faEllipsisH = faEllipsisH
+    public faPlay = faPlay;
+    public faPlayCircle = faPlayCircle;
+    public fasHeart = fasHeart;
+    public farHeart = farHeart;
+    public albumDetails: Album | undefined;
+    public idArtist: number | undefined;
+    public idAlbum: number | undefined;
+    public artist: Artist | undefined;
 
-    trackToAdd: Track[] = [];
-    listCheck: { id: number, checked: boolean }[] = [];
+    public trackToAdd: Track[] = [];
+    public listCheck: { id: number, checked: boolean }[] = [];
 
     constructor(
         private deezerService: DeezerService,

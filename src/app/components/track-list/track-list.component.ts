@@ -10,7 +10,7 @@ import {faPlay} from '@fortawesome/free-solid-svg-icons';
 })
 export class TrackListComponent implements OnInit {
 
-    faPlay = faPlay;
+    public faPlay = faPlay;
 
     constructor(private playerService: PlayerService) {
     }

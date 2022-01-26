@@ -17,14 +17,14 @@ import {Artist} from "../../models/artist.model";
 })
 export class GenreDetailsComponent implements OnInit {
 
-    faPlayCircle=faPlayCircle;
+    public faPlayCircle=faPlayCircle;
 
-    artists: Artist[] = [];
-    idGenre: number | undefined;
-    genre: Genre | undefined;
-    radios: Radio[] = [];
-    data: any | undefined;
-    genreTitle: string | undefined;
+    public artists: Artist[] = [];
+    public idGenre: number | undefined;
+    public genre: Genre | undefined;
+    public radios: Radio[] = [];
+    public data: any | undefined;
+    public genreTitle: string | undefined;
 
     constructor(
         private deezerService: DeezerService,

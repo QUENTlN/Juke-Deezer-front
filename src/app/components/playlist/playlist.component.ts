@@ -15,14 +15,14 @@ import {PlayerService} from "../../services/player.service";
 })
 export class PlaylistComponent implements OnInit {
 
-    faEllipsisH = faEllipsisH
-    faPlay = faPlay;
-    faPlayCircle = faPlayCircle;
-    fasHeart = fasHeart;
-    farHeart = farHeart;
+    public faEllipsisH = faEllipsisH
+    public faPlay = faPlay;
+    public faPlayCircle = faPlayCircle;
+    public fasHeart = fasHeart;
+    public farHeart = farHeart;
 
-    trackToAdd: Track[] = [];
-    listCheck: { id: number, checked: boolean }[] = [];
+    public trackToAdd: Track[] = [];
+    public listCheck: { id: number, checked: boolean }[] = [];
 
     public playlist: Playlist | undefined;
 

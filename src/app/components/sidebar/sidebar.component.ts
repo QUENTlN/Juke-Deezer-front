@@ -19,15 +19,14 @@ import {Router, Routes} from "@angular/router";
 })
 export class SidebarComponent implements OnInit {
 
-    @Input() show: boolean = true;
+    @Input() public show: boolean = true;
 
-    faSearch = faSearch;
-    faHome = faHome;
-    faMusic = faMusic;
-    faMicrophone = faMicrophone;
-    faPodcast = faPodcast;
-    faStar = faStar;
-    faGripHorizontal = faGripHorizontal;
+    public faSearch = faSearch;
+    public faHome = faHome;
+    public faMusic = faMusic;
+    public faPodcast = faPodcast;
+    public faStar = faStar;
+    public faGripHorizontal = faGripHorizontal;
 
     constructor(public route: Router, public themeService: ThemeService) {
     }

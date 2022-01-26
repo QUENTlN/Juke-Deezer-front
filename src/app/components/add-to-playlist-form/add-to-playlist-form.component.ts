@@ -12,7 +12,7 @@ import {ThemeService} from "../../services/theme.service";
 })
 export class AddToPlaylistFormComponent implements OnInit {
 
-    @Input() tracksToAdd: Track[] = [];
+    @Input() public tracksToAdd: Track[] = [];
 
     public playlists: PlaylistList | undefined;
 

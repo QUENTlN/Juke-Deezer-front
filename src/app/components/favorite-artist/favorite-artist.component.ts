@@ -11,7 +11,7 @@ import {PlayerService} from "../../services/player.service";
 })
 export class FavoriteArtistComponent implements OnInit {
 
-    artists: Artist[] = [];
+    public artists: Artist[] = [];
 
     constructor(private deezerService: DeezerService, private playerService: PlayerService) {
     }

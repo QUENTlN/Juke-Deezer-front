@@ -16,15 +16,15 @@ import {firstValueFrom} from "rxjs";
 })
 export class SearchResultsComponent implements OnInit {
 
-    faSquareFull = faSquareFull;
-    faPlayCircle = faPlayCircle;
-    @Input() value: string | null | undefined;
+    public faSquareFull = faSquareFull;
+    public faPlayCircle = faPlayCircle;
+    @Input() public value: string | null | undefined;
 
-    albumBySearch: Album[] | undefined;
-    artistBySearch: Artist[] | undefined;
-    trackBySearch: Track[] | undefined;
+    public albumBySearch: Album[] | undefined;
+    public artistBySearch: Artist[] | undefined;
+    public trackBySearch: Track[] | undefined;
 
-    data: any | undefined;
+    public data: any | undefined;
 
 
     constructor(

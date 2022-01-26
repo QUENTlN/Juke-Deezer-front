@@ -15,13 +15,13 @@ import {firstValueFrom} from "rxjs";
 })
 export class AlbumsListComponent implements OnInit {
 
-    faPlayCircle=faPlayCircle;
-    idArtist:number|undefined;
-    albumsChart : Album[] | undefined;
-    artistChart : Artist[] | undefined;
-    trackChart : Track[] | undefined;
-    data:any|undefined;
-    faSquareFull = faSquareFull;
+    public faPlayCircle=faPlayCircle;
+    public idArtist:number|undefined;
+    public albumsChart : Album[] | undefined;
+    public artistChart : Artist[] | undefined;
+    public trackChart : Track[] | undefined;
+    public data:any|undefined;
+    public faSquareFull = faSquareFull;
 
     constructor(private deezerService: DeezerService, private playerService: PlayerService) {
     }

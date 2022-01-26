@@ -14,26 +14,26 @@ import {firstValueFrom, Subject} from "rxjs";
 })
 export class PlayerComponent implements OnInit {
 
-    @ViewChild('audioPlayer', {static: true}) audioPlayer: ElementRef | any;
+    @ViewChild('audioPlayer', {static: true}) public audioPlayer: ElementRef | any;
 
-    fasHeart = fasHeart;
-    farHeart = farHeart;
+    public fasHeart = fasHeart;
+    public farHeart = farHeart;
 
-    totalAudioLength: number = 0;
-    currentAudioTime: number = 0;
-    isAudioLoaded: boolean = false;
-    isAudioPlaying: boolean = false;
-    isRepeat: boolean = false;
-    audioVolume: number = 100;
-    isAudioEnded: Subject<any> = new Subject;
-    isMute: boolean = false;
+    public totalAudioLength: number = 0;
+    public currentAudioTime: number = 0;
+    public isAudioLoaded: boolean = false;
+    public isAudioPlaying: boolean = false;
+    public isRepeat: boolean = false;
+    public audioVolume: number = 100;
+    public isAudioEnded: Subject<any> = new Subject;
+    public isMute: boolean = false;
 
-    selectedAudio: any;
-    repeatActive: boolean = false;
-    isError: boolean = true;
-    isShuffle: boolean = false;
-    volumeBeforeMute: number = 0.5;
-    isTrackListOpen: boolean = false;
+    public selectedAudio: any;
+    public repeatActive: boolean = false;
+    public isError: boolean = true;
+    public isShuffle: boolean = false;
+    public volumeBeforeMute: number = 0.5;
+    public isTrackListOpen: boolean = false;
 
     constructor(private playerService: PlayerService, private deezerService: DeezerService, private location: Location) {
     }

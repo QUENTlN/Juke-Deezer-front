@@ -12,9 +12,9 @@ import {Router} from "@angular/router";
 })
 export class SearchComponent implements OnInit {
 
-    faSearch = faSearch;
+    public faSearch = faSearch;
 
-    @Input() navbarLocation: string = 'navbar'
+    @Input() public navbarLocation: string = 'navbar'
 
     constructor(private router: Router) {
     }

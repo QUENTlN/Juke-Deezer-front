@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {DeezerService} from "../../services/deezer.service";
 import {Album} from "../../models/album.model";
 import {faPlayCircle, faSquareFull} from '@fortawesome/free-solid-svg-icons';
+import {firstValueFrom} from "rxjs";
+import {PlayerService} from "../../services/player.service";
 
 @Component({
     selector: 'app-artist-albums',
@@ -19,7 +21,8 @@ export class ArtistAlbumsComponent implements OnInit, OnChanges {
 
     constructor(
         private deezerService: DeezerService,
-        private _activatedRoute: ActivatedRoute
+        private _activatedRoute: ActivatedRoute,
+        private playerService: PlayerService
     ) {
         this._activatedRoute.paramMap.subscribe(params => {
             this.ngOnInit();
@@ -47,6 +50,11 @@ export class ArtistAlbumsComponent implements OnInit, OnChanges {
 
     click(album: Album | undefined) {
         this.album = album
+    }
+
+    async playAlbum(album: Album) {
+        this.playerService.setAlbum(await firstValueFrom(this.deezerService.getAlbum(album.id)));
+        this.playerService.jumpTo(0);
     }
 
 }

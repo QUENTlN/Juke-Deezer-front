@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, RouterLink} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {DeezerService} from "../../services/deezer.service";
 import {Playlist} from "../../models/playlist.model";
 import {Track} from "../../models/track.model";
-import {faEllipsisH, faPlay, faPlayCircle, faHeart as fasHeart} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faHeart as fasHeart, faPlay, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 import {firstValueFrom} from "rxjs";
 import {PlayerService} from "../../services/player.service";

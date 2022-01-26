@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Album} from "../../models/album.model";
 import {DeezerService} from "../../services/deezer.service";
 import {faPlayCircle, faSquareFull} from '@fortawesome/free-solid-svg-icons';
@@ -9,18 +9,18 @@ import {firstValueFrom} from "rxjs";
 
 
 @Component({
-  selector: 'app-albums-list',
-  templateUrl: './albums-list.component.html',
-  styleUrls: ['./albums-list.component.scss']
+    selector: 'app-albums-list',
+    templateUrl: './albums-list.component.html',
+    styleUrls: ['./albums-list.component.scss']
 })
 export class AlbumsListComponent implements OnInit {
 
-    public faPlayCircle=faPlayCircle;
-    public idArtist:number|undefined;
-    public albumsChart : Album[] | undefined;
-    public artistChart : Artist[] | undefined;
-    public trackChart : Track[] | undefined;
-    public data:any|undefined;
+    public faPlayCircle = faPlayCircle;
+    public idArtist: number | undefined;
+    public albumsChart: Album[] | undefined;
+    public artistChart: Artist[] | undefined;
+    public trackChart: Track[] | undefined;
+    public data: any | undefined;
     public faSquareFull = faSquareFull;
 
     constructor(private deezerService: DeezerService, private playerService: PlayerService) {
@@ -31,9 +31,9 @@ export class AlbumsListComponent implements OnInit {
         this.getArtistChart()
         this.getTrackChart()
 
-        }
+    }
 
-    getAlbumChart(){
+    getAlbumChart() {
         this.deezerService.getChart()
             .subscribe((data) => {
                     this.albumsChart = data?.albums?.data;
@@ -42,7 +42,7 @@ export class AlbumsListComponent implements OnInit {
 
     }
 
-    getArtistChart(){
+    getArtistChart() {
         this.deezerService.getChart()
             .subscribe((data) => {
                     this.artistChart = data?.artists?.data;
@@ -50,7 +50,8 @@ export class AlbumsListComponent implements OnInit {
             );
 
     }
-    getTrackChart(){
+
+    getTrackChart() {
         this.deezerService.getChart()
             .subscribe((data) => {
                     this.trackChart = data?.tracks?.data;
@@ -61,8 +62,6 @@ export class AlbumsListComponent implements OnInit {
 
     click(data: any | undefined) {
         this.data = data
-        console.log(this.data)
-
     }
 
     async play(album: Album) {

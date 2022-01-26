@@ -1,29 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import {User} from "../../models/user.model";
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.scss']
+    selector: 'app-profil',
+    templateUrl: './profil.component.html',
+    styleUrls: ['./profil.component.scss']
 })
 export class ProfilComponent implements OnInit {
 
-    public me:User|undefined;
+    public me: User | undefined;
 
-    constructor(private deezerService: DeezerService) { }
+    constructor(private deezerService: DeezerService) {
+    }
 
     ngOnInit(): void {
         this.getUserInfo()
     }
 
-    getUserInfo(){
+    getUserInfo() {
         this.deezerService.getMe()
             .subscribe((data) => {
-                this.me = data;
-              }
-          );
+                    this.me = data;
+                }
+            );
 
-  }
+    }
 
 }

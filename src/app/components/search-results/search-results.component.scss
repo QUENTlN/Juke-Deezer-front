@@ -25,11 +25,11 @@ h3 {
     margin-bottom: 30px;
 }
 
-.background-circle{
+.background-circle {
     cursor: pointer;
-    margin-top:15px;
+    margin-top: 15px;
     margin-bottom: auto;
-    background: rgb(226,56,56);
+    background: rgb(226, 56, 56);
     background: var(--accent-gradient);
     color: var(--background-color);
     border: 4px solid var(--background-color);
@@ -40,7 +40,7 @@ h3 {
     min-height: 7rem;
 }
 
-.album-cover:hover .background-circle{
+.album-cover:hover .background-circle {
     display: block;
 }
 

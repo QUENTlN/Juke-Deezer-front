@@ -1,6 +1,7 @@
 <h1>Playlists</h1>
 <div class="playlists row mt-5">
-    <div class="playlist col-xl-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let playlist of playlists" [routerLink]="['/playlist', playlist.id]">
+    <div *ngFor="let playlist of playlists" [routerLink]="['/playlist', playlist.id]"
+         class="playlist col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
         <img [src]="playlist.picture_big" alt="playlist cover" class="w-100 rounded">
         <div class="playlist-header mt-2">
             <h5>{{playlist.title}}</h5>

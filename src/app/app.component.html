@@ -1,7 +1,7 @@
 <div class="wrapper">
     <app-sidebar [show]="isSidebarDisplayed"></app-sidebar>
 
-    <app-content [isSidebarDisplay]="isSidebarDisplayed" (showSidebar)="toggleSidebar()"></app-content>
+    <app-content (showSidebar)="toggleSidebar()" [isSidebarDisplay]="isSidebarDisplayed"></app-content>
 </div>
 
 <app-player></app-player>

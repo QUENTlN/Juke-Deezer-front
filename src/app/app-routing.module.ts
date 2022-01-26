@@ -38,7 +38,7 @@ const routes: Routes = [
     {path: 'favorite-artists', component: FavoriteArtistComponent},
     {path: 'playlists', component: PlaylistsComponent},
     {path: 'playlist/:id', component: PlaylistComponent},
-    {path: 'profil', component:ProfilComponent},
+    {path: 'profil', component: ProfilComponent},
     {path: 'home', component: HomeComponent},
     {path: '**', redirectTo: 'home'}
 ];

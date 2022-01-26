@@ -2,14 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    position:relative;
+    position: relative;
 
     .album-card {
         width: 200px;
         height: 200px;
         margin-right: 1%;
         margin-bottom: 10%;
-        position:relative;
+        position: relative;
         cursor: pointer;
 
         .album-cover {
@@ -20,9 +20,10 @@
                 margin-bottom: 10%;
             }
         }
+
         h2 {
-            margin: 0px;
-            position:absolute;
+            margin: 0;
+            position: absolute;
             text-align: center;
             top: 50%;
             left: 50%;
@@ -33,8 +34,9 @@
 
     }
 }
+
 .form-control-feedback {
     top: 67%;
     left: 10%;
-    position:absolute;
+    position: absolute;
 }

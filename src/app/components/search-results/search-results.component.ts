@@ -52,7 +52,6 @@ export class SearchResultsComponent implements OnInit {
             this.deezerService.searchAlbums(this.value)
                 .subscribe((data) => {
                         this.albumBySearch = data?.data;
-                        console.log(data)
                     }
                 );
         }
@@ -63,7 +62,6 @@ export class SearchResultsComponent implements OnInit {
             this.deezerService.searchArtists(this.value)
                 .subscribe((data) => {
                         this.artistBySearch = data?.data;
-                        console.log(data)
                     }
                 );
         }
@@ -74,14 +72,12 @@ export class SearchResultsComponent implements OnInit {
             this.deezerService.searchTracks(this.value)
                 .subscribe((data) => {
                         this.trackBySearch = data?.data;
-                        console.log(data)
                     }
                 );
         }
     }
 
     click(data: any | undefined) {
-        console.log(this.data)
         this.data = data
 
     }

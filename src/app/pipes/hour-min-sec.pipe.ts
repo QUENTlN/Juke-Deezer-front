@@ -5,7 +5,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class HourMinSecPipe implements PipeTransform {
 
-    transform(value: number|undefined, ...args: unknown[]): string {
+    transform(value: number | undefined, ...args: unknown[]): string {
         if (value === undefined) {
             return '';
         }

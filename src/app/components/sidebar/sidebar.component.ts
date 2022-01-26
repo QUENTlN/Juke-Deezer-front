@@ -1,16 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {
-    faGripHorizontal,
-    faHome,
-    faMicrophone,
-    faMusic,
-    faPodcast,
-    faSearch,
-    faStar
-} from '@fortawesome/free-solid-svg-icons';
+import {faGripHorizontal, faHome, faMusic, faPodcast, faSearch, faStar} from '@fortawesome/free-solid-svg-icons';
 import {ThemeService} from "../../services/theme.service";
 import {DeezerService} from "../../services/deezer.service";
-import {Router, Routes} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-sidebar',
@@ -41,6 +33,7 @@ export class SidebarComponent implements OnInit {
     public isConnected(): boolean {
         return DeezerService.getLoggedInUser() != null;
     }
+
     backtoHome() {
         this.route.navigate(['/home']);
     }

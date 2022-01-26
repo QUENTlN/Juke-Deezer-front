@@ -8,7 +8,8 @@
             <span class="titre">{{radio?.title}}</span>
 
             <div class="d-flex mt-4">
-                <button (click)="play(0)" class="btn btn-primary btn-play btn-lg active" role="button" aria-pressed="true">
+                <button (click)="play(0)" aria-pressed="true" class="btn btn-primary btn-play btn-lg active"
+                        role="button">
                     <fa-icon [icon]="faPlayCircle" size="1x"></fa-icon>
                     Écouter
                 </button>
@@ -28,20 +29,20 @@
                     <div class="d-flex justify-content-end">
                         <div *ngIf="isOneChecked()" class="dropdown w-1rem">
                             <button
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                aria-expanded="false" data-bs-toggle="dropdown" id="dropdownMenuButton1">
                                 <fa-icon [icon]="faEllipsisH"></fa-icon>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <ul aria-labelledby="dropdownMenuButton1" class="dropdown-menu">
                                 <li class="dropdown-item">
-                                    <a data-bs-toggle="modal" data-bs-target="#addToPlaylistModal">Ajouter à une
+                                    <a data-bs-target="#addToPlaylistModal" data-bs-toggle="modal">Ajouter à une
                                         playlist</a>
                                 </li>
-                                <li><a class="dropdown-item" (click)="addToFavorites()">Ajouter des favoris</a></li>
+                                <li><a (click)="addToFavorites()" class="dropdown-item">Ajouter des favoris</a></li>
                             </ul>
                         </div>
                         <div class="d-flex align-items-center w-1rem">
-                            <input type="checkbox" id="all" (click)="checkAll()"
-                                   [checked]="isOneChecked()" class="form-check-input">
+                            <input (click)="checkAll()" [checked]="isOneChecked()" class="form-check-input"
+                                   id="all" type="checkbox">
                         </div>
                     </div>
                 </th>
@@ -49,25 +50,25 @@
             </thead>
 
             <tbody>
-            <tr *ngFor="let track of tracks; index as i" (click)="play(i)"
+            <tr (click)="play(i)" *ngFor="let track of tracks; index as i"
                 [ngClass]="{'active': track.id == getCurrentTrackId()}">
                 <th scope="row">
                     <div class="nb-track">{{ i + 1 }} </div>
                     <fa-icon [icon]="faPlayCircle" class="play"></fa-icon>
                 </th>
                 <td class="td-fav">
-                    <button *ngIf="!isTrackFavorite(track)" (click)="favorite(track); $event.stopPropagation();">
+                    <button (click)="favorite(track); $event.stopPropagation();" *ngIf="!isTrackFavorite(track)">
                         <fa-icon [icon]="farHeart"></fa-icon>
                     </button>
-                    <button *ngIf="isTrackFavorite(track)" (click)="unfavorite(track); $event.stopPropagation();">
+                    <button (click)="unfavorite(track); $event.stopPropagation();" *ngIf="isTrackFavorite(track)">
                         <fa-icon [icon]="fasHeart" class="favorite"></fa-icon>
                     </button>
                 </td>
                 <td>
                     <div class="title-container">
-                        <img class="cover" [src]="track.album.cover" alt="">
+                        <img [src]="track.album.cover" alt="" class="cover">
                         <div class="title">{{ track.title }}</div>
-                        <div class="feat-container" (click)="$event.stopPropagation()">
+                        <div (click)="$event.stopPropagation()" class="feat-container">
                             <span>
                                 <a [routerLink]="['/artist-details', track.artist.id]"
                                    [state]=track.artist>
@@ -75,17 +76,17 @@
                                 </a>
                             </span>
                         </div>
-                        <div class="track-menu-container dropdown" (click)="$event.stopPropagation();">
+                        <div (click)="$event.stopPropagation();" class="track-menu-container dropdown">
                             <button
-                                id="dropdownTrackMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                                aria-expanded="false" data-bs-toggle="dropdown" id="dropdownTrackMenu">
                                 <fa-icon [icon]="faEllipsisH" class="play"></fa-icon>
                             </button>
 
-                            <ul class="dropdown-menu dropdown-menu-dark"
-                                aria-labelledby="dropdownTrackMenu">
+                            <ul aria-labelledby="dropdownTrackMenu"
+                                class="dropdown-menu dropdown-menu-dark">
                                 <li class="dropdown-item btn-group dropend">
-                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addToPlaylistModal"
-                                       (click)="setTrack(track)">Ajouter à une playlist</a>
+                                    <a (click)="setTrack(track)" class="dropdown-item" data-bs-target="#addToPlaylistModal"
+                                       data-bs-toggle="modal">Ajouter à une playlist</a>
                                 </li>
                             </ul>
                         </div>
@@ -93,8 +94,8 @@
                 </td>
                 <td>{{ track.duration | chrono }}</td>
                 <td class="end">
-                    <input type="checkbox" class="form-check-input" id="individual" [checked]="isChecked(track)"
-                           (click)="check(track); $event.stopPropagation();">
+                    <input (click)="check(track); $event.stopPropagation();" [checked]="isChecked(track)" class="form-check-input" id="individual"
+                           type="checkbox">
                 </td>
             </tr>
             </tbody>

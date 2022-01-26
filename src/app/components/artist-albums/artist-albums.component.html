@@ -1,18 +1,18 @@
-<div class="artist-albums mb-5" *ngIf="albumsOfArtist != null">
+<div *ngIf="albumsOfArtist != null" class="artist-albums mb-5">
     <h1>Albums</h1>
     <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" *ngFor="let album of albumsOfArtist let i=index">
+        <div *ngFor="let album of albumsOfArtist let i=index" class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12">
             <div *ngIf="i<8">
                 <div class="album-cover">
                     <a [routerLink]="['/album-details', album.id]" [state]=album>
-                        <img src="{{album.cover_big}}" class="w-100 image rounded" (click)="click(album)">
+                        <img (click)="click(album)" class="w-100 image rounded" src="{{album.cover_big}}">
                     </a>
                     <div class="d-flex w-100 justify-content-between">
                         <div class="album-footer">
                             <h2>{{album.title}}</h2>
                         </div>
-                        <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"
-                                 [mask]="faSquareFull" (click)="playAlbum(album)"></fa-icon>
+                        <fa-icon (click)="playAlbum(album)" [icon]="faPlayCircle" [mask]="faSquareFull"
+                                 class="background-circle" size="3x"></fa-icon>
                     </div>
                 </div>
             </div>

@@ -39,13 +39,8 @@ export class PlayerComponent implements OnInit {
     }
 
     async ngOnInit() {
-        // console.log(await firstValueFrom(this.deezerService.getTrack(3135556)))
 
         this.playerService.favoriteTracks = (await firstValueFrom(this.deezerService.getFavoriteTracks())).data;
-
-        // let album = await firstValueFrom(this.deezerService.getAlbum(69352202))
-        // console.log(album);
-        // this.playerService.setAlbum(album);
 
         this.playerService.getPlayerUpdate().subscribe(async (data) => {
             this.selectedAudio = this.playerService.getCurrentTrack();
@@ -186,15 +181,15 @@ export class PlayerComponent implements OnInit {
         }
     }
 
-     async favorite() {
+    async favorite() {
         this.playerService.favoriteTracks.push(this.playerService.getCurrentTrack());
         await firstValueFrom(this.deezerService.addToFavorite(this.playerService.getCurrentTrack().id));
     }
 
-     async unfavorite() {
-         this.playerService.favoriteTracks = this.playerService.favoriteTracks.filter(track => track.id != this.playerService.getCurrentTrack().id);
-         await firstValueFrom(this.deezerService.removeFromFavorite(this.playerService.getCurrentTrack().id));
-     }
+    async unfavorite() {
+        this.playerService.favoriteTracks = this.playerService.favoriteTracks.filter(track => track.id != this.playerService.getCurrentTrack().id);
+        await firstValueFrom(this.deezerService.removeFromFavorite(this.playerService.getCurrentTrack().id));
+    }
 
     @HostListener('document:keydown.space', ['$event']) onKeydownHandler(event: KeyboardEvent) {
         const el = event.target as HTMLInputElement

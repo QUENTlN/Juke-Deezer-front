@@ -1,37 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light" [ngClass]="{'sticky':this.isStickyNavbar}">
+<nav [ngClass]="{'sticky':this.isStickyNavbar}" class="navbar navbar-expand-lg navbar-light">
     <div class="me-auto">
-        <div id="sidebarCollapse" class="btn rounded-circle" (click)="toggleSidebar()">
-            <fa-icon id="croix" [ngClass]="{'menuClosed': this.isSidebarDisplay,'menuOpen': !this.isSidebarDisplay}"
-                     [icon]="faTimes"></fa-icon>
-            <fa-icon id="traits" [ngClass]="{'menuClosed': !this.isSidebarDisplay,'menuOpen': this.isSidebarDisplay}"
-                     [icon]="faBars"></fa-icon>
+        <div (click)="toggleSidebar()" class="btn rounded-circle" id="sidebarCollapse">
+            <fa-icon [icon]="faTimes" [ngClass]="{'menuClosed': this.isSidebarDisplay,'menuOpen': !this.isSidebarDisplay}"
+                     id="croix"></fa-icon>
+            <fa-icon [icon]="faBars" [ngClass]="{'menuClosed': !this.isSidebarDisplay,'menuOpen': this.isSidebarDisplay}"
+                     id="traits"></fa-icon>
         </div>
 
-        <div class="btn rounded-circle nav-button" (click)="back()">
+        <div (click)="back()" class="btn rounded-circle nav-button">
             <fa-icon [icon]="faChevronLeft"></fa-icon>
         </div>
 
-        <div class="btn rounded-circle nav-button" (click)="forward()">
+        <div (click)="forward()" class="btn rounded-circle nav-button">
             <fa-icon [icon]="faChevronRight"></fa-icon>
         </div>
     </div>
 
     <app-search navbarLocation="navbar"></app-search>
 
-    <div *ngIf="!isConnected()" class="btn rounded-pill nav-button ms-auto px-3"
-         [routerLink]="['/auth']" [routerLinkActive]="['active']" [ngClass]="{'active': isSidebarDisplay}">
+    <div *ngIf="!isConnected()" [ngClass]="{'active': isSidebarDisplay}"
+         [routerLinkActive]="['active']" [routerLink]="['/auth']" class="btn rounded-pill nav-button ms-auto px-3">
         SE CONNECTER
     </div>
 
     <img *ngIf="isConnected()" [ngClass]="{'active': isSidebarDisplay}"
          [src]="this.getLoggedInUser()?.picture"
-         alt="user image" class="dropdown-toggle rounded-circle ms-auto"
-         id="dropdownUserMenu" data-bs-toggle="dropdown" aria-expanded="false">
+         alt="user image" aria-expanded="false"
+         class="dropdown-toggle rounded-circle ms-auto" data-bs-toggle="dropdown" id="dropdownUserMenu">
 
-    <ul *ngIf="isConnected()" class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
-        aria-labelledby="dropdownUserMenu">
-        <li><a class="dropdown-item"[routerLink]="['/profil']" [routerLinkActive]="['active']">Profil</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/option']" [routerLinkActive]="['active']">Paramètres</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/logout']" [routerLinkActive]="['active']">Déconnexion</a></li>
+    <ul *ngIf="isConnected()" aria-labelledby="dropdownUserMenu"
+        class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+        <li><a [routerLinkActive]="['active']" [routerLink]="['/profil']" class="dropdown-item">Profil</a></li>
+        <li><a [routerLinkActive]="['active']" [routerLink]="['/option']" class="dropdown-item">Paramètres</a></li>
+        <li><a [routerLinkActive]="['active']" [routerLink]="['/logout']" class="dropdown-item">Déconnexion</a></li>
     </ul>
 </nav>

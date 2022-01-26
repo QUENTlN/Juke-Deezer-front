@@ -1,52 +1,52 @@
-<nav id="sidebar" [ngClass]="{'active' : this.show}">
+<nav [ngClass]="{'active' : this.show}" id="sidebar">
     <div class="sidebar-header">
-        <img [src]="getSiteLogo()" style="cursor: pointer" (click)="backtoHome()" class="img-fluid" alt="site logo">
+        <img (click)="backtoHome()" [src]="getSiteLogo()" alt="site logo" class="img-fluid" style="cursor: pointer">
     </div>
 
     <app-search navbarLocation="sidebar"></app-search>
 
     <ul class="list-unstyled components">
-        <li [routerLink]="['/home']" [routerLinkActive]="['active']">
+        <li [routerLinkActive]="['active']" [routerLink]="['/home']">
             <a href="#">
-                <fa-icon [icon]="faHome" [fixedWidth]="true"></fa-icon>
+                <fa-icon [fixedWidth]="true" [icon]="faHome"></fa-icon>
                 Accueil</a>
         </li>
-        <li [routerLink]="['/musique']" [routerLinkActive]="['active']">
+        <li [routerLinkActive]="['active']" [routerLink]="['/musique']">
             <a>
-                <fa-icon [icon]="faMusic" [fixedWidth]="true"></fa-icon>
+                <fa-icon [fixedWidth]="true" [icon]="faMusic"></fa-icon>
                 Musiques</a>
         </li>
-        <li [routerLink]="['/radios']" [routerLinkActive]="['active']">
+        <li [routerLinkActive]="['active']" [routerLink]="['/radios']">
             <a>
-                <fa-icon [icon]="faPodcast" [fixedWidth]="true"></fa-icon>
+                <fa-icon [fixedWidth]="true" [icon]="faPodcast"></fa-icon>
                 Radios</a>
         </li>
-        <li [routerLink]="['/decouvrir']" [routerLinkActive]="['active']">
+        <li [routerLinkActive]="['active']" [routerLink]="['/decouvrir']">
             <a>
-                <fa-icon [icon]="faGripHorizontal" [fixedWidth]="true"></fa-icon>
+                <fa-icon [fixedWidth]="true" [icon]="faGripHorizontal"></fa-icon>
                 Découvrir</a>
         </li>
         <li *ngIf="isConnected()">
-            <a href="#favSubmenu" data-bs-toggle="collapse" aria-expanded="false"
-               class="dropdown-toggle collapsed">
-                <fa-icon [icon]="faStar" [fixedWidth]="true"></fa-icon>
+            <a aria-expanded="false" class="dropdown-toggle collapsed" data-bs-toggle="collapse"
+               href="#favSubmenu">
+                <fa-icon [fixedWidth]="true" [icon]="faStar"></fa-icon>
                 Favoris</a>
             <ul class="collapse list-unstyled" id="favSubmenu">
-                <li [routerLink]="['/favorite-tracks']" [routerLinkActive]="['active']">
+                <li [routerLinkActive]="['active']" [routerLink]="['/favorite-tracks']">
                     <a>Titres</a>
                 </li>
-                <li [routerLink]="['/playlists']" [routerLinkActive]="['active']">
+                <li [routerLinkActive]="['active']" [routerLink]="['/playlists']">
                     <a>Playlists</a>
                 </li>
-                <li [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']">
+                <li [routerLinkActive]="['active']" [routerLink]="['/favorite-albums']">
                     <a>Albums</a>
                 </li>
-                <li [routerLink]="['/favorite-artists']" [routerLinkActive]="['active']">
+                <li [routerLinkActive]="['active']" [routerLink]="['/favorite-artists']">
                     <a>Artistes</a>
                 </li>
-<!--                <li>-->
-<!--                    <a href="#">Podcats</a>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    <a href="#">Podcats</a>-->
+                <!--                </li>-->
             </ul>
         </li>
     </ul>

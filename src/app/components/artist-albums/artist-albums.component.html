@@ -12,7 +12,7 @@
                             <h2>{{album.title}}</h2>
                         </div>
                         <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"
-                                 [mask]="faSquareFull"></fa-icon>
+                                 [mask]="faSquareFull" (click)="playAlbum(album)"></fa-icon>
                     </div>
                 </div>
             </div>

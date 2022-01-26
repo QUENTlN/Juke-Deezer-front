@@ -395,18 +395,6 @@ export class DeezerService {
             );
     }
 
-    getRadiosByGenre(id: number): Observable<Radio[]> {
-        return this.http.get<Radio[]>(this.getBaseUrl() + 'genre/' + id + '/radios', this.httpOptions)
-            .pipe(
-                retry(this.NB_RETRY),
-                catchError(this.handleError)
-            );
-    }
-
-    // TODO: infos endpoints
-
-    // TODO: options endpoints
-
     // Playlist endpoints
 
     getPlaylist(id: number): Observable<Playlist> {
@@ -417,8 +405,6 @@ export class DeezerService {
             );
     }
 
-    // TODO: post playlist seen
-
     getPlaylistTracks(id: number): Observable<TrackList> {
         return this.http.get<TrackList>(this.getBaseUrl() + 'playlist/' + id + '/tracks', this.httpOptions)
             .pipe(
@@ -426,8 +412,6 @@ export class DeezerService {
                 catchError(this.handleError)
             );
     }
-
-    // TODO: get playlist radio
 
     // Podcast endpoints
 
@@ -472,8 +456,8 @@ export class DeezerService {
             );
     }
 
-    getRadioByGenres(): Observable<RadioByGenre[]> {
-        return this.http.get<RadioByGenre[]>(this.getBaseUrl() + 'radio/genres', this.httpOptions)
+    getRadiosByGenre(id: number): Observable<RadioList> {
+        return this.http.get<RadioList>(this.getBaseUrl() + 'genre/' + id + '/radios', this.getHttpOptions())
             .pipe(
                 retry(this.NB_RETRY),
                 catchError(this.handleError)

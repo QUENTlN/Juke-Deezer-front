@@ -2,6 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import {ActivatedRoute} from "@angular/router";
 import {ArtistList} from "../../models/artist-list.model";
+import {PlayerService} from "../../services/player.service";
+import {faPlayCircle} from "@fortawesome/free-solid-svg-icons";
+import {firstValueFrom} from "rxjs";
+import {Genre} from "../../models/genre.model";
+import {Radio} from "../../models/radio.model";
+import {Artist} from "../../models/artist.model";
 
 
 @Component({
@@ -11,13 +17,18 @@ import {ArtistList} from "../../models/artist-list.model";
 })
 export class GenreDetailsComponent implements OnInit {
 
-    artists: ArtistList | undefined;
+    faPlayCircle=faPlayCircle;
+
+    artists: Artist[] = [];
     idGenre: number | undefined;
+    genre: Genre | undefined;
+    radios: Radio[] = [];
     data: any | undefined;
     genreTitle: string | undefined;
 
     constructor(
         private deezerService: DeezerService,
+        private playerService: PlayerService,
         private _activatedRoute: ActivatedRoute
     ) {
         this._activatedRoute.paramMap.subscribe(params => {
@@ -25,22 +36,36 @@ export class GenreDetailsComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
-        this.idGenre = history.state?.id;
-        this.genreTitle = history.state?.name;
-
-        this.genreArtist()
+    async ngOnInit() {
+        if (history.state?.id != null) {
+            this.idGenre = history.state.id;
+            this.genre = history.state;
+            this.genreTitle = history.state.title;
+            this.getArtistsAndRadios(history.state.id)
+        } else {
+            this._activatedRoute.params.subscribe(async params => {
+                this.idGenre = params['id'];
+                this.genre = (await firstValueFrom(this.deezerService.getGenre(params['id'])));
+                this.genreTitle = this.genre.name;
+                this.getArtistsAndRadios(params['id'])
+            });
+        }
     }
 
-    genreArtist() {
-        if (this.idGenre != null) {
-            this.deezerService.getArtistsByGenre(this.idGenre)
-                .subscribe((data) => {
-                        this.artists = data;
-                    }
-                );
+    getArtistsAndRadios(id: number) {
+        this.deezerService.getArtistsByGenre(id)
+            .subscribe((data) => {
+                this.artists = data.data;
+            });
+        this.deezerService.getRadiosByGenre(id)
+            .subscribe((data) => {
+                this.radios = data.data;
+            });
+    }
 
-        }
+    async playRadio(radio: Radio) {
+        this.playerService.setTrackList((await firstValueFrom(this.deezerService.getRadioTracks(radio.id))).data);
+        this.playerService.jumpTo(0);
     }
 
     click(data: any | undefined) {

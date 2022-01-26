@@ -1,60 +1,55 @@
 <h1>Results : Albums</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let albumchart of albumBySearch let i=index">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12" *ngFor="let albumchart of albumBySearch let i=index">
         <div *ngIf="i<8">
             <div class="album-cover">
                 <a [routerLink]="['/album-details', albumchart.id]" [state]=albumchart>
-                    <img src="{{albumchart.cover_big}}" class="w-100 image" (click)="click(albumchart)">
+                    <img src="{{albumchart.cover_big}}" class="w-100 image rounded" (click)="click(albumchart)">
                 </a>
-                <div class="d-flex w-100 justify-content-between">
-                    <h2>{{albumchart.title}}</h2>
-
-                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
+                <div class="d-flex w-100 justify-content-between album-footer">
+                    <div>
+                        <h2>{{albumchart.title}}</h2>
+                        <h3>{{albumchart.artist.name}}</h3>
+                    </div>
+                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle" [mask]="faSquareFull" (click)="playAlbum(albumchart)"></fa-icon>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<br><br><br><br><br><br><br><br>
 
 <h1>Results : Tracks</h1>
-<br><br><br>
 <div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let trackchart of trackBySearch let i=index">
+    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6" *ngFor="let trackchart of trackBySearch let i=index">
         <div *ngIf="i<8">
             <div class="album-cover">
-                <a [routerLink]="['/album-details', trackchart.id]" [state]=trackchart>
-                    <img src="{{trackchart.album.cover_big}}" class="w-100 image" (click)="click(trackchart)">
+                <a>
+                    <img src="{{trackchart.album.cover_big}}" class="w-100 image rounded">
                 </a>
-                <div class="d-flex w-100 justify-content-between">
-                    <h2>{{trackchart.title}}</h2>
-                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
+                <div class="d-flex w-100 justify-content-between album-footer">
+                    <div>
+                        <h2>{{trackchart.title}}</h2>
+                        <h3>{{trackchart.artist.name}}</h3>
+                    </div>
+                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle" [mask]="faSquareFull" (click)="playTrack(trackchart)"></fa-icon>
                 </div>
-                <h3>{{trackchart.artist.name}}</h3>
 
             </div>
         </div>
     </div>
 </div>
 
-<br><br><br><br><br><br><br>
-
 <h1>Results : Artistes</h1>
-<br><br><br>
 <div class="row">
     <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artistchart of artistBySearch let i=index">
         <div *ngIf="i<8">
             <div class="album-cover2">
-                <a [routerLink]="['/album-details', artistchart.id]" [state]=artistchart>
+                <a [routerLink]="['/artist-details', artistchart.id]" [state]=artistchart>
                     <img src="{{artistchart.picture_big}}" style="border-radius: 50%" class="w-100 image" (click)="click(artistchart)">
                 </a>
-                <h2>{{artistchart.name}}</h2>
+                <h2 class="artist-name">{{artistchart.name}}</h2>
             </div>
         </div>
     </div>
 </div>
-
-<br><br><br><br><br><br>

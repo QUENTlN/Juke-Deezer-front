@@ -1,20 +1,21 @@
-<div class="artist-albums" *ngIf="albumsOfArtist != null">
-<h1>Albums</h1>
-<br><br><br>
-<div class="row">
-    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let album of albumsOfArtist let i=index">
-        <div *ngIf="i<8">
-            <div class="album-cover">
-                <a [routerLink]="['/album-details', album.id]" [state]=album>
-                    <img src="{{album.cover_big}}" class="w-100 image" (click)="click(album)">
-                </a>
-                <div class="d-flex w-100 justify-content-between">
-                    <h2>{{album.title}}</h2>
-                    <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"></fa-icon>
+<div class="artist-albums mb-5" *ngIf="albumsOfArtist != null">
+    <h1>Albums</h1>
+    <div class="row">
+        <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let album of albumsOfArtist let i=index">
+            <div *ngIf="i<8">
+                <div class="album-cover">
+                    <a [routerLink]="['/album-details', album.id]" [state]=album>
+                        <img src="{{album.cover_big}}" class="w-100 image rounded" (click)="click(album)">
+                    </a>
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="album-footer">
+                            <h2>{{album.title}}</h2>
+                        </div>
+                        <fa-icon [icon]="faPlayCircle" size="3x" class="background-circle"
+                                 [mask]="faSquareFull"></fa-icon>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
-<br><br><br><br><br><br>

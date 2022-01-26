@@ -9,13 +9,13 @@
     </div>
 </div>
 <br><br>
-<div class="wrapper">
-    <div class="listapp"><app-playlists></app-playlists></div>
-    <div class="listapptext"><a [routerLink]="['/playlists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
-    <div class="listapp"><app-favorite-albums></app-favorite-albums></div>
-    <div class="listapptext"><a [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
-    <div class="listapp"><app-favorite-tracks></app-favorite-tracks></div>
-    <div class="listapptext"><a [routerLink]="['/favorite-tracks']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
-    <div class="listapp"><app-favorite-artist></app-favorite-artist></div>
-    <div class="listapptext"><a [routerLink]="['/favorite-artists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+<div class="row w-100">
+    <div class="listapp col-10"><app-playlists></app-playlists></div>
+    <div class="listapptext col-1"><a [routerLink]="['/playlists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+    <div class="listapp col-10"><app-favorite-albums></app-favorite-albums></div>
+    <div class="listapptext col-1"><a [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+    <div class="listapp col-10"><app-favorite-tracks></app-favorite-tracks></div>
+    <div class="listapptext col-1"><a [routerLink]="['/favorite-tracks']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+    <div class="listapp col-10"><app-favorite-artist></app-favorite-artist></div>
+    <div class="listapptext col-1"><a [routerLink]="['/favorite-artists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
 </div>

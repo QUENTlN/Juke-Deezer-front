@@ -39,6 +39,7 @@ export class RadioDetailsComponent implements OnInit {
 
     async ngOnInit() {
         this.idRadio = history.state?.id;
+        this.radio = history.state;
         if (this.idRadio != undefined) {
             this.deezerService.getRadioTracks(this.idRadio)
                 .subscribe((data) => {

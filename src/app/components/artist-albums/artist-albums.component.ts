@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {ActivatedRoute} from "@angular/router";
 import {DeezerService} from "../../services/deezer.service";
 import {Album} from "../../models/album.model";
-import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
+import {faPlayCircle, faSquareFull} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-artist-albums',
@@ -10,6 +10,8 @@ import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
     styleUrls: ['./artist-albums.component.scss']
 })
 export class ArtistAlbumsComponent implements OnInit, OnChanges {
+
+    faSquareFull = faSquareFull;
     faPlayCircle = faPlayCircle;
     @Input() idArtist: number | undefined;
     albumsOfArtist: Album[] | undefined;

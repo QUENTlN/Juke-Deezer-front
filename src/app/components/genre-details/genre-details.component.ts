@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
 import {ActivatedRoute} from "@angular/router";
-import {ArtistList} from "../../models/artist-list.model";
 import {PlayerService} from "../../services/player.service";
 import {faPlayCircle} from "@fortawesome/free-solid-svg-icons";
 import {firstValueFrom} from "rxjs";
@@ -17,7 +16,7 @@ import {Artist} from "../../models/artist.model";
 })
 export class GenreDetailsComponent implements OnInit {
 
-    public faPlayCircle=faPlayCircle;
+    public faPlayCircle = faPlayCircle;
 
     public artists: Artist[] = [];
     public idGenre: number | undefined;
@@ -69,9 +68,7 @@ export class GenreDetailsComponent implements OnInit {
     }
 
     click(data: any | undefined) {
-        console.log(this.data)
         this.data = data
-
     }
 
 }

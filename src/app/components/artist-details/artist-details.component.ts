@@ -5,7 +5,7 @@ import {Artist} from "../../models/artist.model";
 import {TrackList} from "../../models/track-list.model";
 import {PlaylistList} from "../../models/playlist-list.model";
 import {ArtistList} from "../../models/artist-list.model";
-import {faEllipsisH, faPlayCircle, faHeart as fasHeart} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faHeart as fasHeart, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 import {Track} from "../../models/track.model";
 import {firstValueFrom} from "rxjs";
@@ -88,7 +88,6 @@ export class ArtistDetailsComponent implements OnInit {
             this.deezerService.getArtistPlaylists(this.idArtist)
                 .subscribe((data) => {
                         this.playlists = data;
-                        console.log(this.playlists)
                     }
                 );
         }
@@ -99,7 +98,6 @@ export class ArtistDetailsComponent implements OnInit {
             this.deezerService.getRelatedArtists(this.idArtist)
                 .subscribe((data) => {
                         this.relatedArtists = data;
-                        console.log(this.playlists)
                     }
                 );
         }
@@ -107,8 +105,6 @@ export class ArtistDetailsComponent implements OnInit {
 
     click(artist: Artist | undefined) {
         this.artist = artist
-        console.log(this.artist)
-
     }
 
 

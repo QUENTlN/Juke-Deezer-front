@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {DeezerService} from "../../services/deezer.service";
-import {PlaylistList} from "../../models/playlist-list.model";
 import {firstValueFrom} from "rxjs";
 import {Playlist} from "../../models/playlist.model";
 

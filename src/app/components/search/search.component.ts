@@ -1,14 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
-import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
 import {Router} from "@angular/router";
 
 
-
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+    selector: 'app-search',
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
 
@@ -25,10 +23,6 @@ export class SearchComponent implements OnInit {
 
     ngOnInit(): void {
     }
-
-
-
-
 
 
 }

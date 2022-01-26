@@ -3,7 +3,7 @@ import {DeezerService} from "../../services/deezer.service";
 import {Album} from "../../models/album.model";
 import {ActivatedRoute} from '@angular/router';
 import {Artist} from "../../models/artist.model";
-import {faEllipsisH, faPlay, faPlayCircle, faHeart as fasHeart} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faHeart as fasHeart, faPlay, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 import {firstValueFrom} from "rxjs";
 import {PlayerService} from "../../services/player.service";
@@ -50,7 +50,7 @@ export class AlbumDetailsComponent implements OnInit {
                 this.albumDetails = await firstValueFrom(this.deezerService.getAlbum(this.idAlbum))
                 // this.albumDetails.tracks.data.forEach(async track => {
                 //     track.contributors = (await firstValueFrom(this.deezerService.getTrack(track.id))).contributors
-                // }); TODO: readd it
+                // });
             }
 
         } else {

@@ -1,5 +1,6 @@
-<div class="form-group has-search"
-     [ngClass]="{'sidebar-search': this.navbarLocation == 'sidebar', 'navbar-search' : this.navbarLocation == 'navbar'}">
+<div [ngClass]="{'sidebar-search': this.navbarLocation == 'sidebar', 'navbar-search' : this.navbarLocation == 'navbar'}"
+     class="form-group has-search">
     <fa-icon [icon]="faSearch" class="form-control-feedback"></fa-icon>
-    <input #searchBox (input)="search(searchBox.value)" type="text" class="form-control rounded-pill" placeholder="Chercher" >
+    <input #searchBox (input)="search(searchBox.value)" class="form-control rounded-pill" placeholder="Chercher"
+           type="text">
 </div>

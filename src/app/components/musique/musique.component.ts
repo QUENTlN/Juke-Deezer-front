@@ -3,12 +3,12 @@ import {DeezerService} from "../../services/deezer.service";
 import {AlbumList} from "../../models/album-list.model";
 import {ArtistList} from "../../models/artist-list.model";
 import {faPlayCircle, faSquareFull} from '@fortawesome/free-solid-svg-icons';
-import {AlbumUserList} from "../../models/album-user-list.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Album} from "../../models/album.model";
 import {firstValueFrom} from "rxjs";
 import {PlayerService} from "../../services/player.service";
 import {Track} from "../../models/track.model";
+import {TrackList} from "../../models/track-list.model";
 
 @Component({
     selector: 'app-musique',
@@ -21,7 +21,7 @@ export class MusiqueComponent implements OnInit {
     public faSquareFull = faSquareFull
     public albums: AlbumList | undefined;
     public artists: ArtistList | undefined;
-    public chart: AlbumUserList | undefined;
+    public chart: TrackList | undefined;
     public data: any | undefined;
 
 
@@ -49,7 +49,6 @@ export class MusiqueComponent implements OnInit {
         this.deezerService.getChartByUser()
             .subscribe((data) => {
                     this.chart = data;
-                    console.log(data)
 
                 }
             )
@@ -65,7 +64,6 @@ export class MusiqueComponent implements OnInit {
     }
 
     click(data: any | undefined) {
-        console.log(this.data)
         this.data = data
 
     }

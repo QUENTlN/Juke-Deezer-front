@@ -18,16 +18,19 @@
         text-decoration: underline var(--font-color);
     }
 }
+
 .wrapper {
     display: grid;
-    grid-template-columns: 2fr 1fr ;
+    grid-template-columns: 2fr 1fr;
 
 }
-.listapp{
-    height:30em;
+
+.listapp {
+    height: 30em;
     overflow: hidden;
     margin: 5rem 20px 20px 20px
 }
+
 .listapptext {
     margin-top: 6rem;
     font-size: 1em;

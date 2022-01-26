@@ -26,7 +26,6 @@ export class RadiosComponent implements OnInit {
         this.deezerService.getRadios()
             .subscribe((data) => {
                     this.radios = data;
-                    console.log(data)
                 }
             );
     }
@@ -37,8 +36,6 @@ export class RadiosComponent implements OnInit {
     }
 
     click(data: any | undefined) {
-        console.log(data)
         this.data = data
-
     }
 }

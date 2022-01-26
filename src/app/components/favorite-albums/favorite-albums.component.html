@@ -1,6 +1,7 @@
 <h1>Albums favories</h1>
 <div class="playlists row mt-5">
-    <div class="playlist col-xl-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let album of albums" [routerLink]="['/album-details', album.id]">
+    <div *ngFor="let album of albums" [routerLink]="['/album-details', album.id]"
+         class="playlist col-xl-3 col-md-4 col-sm-6 col-12 mb-4">
         <img [src]="album.cover_big" alt="playlist cover" class="w-100 rounded">
         <div class="playlist-header mt-2">
             <h5>{{album.title}}</h5>

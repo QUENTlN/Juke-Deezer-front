@@ -85,6 +85,7 @@ table {
             color: var(--accent-color);
         }
     }
+
     tr:not(:hover) .dropdown-menu {
         display: none;
     }
@@ -125,12 +126,14 @@ table {
         td, th {
             text-align: center;
             vertical-align: middle;
+
             &.end {
                 text-align: end;
             }
 
         }
     }
+
     thead {
         th.min-width {
             width: 1%;

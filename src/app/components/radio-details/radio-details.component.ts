@@ -5,7 +5,7 @@ import {Track} from "../../models/track.model";
 import {PlayerService} from "../../services/player.service";
 import {Radio} from "../../models/radio.model";
 import {firstValueFrom} from "rxjs";
-import {faEllipsisH, faPlay, faPlayCircle, faHeart as fasHeart} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faHeart as fasHeart, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 
 @Component({
@@ -44,7 +44,6 @@ export class RadioDetailsComponent implements OnInit {
             this.deezerService.getRadioTracks(this.idRadio)
                 .subscribe((data) => {
                         this.tracks = data.data;
-                        console.log(this.tracks)
                     }
                 )
             this.deezerService.getRadioTracks(this.idRadio)

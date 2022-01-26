@@ -55,10 +55,6 @@ export class PlayerService {
         this.queue = [...this.originalQueue];
     }
 
-    public addToQueue(track: Track) {
-        this.queue.push(track);
-    }
-
     public setAlbum(album: Album) {
         album.tracks.data.forEach(track => {
             track.album = album;

@@ -1,7 +1,7 @@
 <div *ngIf="me">
     <div class="d-flex flex-column align-items-center flex-md-row align-items-md-start header">
         <div class="img rounded-circle">
-            <img [src]="me?.picture_big" class="rounded-circle" alt="album cover">
+            <img [src]="me?.picture_big" alt="album cover" class="rounded-circle">
         </div>
 
         <div class="d-flex flex-column align-items-center align-items-md-start">
@@ -11,13 +11,25 @@
     </div>
     <br><br>
     <div class="row w-100">
-        <div class="listapp col-10"><app-playlists></app-playlists></div>
-        <div class="listapptext col-1"><a [routerLink]="['/playlists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
-        <div class="listapp col-10"><app-favorite-albums></app-favorite-albums></div>
-        <div class="listapptext col-1"><a [routerLink]="['/favorite-albums']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
-        <div class="listapp col-10"><app-favorite-tracks></app-favorite-tracks></div>
-        <div class="listapptext col-1"><a [routerLink]="['/favorite-tracks']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
-        <div class="listapp col-10"><app-favorite-artist></app-favorite-artist></div>
-        <div class="listapptext col-1"><a [routerLink]="['/favorite-artists']" [routerLinkActive]="['active']" style="color: grey">Voir tout ></a></div>
+        <div class="listapp col-10">
+            <app-playlists></app-playlists>
+        </div>
+        <div class="listapptext col-1"><a [routerLinkActive]="['active']" [routerLink]="['/playlists']"
+                                          style="color: grey">Voir tout ></a></div>
+        <div class="listapp col-10">
+            <app-favorite-albums></app-favorite-albums>
+        </div>
+        <div class="listapptext col-1"><a [routerLinkActive]="['active']" [routerLink]="['/favorite-albums']"
+                                          style="color: grey">Voir tout ></a></div>
+        <div class="listapp col-10">
+            <app-favorite-tracks></app-favorite-tracks>
+        </div>
+        <div class="listapptext col-1"><a [routerLinkActive]="['active']" [routerLink]="['/favorite-tracks']"
+                                          style="color: grey">Voir tout ></a></div>
+        <div class="listapp col-10">
+            <app-favorite-artist></app-favorite-artist>
+        </div>
+        <div class="listapptext col-1"><a [routerLinkActive]="['active']" [routerLink]="['/favorite-artists']"
+                                          style="color: grey">Voir tout ></a></div>
     </div>
 </div>

@@ -1,12 +1,13 @@
 <div *ngIf="radios.length != 0 " class="mb-5">
     <h1>Radio{{ this.radios.length > 1 ? 's' : '' }} {{this.genreTitle}} </h1>
     <div class="album-container">
-        <div  *ngFor="let radio of radios" >
-            <mat-card class="album-card" [routerLink]="['/radio-details', radio.id]" [state]=radio (click)="click(radio)">
+        <div *ngFor="let radio of radios">
+            <mat-card (click)="click(radio)" [routerLink]="['/radio-details', radio.id]" [state]=radio
+                      class="album-card">
                 <div class="album-cover">
                     <div class="image">
                         <a>
-                            <img src="{{radio.picture}}" class="rounded"></a>
+                            <img class="rounded" src="{{radio.picture}}"></a>
                     </div>
                 </div>
                 <div>
@@ -14,7 +15,8 @@
                         <h2 style="font-family: 'Bahnschrift SemiBold'">{{radio.title}}</h2>
                     </mat-card-title>
                 </div>
-                <fa-icon [icon]="faPlayCircle"  size="3x" class="form-control-feedback" style="color:white" (click)="playRadio(radio); $event.stopPropagation()"></fa-icon>
+                <fa-icon (click)="playRadio(radio); $event.stopPropagation()" [icon]="faPlayCircle" class="form-control-feedback" size="3x"
+                         style="color:white"></fa-icon>
             </mat-card>
         </div>
     </div>
@@ -22,11 +24,12 @@
 <div *ngIf="artists?.length != 0 ">
     <h1>Artistes {{this.genreTitle}} </h1>
     <div class="row mt-5">
-        <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let artistchart of artists let i=index">
+        <div *ngFor="let artistchart of artists let i=index" class="col-12 col-lg-3 col-md-4 col-sm-6">
             <div *ngIf="i<8">
                 <div class="album-cover2">
                     <a [routerLink]="['/artist-details', artistchart.id]" [state]=artistchart>
-                        <img src="{{artistchart.picture_big}}" style="border-radius: 50%" class="w-100 image" (click)="click(artistchart)">
+                        <img (click)="click(artistchart)" class="w-100 image" src="{{artistchart.picture_big}}"
+                             style="border-radius: 50%">
                     </a>
                     <h2>{{artistchart.name}}</h2>
                 </div>

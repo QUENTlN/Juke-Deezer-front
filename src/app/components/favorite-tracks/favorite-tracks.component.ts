@@ -3,7 +3,7 @@ import {Track} from "../../models/track.model";
 import {firstValueFrom} from "rxjs";
 import {PlayerService} from "../../services/player.service";
 import {DeezerService} from "../../services/deezer.service";
-import {faEllipsisH, faPlayCircle, faHeart as fasHeart} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsisH, faHeart as fasHeart, faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 import {faHeart as farHeart} from '@fortawesome/free-regular-svg-icons';
 
 @Component({

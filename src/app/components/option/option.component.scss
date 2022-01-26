@@ -6,20 +6,22 @@
     background-color: var(--accent-color);
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='" + var(--secodary-color) + "'/%3e%3c/svg%3e");
 }
-.form-check.form-switch{
+
+.form-check.form-switch {
     align-items: center;
     display: flex;
     justify-content: center;
 
 }
+
 .form-check-input:checked {
     background-color: var(--accent-color);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='" + var(--secodary-color) + "'/%3e%3c/svg%3e");
-;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='" + var(--secodary-color) + "'/%3e%3c/svg%3e");;
 }
+
 .form-check-input:focus {
     border-color: transparent;
-    background-color:var(--accent-color);
+    background-color: var(--accent-color);
     outline: 0;
     box-shadow: 0 0 0 0;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='" + var(--secodary-color) + "'/%3e%3c/svg%3e");

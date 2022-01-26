@@ -25,7 +25,7 @@ export class AddToPlaylistFormComponent implements OnInit {
         this.deezerService.getPlaylistsByUser().subscribe(playlists => {
             this.playlists = playlists;
             playlists.data.forEach(playlist => {
-                this.form.addControl(playlist.id.toString(),new FormControl(false))
+                this.form.addControl(playlist.id.toString(), new FormControl(false))
             });
         });
     }
@@ -37,10 +37,11 @@ export class AddToPlaylistFormComponent implements OnInit {
     onSubmit() {
         const tracksToAdd = this.tracksToAdd.map(track => track.id);
 
-        this.playlists?.data.filter(p=>this.form.get(p.id.toString())?.value)
-            .forEach(p=>{
-            this.deezerService.addTracksToPlaylist(p.id,tracksToAdd).subscribe(()=>{});
-        });
+        this.playlists?.data.filter(p => this.form.get(p.id.toString())?.value)
+            .forEach(p => {
+                this.deezerService.addTracksToPlaylist(p.id, tracksToAdd).subscribe(() => {
+                });
+            });
     }
 
     getPlaylistLenght(): number {

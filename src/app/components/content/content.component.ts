@@ -8,13 +8,13 @@ import {faDeezer} from "@fortawesome/free-brands-svg-icons";
 })
 export class ContentComponent implements OnInit {
 
-    faDeezer = faDeezer;
+    public faDeezer = faDeezer;
 
-    @Input() isSidebarDisplay: boolean = false;
+    @Input() public isSidebarDisplay: boolean = false;
 
-    @Output() showSidebar = new EventEmitter<string>();
+    @Output() public showSidebar = new EventEmitter<string>();
 
-    isStickyNavbar: boolean = false;
+    public isStickyNavbar: boolean = false;
 
     constructor() {
     }

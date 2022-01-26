@@ -14,7 +14,7 @@ class AlbumService {
 })
 export class FavoriteAlbumsComponent implements OnInit {
 
-    albums: Album[] = [];
+    public albums: Album[] = [];
 
     constructor(private deezerService: DeezerService, private playerService: PlayerService) {
     }

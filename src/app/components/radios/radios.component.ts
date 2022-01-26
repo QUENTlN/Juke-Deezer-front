@@ -13,10 +13,10 @@ import {firstValueFrom} from "rxjs";
     styleUrls: ['./radios.component.scss']
 })
 export class RadiosComponent implements OnInit {
-    faPlayCircle = faPlayCircle;
+    public faPlayCircle = faPlayCircle;
 
-    radios: RadioList | undefined;
-    data: any | undefined;
+    public radios: RadioList | undefined;
+    public data: any | undefined;
 
 
     constructor(private deezerService: DeezerService, private playerService: PlayerService) {

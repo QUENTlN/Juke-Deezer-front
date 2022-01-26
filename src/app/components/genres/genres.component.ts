@@ -10,9 +10,9 @@ import {faPlayCircle} from '@fortawesome/free-solid-svg-icons';
 })
 export class GenresComponent implements OnInit {
 
-    faPlayCircle=faPlayCircle;
-    genres: GenreList| undefined ;
-    data:any|undefined;
+    public faPlayCircle=faPlayCircle;
+    public genres: GenreList| undefined ;
+    public data:any|undefined;
 
     constructor(private deezerService: DeezerService) { }
 

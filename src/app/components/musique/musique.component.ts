@@ -17,12 +17,12 @@ import {Track} from "../../models/track.model";
 })
 export class MusiqueComponent implements OnInit {
 
-    faPlayCircle = faPlayCircle;
-    faSquareFull = faSquareFull
-    albums: AlbumList | undefined;
-    artists: ArtistList | undefined;
-    chart: AlbumUserList | undefined;
-    data: any | undefined;
+    public faPlayCircle = faPlayCircle;
+    public faSquareFull = faSquareFull
+    public albums: AlbumList | undefined;
+    public artists: ArtistList | undefined;
+    public chart: AlbumUserList | undefined;
+    public data: any | undefined;
 
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router, private deezerService: DeezerService, private playerService: PlayerService) {

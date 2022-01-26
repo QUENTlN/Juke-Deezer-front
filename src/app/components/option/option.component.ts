@@ -10,36 +10,33 @@ import {Options} from "../../models/options.model";
 })
 export class OptionComponent implements OnInit {
 
-    options:Options|undefined;
+    public options:Options|undefined;
 
-  constructor(private themeService :ThemeService, private deezerService:DeezerService) { }
+    constructor(private themeService :ThemeService, private deezerService:DeezerService) { }
 
-  ngOnInit(): void {
-      this.afficherOptions()
+    ngOnInit(): void {
+        this.afficherOptions()
 
-  }
+    }
 
-  toggleTheme(){
+    toggleTheme(){
       ThemeService.toggleTheme()
-  }
+    }
 
-  afficherOptions() {
-
-      this.deezerService.getOptions()
-          .subscribe((data) => {
-                  this.options = data
+    afficherOptions() {
+        this.deezerService.getOptions()
+            .subscribe((data) => {
+                this.options = data
 
 
               }
           )
-
   }
-  boolToString(boolValue:boolean){
-      if (boolValue==true)
-          return "Oui"
-      else
-          return "Non"
-
+    boolToString(boolValue:boolean){
+        if (boolValue==true)
+            return "Oui"
+        else
+            return "Non"
   }
 
 }

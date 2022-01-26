@@ -4,9 +4,6 @@ import {
     faChevronLeft,
     faChevronRight,
     faCompactDisc,
-    faHome,
-    faMicrophone,
-    faMusic,
     faSearch,
     faStar,
     faTimes
@@ -22,16 +19,13 @@ import {Location} from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
 
-    faChevronLeft = faChevronLeft;
-    faChevronRight = faChevronRight;
-    faTimes = faTimes;
-    faBars = faBars;
-    faSearch = faSearch;
-    faHome = faHome;
-    faMusic = faMusic;
-    faMicrophone = faMicrophone;
-    faCompactDisc = faCompactDisc;
-    faStar = faStar;
+    public faChevronLeft = faChevronLeft;
+    public faChevronRight = faChevronRight;
+    public faTimes = faTimes;
+    public faBars = faBars;
+    public faSearch = faSearch;
+    public faCompactDisc = faCompactDisc;
+    public faStar = faStar;
 
     @Input() isSidebarDisplay: boolean = false;
 

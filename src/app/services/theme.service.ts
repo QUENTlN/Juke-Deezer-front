@@ -38,7 +38,7 @@ export class ThemeService {
     public static setDarkTheme() {
         localStorage.setItem('theme', 'dark');
         document.documentElement.style.setProperty('--main-color', '#000000');
-        document.documentElement.style.setProperty('--background-color', '#0a0a0a'); //151515 131313 111111
+        document.documentElement.style.setProperty('--background-color', '#111111'); //0a0a0a 151515 131313 111111
         document.documentElement.style.setProperty('--primary-color', '#212529');
         document.documentElement.style.setProperty('--secondary-color', '#888');
         document.documentElement.style.setProperty('--font-color', '#fff');
